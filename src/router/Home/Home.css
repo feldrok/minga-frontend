@@ -1,0 +1,42 @@
+.announcement-btn {
+  display: flex;
+  text-decoration: none;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  margin: 10px;
+  padding: 10px 20px;
+  border: 1px solid white;
+  border-radius: 20px;
+  background-color: transparent;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.announcement-btn:hover {
+  background-color: white;
+  color: black;
+  transition: all 0.3s ease-in-out;
+  transition-duration: 0.3s;
+}
+
+.get-started-btn {
+  margin: 10px;
+  text-decoration: none;
+  padding: 10px 20px;
+  border: 0px;
+  border-radius: 10px;
+  background-color: #4338ca;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.get-started-btn:hover {
+  background-color: #6057c5;
+  transition: all 0.3s ease-in-out;
+  transition-duration: 0.3s;
+}
