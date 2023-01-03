@@ -6,7 +6,7 @@ import React, { useState } from "react"
 const routes = [
   {
     path: "/",
-    name: "Inicio",
+    name: "Home",
   },
 ]
 
