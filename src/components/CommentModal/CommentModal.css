@@ -34,7 +34,7 @@
   background-color: white;
 }
 
-form {
+.comment-form {
   width: 100%;
   display: flex;
   flex-direction: column;

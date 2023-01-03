@@ -38,7 +38,7 @@ function Home() {
           action={handleModal}
         />
         <>
-          <CommentModal action={handleModal} type={visible ? "modal-overlay" : "hidden"} />
+          <CommentModal  action={handleModal} type={visible ? "modal-overlay" : "hidden"} />
         </>
       </div>
     </>
