@@ -1,9 +1,11 @@
-import categoryReducer from "./comments/reducers"
+import commentReducer from "./comments/reducers"
+import companyReducers from "./companies/reducers"
 import { configureStore } from "@reduxjs/toolkit"
 
 const store = configureStore({
   reducer: {
-    comments: categoryReducer,
+    comments: commentReducer,
+    company: companyReducers
   }
 })
 
