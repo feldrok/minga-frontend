@@ -24,7 +24,6 @@
   align-items: center;
   gap: 1rem;
   width: 100%;
-  max-width: 8rem;
 }
 
 .nav-logo {
@@ -101,6 +100,7 @@
 
 .nav-link {
   width: 100%;
+  max-width: 10em;
   text-decoration: none;
   border: 0;
   background-color: rgba(0, 0, 0, 0.61);
@@ -133,7 +133,6 @@
 
 .login-btn {
   text-decoration: none;
-  margin: 0.5em;
   padding: 0.7em 1em;
   border: 1px solid white;
   border-radius: .5em;
@@ -143,6 +142,7 @@
   cursor: pointer;
   height: auto;
   width: 100%;
+  white-space: nowrap;
   max-width: 8em;
 }
 
@@ -156,9 +156,11 @@
 
 .log-button {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   text-align: center;
+  width: 100%;
 }
 
 .close-icon {

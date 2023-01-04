@@ -42,8 +42,11 @@ function Nav() {
           ))}
         </div>
         <div className="nav-item log-button">
-          <Link className="login-btn" to={"/"}>
+          <Link className="login-btn" to={"/signin"}>
             Log in
+          </Link>
+          <Link className="login-btn" to={"/signup"}>
+            Sign up
           </Link>
         </div>
         <div onClick={toggleNav} className="nav-item menu-button">
