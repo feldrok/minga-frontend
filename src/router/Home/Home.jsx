@@ -13,7 +13,7 @@ function Home() {
   const handleModal = () => {
     setVisible(!visible)
   }
-  return (
+  return ( 
     <>
       <Hero>
         <>

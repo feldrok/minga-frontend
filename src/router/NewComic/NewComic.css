@@ -1,0 +1,14 @@
+.container_newcomics {
+    background-color: #ebebeb;
+    height: 100vh;
+} 
+
+.container_navcomics {
+    height: 15vh;
+    background-image: url(../../../public/mycomicbg.png);
+    background-size: cover;
+}
+
+.container_form {
+    height: 85vh;
+}

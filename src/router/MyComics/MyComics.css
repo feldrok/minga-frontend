@@ -1,0 +1,39 @@
+.container_link {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 70vh;
+    border-top-right-radius:22% ;
+    border-top-left-radius:22% ;
+    background-color: white;
+    top: 11rem;
+    width: 100%;
+}
+.general {
+    position: relative;
+}
+
+.container_nav{
+    background-image: url(../../../public/mycomicbg.png);
+    background-size: cover;
+    height: 15rem;
+    position: relative;
+
+}
+
+.link_new_comic {
+    padding: 1rem 2rem;
+    border-radius: 10%;
+    color: #34d399;
+    background-color: #ecfdf5;
+    text-decoration: none;
+    margin-top: 1rem;
+}
+
+.link_new_comic:hover {
+    background-color: #34d399;
+    color: black;
+}
+
