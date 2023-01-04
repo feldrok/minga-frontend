@@ -39,7 +39,7 @@ function CommentModal({ type, action }) {
       <div className="close-modal" onClick={action}></div>
         <div className="comments-container">
           <form className="comment-form" onSubmit={handleSubmit}>
-            <div className="form-group">
+            <div className="comment-form-group">
               <label htmlFor="text">New Comment</label>
               <textarea className="comment-text" id="text" ref={comment} maxLength={200} onChange={e => setTextLength(e.target.value.length)} rows="5"></textarea>
               <span className="text-length">{textLength}/200</span>

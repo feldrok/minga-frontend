@@ -1,6 +1,10 @@
 import Home from "../router/Home/Home"
 import Layout from "../layouts/Layout/Layout"
 import React from 'react'
+import Signin from "../router/Signin/Signin"
+import Signup from "../router/Signup/Signup"
+import SignupReader from "../components/SignupReader/SignupReader"
+import SignupUserType from "../components/SignupUserType/SignupUserType"
 import { createBrowserRouter } from "react-router-dom"
 
 const indexRouter = createBrowserRouter([
@@ -14,6 +18,24 @@ const indexRouter = createBrowserRouter([
         }
       ],
     },
+    {
+      path: "/signup",
+      element: <Signup />,
+      children: [
+        {
+          path: "/signup",
+          element: <SignupUserType />
+        },
+        {
+          path: "/signup/reader",
+          element: <SignupReader />
+        },
+      ]
+    },
+    {
+      path: "/signin",
+      element: <Signin />,
+    }
   ],
 )
 
