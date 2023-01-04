@@ -89,19 +89,6 @@ function Footer() {
           </div>
         </div>
       </div>
-      <div className="copy-logo-terms">
-        <div className="copy-logo-terms-wrapper">
-          <p>© 2022 Minga. Todos los derechos reservados loco.</p>
-        </div>
-        <div className="copy-logo-terms-wrapper">
-          <img src="./logo2.png" alt="" />
-          <img src="./inga.png" alt="" />
-        </div>
-        <div className="terms-wrapper">
-          <Link className="terms-link" to={"/"}>Terminos y Condiciones</Link>
-          <Link className="terms-link" to={"/"}>Politica de privacidad</Link>
-        </div>
-      </div>
     </footer>
   )
 }

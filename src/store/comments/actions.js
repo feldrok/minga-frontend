@@ -1,24 +1,21 @@
 import axios from "axios"
 import { createAsyncThunk } from "@reduxjs/toolkit" // metodo para realizar acciones asincronas
 
-const addComment = createAsyncThunk("addComment", async (comment) => {
+const addComment = createAsyncThunk("comments/addComment", async (comment) => {
   try {
-    const response = await axios.post(
-      "http://localhost:8000/api/comments",
-      comment
-    )
+    const response = await axios.post("http://localhost:8000/api/comments", comment)
     return {
-      success: true,
       response: { comment: response.data },
-      message: "Comentario agregado correctamente",
+      message: "Comentario agregado",
+    
     }
   } catch (error) {
     return {
-      success: false,
-      response: { error: error.message },
-      message: "Error al agregar el comentario",
+      response: { comment: error.response.data },
+      message: "Error agregando el comentario"
     }
   }
+  
 })
 
 const commentActions = {
