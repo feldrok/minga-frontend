@@ -1,18 +1,10 @@
 import "./Home.css"
 
-import React, { useState } from "react"
-
-import Button from "../../components/Button/Button"
-import CommentModal from "../../components/CommentModal/CommentModal"
 import Hero from "../../components/Hero/Hero"
 import { Link } from "react-router-dom"
+import React from "react"
 
 function Home() {
-  const [visible, setVisible] = useState(false)
-
-  const handleModal = () => {
-    setVisible(!visible)
-  }
   return (
     <>
       <Hero>
@@ -32,14 +24,6 @@ function Home() {
         </>
       </Hero>
       <div className="main-content">
-        <Button
-          type={"button-new-comment"}
-          text={"New comment"}
-          action={handleModal}
-        />
-        <>
-          <CommentModal  action={handleModal} type={visible ? "modal-overlay" : "hidden"} />
-        </>
       </div>
     </>
   )
