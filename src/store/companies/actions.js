@@ -3,9 +3,9 @@ import { createAsyncThunk } from "@reduxjs/toolkit"
 
 export const getCompanies = createAsyncThunk(
     "getCompany",
-    async() => {
+    async(company) => {
         try {
-            let companies = await axios.get("http://localhost:8000/api/companies")
+            let companies = await axios.get("http://localhost:8000/api/companies", company)
             return {
                 success: true,
                 message: "Company successfully created"

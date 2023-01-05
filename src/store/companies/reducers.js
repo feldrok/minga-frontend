@@ -1,4 +1,4 @@
-/* import companyActions from "./actions";
+import companyActions from "./actions";
 import { createReducer } from "@reduxjs/toolkit";
 
 const { addCompany } = companyActions;
@@ -21,4 +21,4 @@ const companyReducers = createReducer(companyInitialState, (builder) =>  {
     })
 })
 
-export default companyReducers */
+export default companyReducers
