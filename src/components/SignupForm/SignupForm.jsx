@@ -15,12 +15,12 @@ function SignupUser() {
       <div className="form-container">
         <form className="sign-form">
           <div className="form-signup-row">
-            <label className="label-sign" htmlFor="name">Name</label>
+            <label className="label-sign" htmlFor="username">Username</label>
             <input
               autoComplete="false"
               type="text"
               className="form-control"
-              id="name"
+              id="username"
             />
           </div>
           <div className="form-signup-row">
