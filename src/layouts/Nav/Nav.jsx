@@ -9,9 +9,13 @@ const routes = [
     name: "Home",
   },
   {
-    path: "/Comics",
+    path: "/comics",
     name: "Comics",
   },
+  {
+    path: "/mycomics",
+    name: "My Comics",
+  }
 ]
 
 function Nav() {
@@ -65,19 +69,16 @@ function Nav() {
           >
             <path
               d="M11 16H37"
-              stroke="#fff"
               strokeWidth="3"
               strokeLinecap="round"
             />
             <path
               d="M11 27H37"
-              stroke="#fff"
               strokeWidth="3"
               strokeLinecap="round"
             />
             <path
               d="M11 39H37"
-              stroke="#fff"
               strokeWidth="3"
               strokeLinecap="round"
             />
