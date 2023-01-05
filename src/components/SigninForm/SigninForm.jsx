@@ -1,25 +1,22 @@
-import "./Signin.css"
-
 import { Link } from "react-router-dom"
 import React from "react"
 
-function Signin() {
+function SigninForm() {
   return (
     <div className="signup-container">
-      <div className="image-film-wrap">
         <div className="container-1">
-          <div className="title-container">
-            <h2>Sign in</h2>
+        <div className="title-container">
+            <h2>Minga</h2>
             <p>Sign in to your account</p>
           </div>
-          <div className="signin-form-container">
-            <form>
+        <div className="form-container">
+            <form className="sign-form">
               <div className="form-row-signin">
-                <label htmlFor="email">Email</label>
+                <label className="label-sign" htmlFor="email">Email</label>
                 <input className="form-control" type="email" id="email" />
               </div>
               <div className="form-row-signin">
-                <label htmlFor="password">Password</label>
+                <label className="label-sign" htmlFor="password">Password</label>
                 <input className="form-control" type="password" id="password" />
               </div>
               <div className="form-row">
@@ -33,10 +30,17 @@ function Signin() {
               Sign up
             </Link>
           </div>
+          <div className="back-home">
+            <p>Go back to</p>
+            <Link className="signin-link" to="/">
+              home page
+            </Link>
+          </div>
         </div>
+      <div className="image-film-wrap">
       </div>
     </div>
   )
 }
 
-export default Signin
+export default SigninForm

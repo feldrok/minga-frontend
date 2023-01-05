@@ -5,8 +5,8 @@ function SignupUserType() {
   return (
     <>
       <div className="title-container">
-        <h2>Sign up to</h2>
-        <h1>Minga.com</h1>
+        <h4>Choose your</h4>
+        <h1>Account type</h1>
         <p>Are you looking for a manga read or manga reviewers?</p>
       </div>
       <div className="signup-form-container">
