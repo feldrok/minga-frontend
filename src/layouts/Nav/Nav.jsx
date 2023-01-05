@@ -1,32 +1,32 @@
-import "./Nav.css"
+import "./Nav.css";
 
-import { Link, NavLink } from "react-router-dom"
-import React, { useState } from "react"
+import { Link, NavLink } from "react-router-dom";
+import React, { useState } from "react";
 
 const routes = [
   {
     path: "/",
     name: "Home",
   },
-]
+];
 
 function Nav() {
-  const [navigation, setNavigation] = useState(false)
-  const [navBar, setNavBar] = useState(false)
+  const [navigation, setNavigation] = useState(false);
+  const [navBar, setNavBar] = useState(false);
 
   const toggleNav = () => {
-    setNavigation(!navigation)
-  }
+    setNavigation(!navigation);
+  };
 
   const changeBackground = () => {
     if (window.scrollY >= 80) {
-      setNavBar(true)
+      setNavBar(true);
     } else {
-      setNavBar(false)
+      setNavBar(false);
     }
-  }
+  };
 
-  window.addEventListener("scroll", changeBackground)
+  window.addEventListener("scroll", changeBackground);
 
   return (
     <nav>
@@ -58,19 +58,16 @@ function Nav() {
           >
             <path
               d="M11 16H37"
-              stroke="#fff"
               strokeWidth="3"
               strokeLinecap="round"
             />
             <path
               d="M11 27H37"
-              stroke="#fff"
               strokeWidth="3"
               strokeLinecap="round"
             />
             <path
               d="M11 39H37"
-              stroke="#fff"
               strokeWidth="3"
               strokeLinecap="round"
             />
@@ -107,7 +104,7 @@ function Nav() {
         </div>
       </div>
     </nav>
-  )
+  );
 }
 
-export default Nav
+export default Nav;

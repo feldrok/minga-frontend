@@ -1,14 +1,15 @@
 .container_newcomics {
     background-color: #ebebeb;
     height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 } 
 
-.container_navcomics {
-    height: 15vh;
-    background-image: url(../../../public/mycomicbg.png);
-    background-size: cover;
-}
+.menu-icon{
+    stroke: #4338ca;
+} 
 
-.container_form {
-    height: 85vh;
+.log-button {
+    display: none;
 }

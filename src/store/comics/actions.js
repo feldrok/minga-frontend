@@ -6,7 +6,7 @@ const createNewComic = createAsyncThunk(
     async (comic) => {
         try {
             let response = await axios.post('http://localhost:8000/api/comics', comic)
-            console.log(response)
+            console.log(response) 
             return {
                 response: { comic: response.data },
                 message: "comic creado"
