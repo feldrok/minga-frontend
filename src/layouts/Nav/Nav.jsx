@@ -8,6 +8,10 @@ const routes = [
     path: "/",
     name: "Home",
   },
+  {
+    path: "/Comics",
+    name: "Comics",
+  },
 ]
 
 function Nav() {
@@ -81,12 +85,23 @@ function Nav() {
         </div>
       </div>
       <div className={`mobile-nav ${navigation ? "show-menu" : ""} `}>
-        <div onClick={toggleNav} className="close-button">
+        <div className="profile-menu">
+          <div className="profile-container">
+          <img className="profile-picture-mobile-nav" src="./userpic.png" alt="logo" />
+          <div>
+            <p className="profile-name">User name</p>
+            <p className="profile-email">random@email.com</p>
+          </div>
+          </div>
+          
+          <div onClick={toggleNav} className="close-button">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
+            width={15}
+            height={10}
             viewBox="0 0 24 24"
-            strokeWidth="1.5"
+            strokeWidth="1.2"
             stroke="currentColor"
             className="close-icon"
           >
@@ -97,11 +112,13 @@ function Nav() {
             />
           </svg>
         </div>
+        </div>
+        
         <div className="mobile-nav-items">
-          <ul className="nav-links">
+          <ul className="mobile-nav-links">
             {routes.map((route, index) => (
               <li key={index}>
-                <NavLink className="nav-link" to={route.path}>
+                <NavLink className="mobile-nav-link" to={route.path}>
                   {route.name}
                 </NavLink>
               </li>

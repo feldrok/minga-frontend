@@ -86,7 +86,8 @@ footer {
 
 .footer-links-items {
   display: flex;
-  gap: 5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .footer-link {
@@ -120,7 +121,7 @@ footer {
   width: 80%;
   justify-items: center;
   align-items: center;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   grid-gap: 1em;
   padding-top: 3rem;
   padding-bottom: 2rem;

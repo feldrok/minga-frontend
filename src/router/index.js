@@ -1,6 +1,5 @@
 import Home from "../router/Home/Home"
 import Layout from "../layouts/Layout/Layout"
-import NewCompany from "../components/NewCompany/NewCompany"
 import React from "react"
 import Signin from "../router/Signin/Signin"
 import Signup from "../router/Signup/Signup"
@@ -26,10 +25,6 @@ const indexRouter = createBrowserRouter([
       {
         path: "/signup",
         element: <SignupUserType />,
-      },
-      {
-        path: "/signup/company",
-        element: <NewCompany />,
       },
       {
         path: "/signup/reader",
