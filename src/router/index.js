@@ -2,6 +2,7 @@ import AccountSetup from "../router/AccountSetup/AccountSetup"
 import AccountType from "../components/AccountType/AccountType"
 import Home from "../router/Home/Home"
 import Layout from "../layouts/Layout/Layout"
+import NewCompany from "../components/NewCompany/NewCompany"
 import React from "react"
 import SigninForm from "../components/SigninForm/SigninForm"
 import Signup from "../router/Signup/Signup"
@@ -43,7 +44,7 @@ const indexRouter = createBrowserRouter([
       },
       {
         path: "/accountsetup/company",
-        // element: <NewCompany />,
+        element: <NewCompany />,
       },
       {
         path: "accountsetup/author",
