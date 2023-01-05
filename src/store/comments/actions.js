@@ -11,7 +11,7 @@ const addComment = createAsyncThunk("comments/addComment", async (comment) => {
   } catch (error) {
     return {
       response: { comment: error.response.data },
-      message: "Error adding the comment"
+      message: "Error adding comment"
     }
   }
   
