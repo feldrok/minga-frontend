@@ -1,26 +1,26 @@
-import axios from "axios"
-import { createAsyncThunk } from "@reduxjs/toolkit"
+import axios from "axios";
+import { createAsyncThunk } from "@reduxjs/toolkit";
 
-export const getCompanies = createAsyncThunk(
-    "getCompany",
-    async(company) => {
-        try {
-            let companies = await axios.get("http://localhost:8000/api/companies", company)
-            return {
-                success: true,
-                message: "Company successfully created"
-            }
-        } catch(error) {
-            return {
-                success: false,
-                message: "Failed to create new company."
-            }
-        }
-    }
-)
+const addCompany = createAsyncThunk("addCompany", async (company) => {
+  try {
+    const response = await axios.post(
+      "http://localhost:8000/api/companies",
+      company
+    );
+    return {
+      response: { company: response.data },
+      message: "Company successfully created",
+    };
+  } catch (error) {
+    return {
+      response: { company: error.response.data },
+      message: "Failed to create new company.",
+    };
+  }
+});
 
 const companyActions = {
-    getCompanies,
-}
+  addCompany,
+};
 
-export default companyActions
+export default companyActions;

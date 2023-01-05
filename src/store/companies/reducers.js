@@ -3,13 +3,14 @@ import { createReducer } from "@reduxjs/toolkit";
 
 const { addCompany } = companyActions;
 
-const companyInitialState = { companies: [] };
+const initialState = { companies: [], message: "" };
 
-const companyReducers = createReducer(companyInitialState, (builder) =>  {
+const companyReducer = createReducer(initialState, (builder) =>  {
     builder
     .addCase(addCompany.fulfilled, (state, action) => {
         let newState = {
-            company: action.payload.response.companies.data.response
+            company: action.payload.response.company,
+            message: action.payload.message,
         }
         return newState
     })
@@ -21,4 +22,4 @@ const companyReducers = createReducer(companyInitialState, (builder) =>  {
     })
 })
 
-export default companyReducers
+export default companyReducer
