@@ -4,7 +4,8 @@ import { configureStore } from "@reduxjs/toolkit"
 
 const store = configureStore({
   reducer: {
-    comments: categoryReducer,
+    comments: commentReducer,
+    company: companyReducer
   }
 })
 
