@@ -62,6 +62,7 @@
 
 .menu-icon {
   cursor: pointer;
+  stroke: white;
 }
 
 .profile-picture-mobile-nav {
@@ -146,18 +147,23 @@
   background-color: transparent;
   color: white;
   font-size: 1rem;
-  font-weight: 500;
+  font-weight: 700;
   cursor: pointer;
   padding: 0.7em 1em;
   border-radius: 0.5em;
   white-space: nowrap;
+  transition: 0.5s;
+}
+
+.mobile-nav-link:hover {
+  background-color: rgb(46, 36, 156);
 }
 
 .mobile-nav-link.active {
   background-color: white;
   color: #4338CA;
   font-weight: 700;
-
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
 
 .nav-link.active {
