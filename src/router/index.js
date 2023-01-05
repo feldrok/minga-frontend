@@ -1,3 +1,4 @@
+import AccountSetup from "../router/AccountSetup/AccountSetup"
 import AccountType from "../components/AccountType/AccountType"
 import Home from "../router/Home/Home"
 import Layout from "../layouts/Layout/Layout"
@@ -33,8 +34,26 @@ const indexRouter = createBrowserRouter([
     element: <SigninForm />,
   },
   {
-    path: "/accounttype",
-    element: <AccountType />,
+    path: "/accountsetup",
+    element: <AccountSetup />,
+    children: [
+      {
+        path: "/accountsetup",
+        element: <AccountType />,
+      },
+      {
+        path: "/accountsetup/company",
+        // element: <NewCompany />,
+      },
+      {
+        path: "accountsetup/author",
+        // element: <NewAuthor />,
+      },
+      {
+        path: "accountsetup/reader",
+        // element: <NewReader />,
+      }
+    ]
   },
 ])
 
