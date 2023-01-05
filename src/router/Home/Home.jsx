@@ -3,9 +3,9 @@ import "./Home.css"
 import React, { useState } from "react"
 
 import Button from "../../components/Button/Button"
-import CommentModal from "../../components/CommentModal/CommentModal"
 import Hero from "../../components/Hero/Hero"
 import { Link } from "react-router-dom"
+import ListComments from "../../components/ListComments/ListComments"
 
 function Home() {
   const [visible, setVisible] = useState(false)
@@ -38,7 +38,7 @@ function Home() {
           action={handleModal}
         />
         <>
-          <CommentModal  action={handleModal} type={visible ? "modal-overlay" : "hidden"} />
+          <ListComments  action={handleModal} type={visible ? "modal-overlay" : "hidden"} />
         </>
       </div>
     </>
