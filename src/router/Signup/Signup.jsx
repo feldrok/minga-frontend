@@ -6,7 +6,6 @@ import React from "react";
 
 function Signup() {
   return (
-    <>
       <div className="signup-container">
         <div className="container-1">
           <div className="form-container">
@@ -27,7 +26,6 @@ function Signup() {
         </div>
         <div className="image-film-wrap"></div>
       </div>
-    </>
   );
 }
 

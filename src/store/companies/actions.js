@@ -12,7 +12,6 @@ const addCompany = createAsyncThunk("addCompany", async (company) => {
       message: "Company successfully created",
     }; 
   } catch (error) {
-    console.log(error)
     return {
       response: { company: error.response.data },
       message: "Failed to create new company.",
