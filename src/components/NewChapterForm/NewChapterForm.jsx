@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react"
+import React, { useRef } from "react"
 import { useDispatch } from "react-redux"
 import "./NewChapterForm.css"
 
@@ -9,63 +9,55 @@ const { newChapter } = chapterActions
 const NewChapter = () => {
 
     const inpTitle = useRef("")
-    let inpOrder = useRef("")
+    const inpOrder = useRef(null)
     const inpPages = useRef("")
     const dispatch = useDispatch()
 
     let handleSubmit = async (e) => {
         e.preventDefault()
-        let values
-        if(inpOrder === ""){
-            inpOrder = null
-            values = {
-                comic_id: "63b33ec6314eea2b2acb8e8a",
-                title: inpTitle.current.value,
-                order: inpOrder,
-                pages: inpPages.current.value.split(","),
-            }
-        }else{
-            values = {
-                comic_id: "63b33ec6314eea2b2acb8e8a",
-                title: inpTitle.current.value,
-                order: inpOrder.current.value,
-                pages: inpPages.current.value.split(","),
-            }
+        let values = {
+            comic_id: "63b33ec6314eea2b2acb8e8a",
+            title: inpTitle?.current?.value,
+            pages: inpPages?.current?.value.split(","),
         }
-            await dispatch(newChapter(values))
+        if(inpOrder.current.value){
+            values.order = inpOrder.current.value
         }
+        console.log(inpOrder?.current?.value);
+        await dispatch(newChapter(values))
+    }
 
-    return(
+    return (
         <div className="divContainerForm">
-        <p>New Chapter</p>
-        <form className="formNewChapter" onSubmit={handleSubmit}>
-            <input
-            className="inpForm"
-            type="text"
-            id="title"
-            placeholder="Insert title"
-            ref={inpTitle}
-            />
-            <input
-            ref={inpOrder}
-            className="inpForm"
-            type="number"
-            id="number"
-            placeholder="Insert order"
-            />
-            <input
-            ref={inpPages}
-            className="inpForm"
-            type="text"
-            id="pages"
-            placeholder="Insert pages"
-            />
-            <input
-            type="submit"
-            id="submit"
-            value="Send"
-            />
-        </form>
+            <p>New Chapter</p>
+            <form className="formNewChapter" onSubmit={handleSubmit}>
+                <input
+                    className="inpForm"
+                    type="text"
+                    id="title"
+                    placeholder="Insert title"
+                    ref={inpTitle}
+                />
+                <input
+                    className="inpForm"
+                    type="number"
+                    id="number"
+                    placeholder="Insert order"
+                    ref={inpOrder}
+                />
+                <input
+                    className="inpForm"
+                    type="text"
+                    id="pages"
+                    placeholder="Insert pages"
+                    ref={inpPages}
+                />
+                <input
+                    type="submit"
+                    id="submit"
+                    value="Send"
+                />
+            </form>
         </div>
     )
 

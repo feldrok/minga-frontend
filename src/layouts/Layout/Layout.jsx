@@ -22,7 +22,7 @@ function Layout() {
       errorCategoryNotify()
     }
     console.log(commentsStore)
-  }, [commentsStore])
+  },)
 
   // Nav & Footer
   return (
