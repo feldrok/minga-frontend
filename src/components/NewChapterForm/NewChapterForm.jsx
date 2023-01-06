@@ -23,7 +23,6 @@ const NewChapter = () => {
         if(inpOrder.current.value){
             values.order = inpOrder.current.value
         }
-        console.log(inpOrder?.current?.value);
         await dispatch(newChapter(values))
     }
 

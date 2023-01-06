@@ -3,7 +3,6 @@ import "./Home.css"
 import React, { useState } from "react"
 
 import Button from "../../components/Button/Button"
-import CommentModal from "../../components/CommentModal/CommentModal"
 import Hero from "../../components/Hero/Hero"
 import { Link } from "react-router-dom"
 
@@ -37,9 +36,6 @@ function Home() {
           text={"New comment"}
           action={handleModal}
         />
-        <>
-          <CommentModal  action={handleModal} type={visible ? "modal-overlay" : "hidden"} />
-        </>
       </div>
     </>
   )

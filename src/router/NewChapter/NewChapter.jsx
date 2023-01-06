@@ -22,7 +22,6 @@ function CreatNewChapter() {
         if(chapterStore.chapters.success === false){
             errorChapterAlert()
         }
-        console.log(chapterStore);
     }, )
 
     return (
