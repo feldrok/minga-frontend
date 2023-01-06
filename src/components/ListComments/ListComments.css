@@ -22,11 +22,13 @@
 .comments-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
   padding: 2em;
   border: 1px solid #ccc;
-  width: 80%;
+  width: 100%;
+  max-width: 600px;
+  min-height: 100vh;
   z-index: 100;
   max-width: 600px;
   border-radius: 1em;
