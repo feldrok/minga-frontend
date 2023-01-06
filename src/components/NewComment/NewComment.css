@@ -1,12 +1,53 @@
+.comment-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.comment-form-group {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.send-input {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  border-radius: 0.5em;
+  align-items: center;
+  margin: 1em 0;
+  padding: .5em 1.5em;
+  border: 1px solid #ccc;
+  background-color: white;
+}
+
+.send-btn {
+  background-image: url("../../../public/sendIcon.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 2.5em;
+  height: 2em;
+  border: none;
+  margin: 0 0 0 1em;
+  background-color: transparent;
+  cursor: pointer;
+}
+
 .comment-input {
   font-family: inherit;
   width: 100%;
-  height: 10em;
-  border: 1px solid #ccc;
-  border-radius: 0.5em;
-  padding: 1em;
+  border: none;
   font-size: 1rem;
   font-weight: 400;
   color: #333;
   resize: none;
+}
+
+.comment-input:focus {
+  outline: none;
 }

@@ -1,3 +1,5 @@
+import "./NewComment.css"
+
 import React, { useRef, useState } from "react"
 
 import Button from "../Button/Button"
@@ -32,17 +34,19 @@ function NewComment() {
   }
   return (
     <form className="comment-form" onSubmit={handleSubmit}>
-      <div className="form-group">
+      <div className="comment-form-group">
         <span className="text-length">{textLength}/200</span>
-        <input
-          className="comment-input"
-          placeholder="Say something here..."
-          id="text"
-          ref={comment}
-          maxLength={200}
-          onChange={(e) => setTextLength(e.target.value.length)}
-        />
-        <Button type={"comment-submit"} text={"Send"} />
+        <div className="send-input">
+          <input
+            className="comment-input"
+            placeholder="Say something here..."
+            id="text"
+            ref={comment}
+            maxLength={200}
+            onChange={(e) => setTextLength(e.target.value.length)}
+          />
+          <input type="submit" className="send-btn" value="" />
+        </div>
       </div>
     </form>
   )
