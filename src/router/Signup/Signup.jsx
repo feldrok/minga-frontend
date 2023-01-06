@@ -1,4 +1,4 @@
-import "./Singup.css";
+import "./Signup.css";
 
 import { Link, Outlet } from "react-router-dom";
 

@@ -51,7 +51,6 @@ function SignupUser() {
             />
           </div>
           <div className="form-row">
-            {/* <input className="submitButton" type="submit" value="Sign up" /> */}
             <Link className="submitButton" to={"/accountsetup"}>Sign up</Link>
           </div>
         </form>
