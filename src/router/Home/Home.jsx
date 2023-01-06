@@ -1,18 +1,12 @@
 import "./Home.css"
 
+import { Link, Outlet } from "react-router-dom"
 import React, { useState } from "react"
 
 import Button from "../../components/Button/Button"
 import Hero from "../../components/Hero/Hero"
-import { Link } from "react-router-dom"
-import ListComments from "../../components/ListComments/ListComments"
 
 function Home() {
-  const [visible, setVisible] = useState(false)
-
-  const handleModal = () => {
-    setVisible(!visible)
-  }
   return (
     <>
       <Hero>
@@ -32,15 +26,15 @@ function Home() {
         </>
       </Hero>
       <div className="main-content">
-        <Button
-          type={"button-new-comment"}
+        <Link
+          className={"button-new-comment"}
           text={"New comment"}
-          action={handleModal}
-        />
-        <>
-          <ListComments  action={handleModal} type={visible ? "modal-overlay" : "hidden"} />
-        </>
+          to={"/newcomment"}
+        >
+          New Comment
+        </Link>
       </div>
+      <Outlet />
     </>
   )
 }

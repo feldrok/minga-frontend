@@ -69,6 +69,11 @@
   cursor: pointer;
   color: #0079FF;
   padding-right: .5em;
+  text-decoration: none;
+}
+
+.comment-reply:hover {
+  background-color: #f2f2f2;
 }
 
 .comment-counter {
