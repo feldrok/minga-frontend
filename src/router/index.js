@@ -1,12 +1,11 @@
 import AccountSetup from "../router/AccountSetup/AccountSetup"
 import AccountType from "../components/AccountType/AccountType"
-// import NewCompany from "../components/NewCompany/NewCompany"
 import NewAuthor from "../components/NewAuthor/NewAuthor"
-import SigninForm from "../components/SinginForm/SinginForm"
-import SignupForm from "../components/SingupForm/SingupForm"
+import SigninForm from "../components/SigninForm/SigninForm"
+import SignupForm from "../components/SignupForm/SignupForm"
 import { createBrowserRouter } from "react-router-dom"
 import Layout from "../layouts/Layout/Layout"
-import Signup from "../router/Singup/Singup"
+import Signup from "../router/Signup/Signup"
 import Home from "../router/Home/Home"
 import React from "react"
 
@@ -48,7 +47,7 @@ const indexRouter = createBrowserRouter([
         // element: <NewCompany />,
       },
       {
-        path: "accountsetup/author",
+        path: "/accountsetup/author",
         element: <NewAuthor />,
       },
       {

@@ -6,9 +6,7 @@ import store from "./store/store.js"
 function App() {
   return (
     <Provider store={store}>
-    <div className="App">
       <RouterProvider router={indexRouter} />
-    </div>
     </Provider>
   )
 }
