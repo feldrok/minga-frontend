@@ -1,0 +1,47 @@
+.accountsetup-container {
+  display: flex;
+  height: 100vh;
+}
+
+.accountsetup-form-container {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-container-accsetup {
+  width: 50%;
+  background-image: url("../../../public/accountsetupbg.png");
+  display: flex;
+  justify-content: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.review-container {
+  margin-top: 5em;
+  padding: 4em;
+}
+
+.review-name {
+  padding-top: 1.5em;
+  padding-bottom: 1em;
+  font-weight: 600;
+}
+
+@media screen and (max-width: 768px) {
+  .accountsetup-container {
+    flex-direction: column;
+  }
+
+  .image-container-accsetup {
+    display:none;
+  }
+
+  .accountsetup-form-container {
+    width: 100%;
+    height: 100%;
+  }
+}

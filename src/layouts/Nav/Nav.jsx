@@ -8,6 +8,14 @@ const routes = [
     path: "/",
     name: "Home",
   },
+  {
+    path: "/comics",
+    name: "Comics",
+  },
+  {
+    path: "/mycomics",
+    name: "My Comics",
+  },
 ]
 
 function Nav() {
@@ -42,8 +50,11 @@ function Nav() {
           ))}
         </div>
         <div className="nav-item log-button">
-          <Link className="login-btn" to={"/"}>
+          <Link className="login-btn" to={"/signin"}>
             Log in
+          </Link>
+          <Link className="login-btn" to={"/signup"}>
+            Sign up
           </Link>
         </div>
         <div onClick={toggleNav} className="nav-item menu-button">
@@ -56,49 +67,51 @@ function Nav() {
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <path
-              d="M11 16H37"
-              stroke="#fff"
-              strokeWidth="3"
-              strokeLinecap="round"
-            />
-            <path
-              d="M11 27H37"
-              stroke="#fff"
-              strokeWidth="3"
-              strokeLinecap="round"
-            />
-            <path
-              d="M11 39H37"
-              stroke="#fff"
-              strokeWidth="3"
-              strokeLinecap="round"
-            />
+            <path d="M11 16H37" strokeWidth="3" strokeLinecap="round" />
+            <path d="M11 27H37" strokeWidth="3" strokeLinecap="round" />
+            <path d="M11 39H37" strokeWidth="3" strokeLinecap="round" />
           </svg>
         </div>
       </div>
       <div className={`mobile-nav ${navigation ? "show-menu" : ""} `}>
-        <div onClick={toggleNav} className="close-button">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth="1.5"
-            stroke="currentColor"
-            className="close-icon"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M6 18L18 6M6 6l12 12"
+        <div className="profile-menu">
+          <div className="profile-container">
+            <img
+              className="profile-picture-mobile-nav"
+              src="./userpic.png"
+              alt="logo"
             />
-          </svg>
+            <div>
+              <p className="profile-name">User name</p>
+              <p className="profile-email">random@email.com</p>
+            </div>
+          </div>
+
+          <div onClick={toggleNav} className="close-button">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              width={15}
+              height={10}
+              viewBox="0 0 24 24"
+              strokeWidth="1.2"
+              stroke="currentColor"
+              className="close-icon"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </div>
         </div>
+
         <div className="mobile-nav-items">
-          <ul className="nav-links">
+          <ul className="mobile-nav-links">
             {routes.map((route, index) => (
               <li key={index}>
-                <NavLink className="nav-link" to={route.path}>
+                <NavLink className="mobile-nav-link" to={route.path}>
                   {route.name}
                 </NavLink>
               </li>
