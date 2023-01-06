@@ -8,6 +8,10 @@ const routes = [
     path: "/",
     name: "Home",
   },
+  {
+    path: "/new-chapter",
+    name: "New Chapter"
+  }
 ]
 
 function Nav() {
