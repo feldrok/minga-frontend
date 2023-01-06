@@ -4,7 +4,8 @@
   background-color: white;
   width: 100%;
   margin: 1.5em 0;
-
+  padding: 0 .5em;
+  box-shadow: 0 0 1em rgba(0, 0, 0, 0.2);
 }
 
 .comment-user-data {
@@ -22,7 +23,7 @@
 .comment-text {
   padding: 0 1em 1em 1em;
   font-size: 1.2rem;
-  color: rgb(116, 116, 116);
+  color: #999999;
 }
 
 .comment-footer {

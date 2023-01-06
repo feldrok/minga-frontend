@@ -5,14 +5,14 @@ import { useSelector } from "react-redux"
 
 function Comment() {
   const commentsStore = useSelector((state) => state.comments)
-
+  
   const renderComment = () => {
     if (commentsStore.comments.success === true) {
       return (
         <div className="comment-container">
           <div className="comment-user-data">
             <img src="./userpic.png" alt="" />
-            <h3>Name Lastname</h3>
+            <h3>Ignacio Borraz</h3>
           </div>
           <div className="comment-text">
             <p>{commentsStore.comments.response?.text}</p>
