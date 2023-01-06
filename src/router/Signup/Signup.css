@@ -1,6 +1,6 @@
 .signup-container {
     min-height: 100vh;
-    /* background-image: url('../../../public/singupbg.png'); */
+    background-image: url('../../../public/signupbg.png');
     display: flex;
   }
   

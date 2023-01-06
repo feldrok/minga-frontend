@@ -13,7 +13,7 @@
   
   .image-container-accsetup {
     width: 50%;
-    /* background-image: url("../../../public/accountsetupbg.png"); */
+    background-image: url("../../../public/accountsetupbg.png");
     display: flex;
     justify-content: center;
     background-repeat: no-repeat;
