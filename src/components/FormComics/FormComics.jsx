@@ -1,10 +1,10 @@
 import "./FormComics.css";
 
-import { useDispatch, useSelector } from "react-redux";
 import { useRef, useState } from "react";
 
 import React from "react";
 import comicActions from "../../store/comics/actions";
+import { useDispatch } from "react-redux";
 
 const { createNewComic } = comicActions;
 
@@ -25,8 +25,8 @@ function FormComics() {
     e.preventDefault();
 
     const comic = {
-      author_id: "63b31c350bddc55d435910d7",
-      company_id: "63b31c350bddc55d435910d7",
+      author_id: "63b31c4cc853e7a4ea643fbc",
+      company_id: "63b1cb4db1f1ec1540d8078f",
       title: inputTitle.current.value,
       photo: inputPhoto.current.value,
       description: inputDescription.current.value,
@@ -52,14 +52,10 @@ function FormComics() {
           onChange={(e) => setValue(e.target.value)}
         >
           <option value="">Insert category</option>
-          <option value="elManga">Comic manga</option>
-          <option value="aventura">Adventure comic</option>
-          <option value="belico">War comic</option>
-          <option value="humoristico">Humorous comic</option>
-          <option value="deportivo">Sports comic</option>
-          <option value="fantastico">Fantastic comic</option>
-          <option value="historico">Historical comic</option>
-          <option value="policiaco">Police comic</option>
+          <option value="Shonen">Comic Shonen</option>
+          <option value="Sheinen">Comic Seinen</option>
+          <option value="Shojo">Comic Shojo</option>
+          <option value="Kodomo">Comic Kodomo</option>
         </select>
         <input
           type="text"
@@ -84,4 +80,3 @@ function FormComics() {
 }
 
 export default FormComics;
-

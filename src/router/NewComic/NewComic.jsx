@@ -9,19 +9,21 @@ import Nav from "../../layouts/Nav/Nav";
 import { useSelector } from "react-redux";
 
 function NewComic() {
-  const comicStore = useSelector((state) => state.comics);
+
+  const comicStore = useSelector((state) => state.comics); 
+
   const createComicNotify = () =>
     toast.success("Comic created", { autoClose: 3000, theme: "colored" });
   const errorComicNotify = () => {
-    comicStore.comics.response.map((error) =>
-      toast.error(error.message, { autoClose: 3000, theme: "colored" })
-    );
-  };
-  useEffect(() => {
+    comicStore.comics.response?.map((i) =>  
+    toast.error(i.message, { autoClose: 3000, theme: "colored" })
+  );
+}; 
+  useEffect(() => { 
     if (comicStore.comics?.success === true) {
       createComicNotify();
     }
-    if (comicStore.comics?.success === false) {
+    if (comicStore.comics?.success === false) { 
       errorComicNotify();
     }
   }, [comicStore]);
