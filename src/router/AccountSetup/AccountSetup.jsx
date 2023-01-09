@@ -6,22 +6,22 @@ import { Outlet } from "react-router-dom"
 import { useSelector } from "react-redux";
 
 function AccountSetup() {
-  const authorStore = useSelector(state => state.author)
-  const createdAuthorNotif = () => toast.success(authorStore.message, {autoClose: 3000, theme: "colored"} )
-  const errorAuthorNotif = () => {
-    authorStore.author.response.map((i) => {
+  const companyStore = useSelector(state => state.company)
+  const createdCompanyNotif = () => toast.success(companyStore.message, {autoClose: 3000, theme: "colored"} )
+  const errorCompanyNotif = () => {
+    companyStore.company.response.map((i) => {
       return toast.error(i.message, {autoClose: 3000, theme: "colored"})
     })
     }
   useEffect(() => {
-    if (authorStore.author?.success === true) {
-      createdAuthorNotif()
+    if (companyStore.company?.success === true) {
+      createdCompanyNotif()
     }
-    if (authorStore.author?.success === false) {
-      errorAuthorNotif()
+    if (companyStore.company?.success === false) {
+      errorCompanyNotif()
     }
-    console.log(authorStore);
-  }, [authorStore])
+    console.log(companyStore);
+  }, [companyStore])
   return (
     <>
       <ToastContainer transition={Slide} />

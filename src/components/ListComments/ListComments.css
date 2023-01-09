@@ -1,0 +1,90 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.close-modal {
+  position: fixed;
+  font-size: 1.5rem;
+  height: 100%;
+  z-index: 99;
+  width: 100%;
+}
+
+.comments-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  border: 1px solid #ccc;
+  width: 100%;
+  max-width: 600px;
+  min-height: 100vh;
+  z-index: 100;
+  max-width: 600px;
+  border-radius: 1em;
+  background-color: #EBEBEB;
+}
+
+.comment-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-group {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.5em;
+}
+
+.form-group textarea {
+  font-family: inherit;
+  width: 100%;
+  height: 10em;
+  border: 1px solid #ccc;
+  border-radius: 0.5em;
+  padding: 1em;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #333;
+  resize: none;
+}
+
+.comment-submit {
+  background-color: hsl(245, 58%, 51%);
+  border: none;
+  padding: 1.2em 2em;
+  border-radius: 2em;
+  color: white;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 1em;
+}
+
+.comment-submit:hover {
+  background-color: hsl(245, 58%, 41%);
+  transition: all 0.3s ease-in-out;
+  transition-duration: 0.3s;
+}
