@@ -4,8 +4,9 @@ import { createReducer } from "@reduxjs/toolkit";
 const { createNewComic } = comicActions
 
 const initialState = {
-    newComic: []
-}
+    comics: [],
+    message: ""
+} 
 
 const comicReducer = createReducer(
     initialState,
@@ -15,7 +16,7 @@ const comicReducer = createReducer(
                 createNewComic.fulfilled,
                 (state, action) => {
                     let newState = {
-                        newComic: action.payload.response.comic,
+                        comics: action.payload.response.comic,
                         message: action.payload.message
                     }
                     return newState
@@ -31,4 +32,4 @@ const comicReducer = createReducer(
 
 )
 
-export default comicReducer
+export default comicReducer 

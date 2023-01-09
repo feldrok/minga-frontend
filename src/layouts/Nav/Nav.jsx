@@ -1,32 +1,40 @@
-import "./Nav.css"
+import "./Nav.css";
 
-import { Link, NavLink } from "react-router-dom"
-import React, { useState } from "react"
+import { Link, NavLink } from "react-router-dom";
+import React, { useState } from "react";
 
 const routes = [
   {
     path: "/",
     name: "Home",
   },
+  {
+    path: "/comics",
+    name: "Comics",
+  },
+  {
+    path: "/mycomics",
+    name: "My Comics",
+  }
 ]
 
 function Nav() {
-  const [navigation, setNavigation] = useState(false)
-  const [navBar, setNavBar] = useState(false)
+  const [navigation, setNavigation] = useState(false);
+  const [navBar, setNavBar] = useState(false);
 
   const toggleNav = () => {
-    setNavigation(!navigation)
-  }
+    setNavigation(!navigation);
+  };
 
   const changeBackground = () => {
     if (window.scrollY >= 80) {
-      setNavBar(true)
+      setNavBar(true);
     } else {
-      setNavBar(false)
+      setNavBar(false);
     }
-  }
+  };
 
-  window.addEventListener("scroll", changeBackground)
+  window.addEventListener("scroll", changeBackground);
 
   return (
     <nav>
@@ -42,8 +50,11 @@ function Nav() {
           ))}
         </div>
         <div className="nav-item log-button">
-          <Link className="login-btn" to={"/"}>
+          <Link className="login-btn" to={"/signin"}>
             Log in
+          </Link>
+          <Link className="login-btn" to={"/signup"}>
+            Sign up
           </Link>
         </div>
         <div onClick={toggleNav} className="nav-item menu-button">
@@ -58,19 +69,16 @@ function Nav() {
           >
             <path
               d="M11 16H37"
-              stroke="#fff"
               strokeWidth="3"
               strokeLinecap="round"
             />
             <path
               d="M11 27H37"
-              stroke="#fff"
               strokeWidth="3"
               strokeLinecap="round"
             />
             <path
               d="M11 39H37"
-              stroke="#fff"
               strokeWidth="3"
               strokeLinecap="round"
             />
@@ -78,12 +86,23 @@ function Nav() {
         </div>
       </div>
       <div className={`mobile-nav ${navigation ? "show-menu" : ""} `}>
-        <div onClick={toggleNav} className="close-button">
+        <div className="profile-menu">
+          <div className="profile-container">
+          <img className="profile-picture-mobile-nav" src="./userpic.png" alt="logo" />
+          <div>
+            <p className="profile-name">User name</p>
+            <p className="profile-email">random@email.com</p>
+          </div>
+          </div>
+          
+          <div onClick={toggleNav} className="close-button">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
+            width={15}
+            height={10}
             viewBox="0 0 24 24"
-            strokeWidth="1.5"
+            strokeWidth="1.2"
             stroke="currentColor"
             className="close-icon"
           >
@@ -94,11 +113,13 @@ function Nav() {
             />
           </svg>
         </div>
+        </div>
+        
         <div className="mobile-nav-items">
-          <ul className="nav-links">
+          <ul className="mobile-nav-links">
             {routes.map((route, index) => (
               <li key={index}>
-                <NavLink className="nav-link" to={route.path}>
+                <NavLink className="mobile-nav-link" to={route.path}>
                   {route.name}
                 </NavLink>
               </li>
@@ -107,7 +128,7 @@ function Nav() {
         </div>
       </div>
     </nav>
-  )
+  );
 }
 
-export default Nav
+export default Nav;

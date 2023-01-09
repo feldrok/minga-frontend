@@ -1,20 +1,46 @@
 import "./NewComic.css";
+import "react-toastify/dist/ReactToastify.css";
 
-import FormComics from "../../layouts/FormComics/FormComics";
+import React, { useEffect } from "react";
+import { Slide, ToastContainer, toast } from "react-toastify";
+
+import FormComics from "../../components/FormComics/FormComics";
 import Nav from "../../layouts/Nav/Nav";
-import React from "react";
+import { useSelector } from "react-redux";
 
 function NewComic() {
+
+  const comicStore = useSelector((state) => state.comics); 
+
+  const createComicNotify = () =>
+    toast.success("Comic created", { autoClose: 3000, theme: "colored" });
+  const errorComicNotify = () => {
+    comicStore.comics.response?.map((i) =>  
+    toast.error(i.message, { autoClose: 3000, theme: "colored" })
+  );
+}; 
+  useEffect(() => { 
+    if (comicStore.comics?.success === true) {
+      createComicNotify();
+    }
+    if (comicStore.comics?.success === false) { 
+      errorComicNotify();
+    }
+  }, [comicStore]);
+  console.log(comicStore);
+
   return (
-    <div className="container_newcomics">
-      <div className="container_navcomics">
-        <Nav />
+    <>
+      <ToastContainer transition={Slide} />
+      <Nav />
+      <div className="container_newcomics">
+        <div className="container_form">
+          <FormComics />
+        </div>
       </div>
-      <div className="container_form">
-        <FormComics />
-      </div>
-    </div>
+    </>
   );
 }
 
 export default NewComic;
+
