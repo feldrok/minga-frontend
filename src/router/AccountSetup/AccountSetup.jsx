@@ -1,11 +1,32 @@
 import "./AccountSetup.css"
+import 'react-toastify/dist/ReactToastify.css';
+
+import React, { useEffect } from "react";
+import { Slide, ToastContainer, toast } from "react-toastify"
 
 import { Outlet } from "react-router-dom"
-import React from "react"
+import { useSelector } from "react-redux";
 
 function AccountSetup() {
+  const companyStore = useSelector(state => state.company)
+  const createdCompanyNotif = () => toast.success(companyStore.message, {autoClose: 3000, theme: "colored"} )
+  const errorCompanyNotif = () => {
+    companyStore.company.response.map((i) => {
+      return toast.error(i.message, {autoClose: 3000, theme: "colored"})
+    })
+    }
+  useEffect(() => {
+    if (companyStore.company?.success === true) {
+      createdCompanyNotif()
+    }
+    if (companyStore.company?.success === false) {
+      errorCompanyNotif()
+    }
+    console.log(companyStore);
+  }, [companyStore])
   return (
     <>
+      <ToastContainer transition={Slide} />
       <div className="accountsetup-container">
         <div className="accountsetup-form-container">
           <Outlet />
