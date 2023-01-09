@@ -3,6 +3,7 @@ import AccountSetup from "../router/AccountSetup/AccountSetup"
 import AccountType from "../components/AccountType/AccountType"
 import Home from "../router/Home/Home"
 import Layout from "../layouts/Layout/Layout"
+import ListComments from "../components/ListComments/ListComments"
 import NewCompany from "../components/NewCompany/NewCompany"
 import NewChapter from "./NewChapter/NewChapter"
 import MyComics from "../router/MyComics/MyComics"
@@ -20,6 +21,18 @@ const indexRouter = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+        children: [
+          {
+            path: "/newcomment",
+            element: <ListComments />,
+            children: [
+              {
+                path: "/newcomment/:comment_id",
+                element: <ListComments />,
+              }
+            ]
+          },
+        ],
       },
     ],
   },
