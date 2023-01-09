@@ -6,6 +6,7 @@ import { Slide, ToastContainer, toast } from "react-toastify"
 import Footer from "../Footer/Footer"
 import Nav from "../Nav/Nav"
 import { Outlet } from "react-router-dom"
+import { useSelector } from "react-redux"
 
 function Layout() {
   const commentsStore = useSelector((state) => state.comments)
@@ -31,6 +32,7 @@ function Layout() {
   // Nav & Footer
   return (
     <div>
+      <ToastContainer transition={Slide} />
       <Nav />
       <Outlet />
       <Footer />

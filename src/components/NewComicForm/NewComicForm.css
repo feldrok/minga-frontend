@@ -1,22 +1,19 @@
-.formNewChapter{
+.formNewComic {
     display: flex;
     flex-direction: column;
     gap: 1rem;
     width: 450px;
 }
-@media only screen and (max-width: 767px){
-    .formNewChapter{
-        width: 60vw;
-    }
-}
-.inpForm{
+
+.inpForm {
     background-color: transparent;
     border: none;
     border-bottom: 1px solid gray;
-    padding: .5em;
-    outline: none;
+    padding: 0.5em;
     font-size: 1rem;
+    outline: none;
 }
+
 .divContainerForm{
     display: flex;
     flex-direction: column;
@@ -28,15 +25,36 @@
     margin-bottom: 5rem;
 }
 
+.inpForm-select {
+    background-color: transparent;
+    border: none;
+    font-size: 1rem;
+    border-bottom: 1px solid gray;
+    padding: 0.5em;
+    color: gray;
+}
+
+.inpForm-select.selected {
+    color: black;
+}
+
+.inpForm-select:focus {
+    outline: none;
+}
+
+option {
+    background-color: rgb(215, 207, 207);
+}
+
 .button_create {
     padding: 1em 6em;
     margin-top: 2em;
     border-radius: 3rem;
     border: none;
+    font-size: 1rem;;
     background-color: grey;
     color: white;
     letter-spacing: 0.1rem;
-    font-size: 1rem;
     transition: all 0.2s ease-in-out;
 }
 

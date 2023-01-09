@@ -1,8 +1,10 @@
-import React, { useRef } from "react"
-import { useDispatch } from "react-redux"
 import "./NewChapterForm.css"
 
+import React, { useRef } from "react"
+
 import chapterActions from "../../store/chapters/actions"
+import { useDispatch } from "react-redux"
+
 const { newChapter } = chapterActions
 
 
@@ -55,6 +57,7 @@ const NewChapter = () => {
                     type="submit"
                     id="submit"
                     value="Send"
+                    className="button_create"
                 />
             </form>
         </div>
