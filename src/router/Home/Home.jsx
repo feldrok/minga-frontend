@@ -5,13 +5,9 @@ import React, { useState } from "react"
 import Button from "../../components/Button/Button"
 import Hero from "../../components/Hero/Hero"
 import { Link } from "react-router-dom"
+import React from "react"
 
 function Home() {
-  const [visible, setVisible] = useState(false)
-
-  const handleModal = () => {
-    setVisible(!visible)
-  }
   return (
     <>
       <Hero>

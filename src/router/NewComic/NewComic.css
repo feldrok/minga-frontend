@@ -1,0 +1,15 @@
+.container_newcomics {
+    background-color: #ebebeb;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} 
+
+.menu-icon{
+    stroke: #4338ca;
+} 
+
+.log-button {
+    display: none;
+} 
