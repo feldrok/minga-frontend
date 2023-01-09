@@ -1,0 +1,43 @@
+
+
+.container_form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+
+
+.input{
+    width: 68%;
+    margin: 0.5rem;
+    padding: 0.5rem;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: solid 1px black;
+    background-color:transparent;
+} 
+
+option{
+    background-color: rgb(215, 207, 207);
+}
+
+.button_create {
+    padding: 1em 6em;
+    margin-top: 2em;
+    border-radius: 3rem;
+    border: none;
+    background-color: grey;
+    color: white;
+    letter-spacing: 0.1rem;
+}
+
+.button_create:hover{
+    background-color: #4338CA; 
+} 
+
