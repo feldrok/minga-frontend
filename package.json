@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fontsource/poppins": "^4.5.10",
     "@reduxjs/toolkit": "^1.9.1",
     "axios": "^1.2.2",
     "react": "^18.2.0",
