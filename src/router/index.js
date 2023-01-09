@@ -2,15 +2,19 @@ import React from 'react'
 import AccountSetup from "../router/AccountSetup/AccountSetup"
 import AccountType from "../components/AccountType/AccountType"
 import Home from "../router/Home/Home"
+import SigninForm from "../components/SigninForm/SigninForm"
+import SignupForm from "../components/SignupForm/SignupForm"
 import Layout from "../layouts/Layout/Layout"
+import Signup from "../router/Signup/Signup"
+import React from "react"
+
+import NewAuthor from "../components/NewAuthor/NewAuthor"
 import ListComments from "../components/ListComments/ListComments"
 import NewCompany from "../components/NewCompany/NewCompany"
 import NewChapter from "./NewChapter/NewChapter"
 import MyComics from "../router/MyComics/MyComics"
 import NewComic from "./NewComic/NewComic"
-import SigninForm from "../components/SigninForm/SigninForm"
-import Signup from "../router/Signup/Signup"
-import SignupForm from "../components/SignupForm/SignupForm"
+
 import { createBrowserRouter } from "react-router-dom"
 
 const indexRouter = createBrowserRouter([
@@ -75,8 +79,13 @@ const indexRouter = createBrowserRouter([
         element: <NewCompany />,
       },
       {
+<<<<<<< HEAD
+        path: "/accountsetup/author",
+        element: <NewAuthor />,
+=======
         path: "accountsetup/author",
         // element: <NewAuthor />,
+>>>>>>> main
       },
       {
         path: "accountsetup/reader",

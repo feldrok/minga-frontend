@@ -1,9 +1,7 @@
 import "./AccountSetup.css"
 import 'react-toastify/dist/ReactToastify.css';
-
 import React, { useEffect } from "react";
 import { Slide, ToastContainer, toast } from "react-toastify"
-
 import { Outlet } from "react-router-dom"
 import { useSelector } from "react-redux";
 
