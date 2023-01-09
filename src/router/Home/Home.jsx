@@ -1,5 +1,8 @@
 import "./Home.css"
 
+import React, { useState } from "react"
+
+import Button from "../../components/Button/Button"
 import Hero from "../../components/Hero/Hero"
 import { Link } from "react-router-dom"
 import React from "react"
@@ -24,6 +27,11 @@ function Home() {
         </>
       </Hero>
       <div className="main-content">
+        <Button
+          type={"button-new-comment"}
+          text={"New comment"}
+          action={handleModal}
+        />
       </div>
     </>
   )

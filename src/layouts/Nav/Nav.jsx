@@ -9,6 +9,10 @@ const routes = [
     name: "Home",
   },
   {
+    path: "/new-chapter",
+    name: "New Chapter"
+  },
+  {
     path: "/comics",
     name: "Comics",
   },

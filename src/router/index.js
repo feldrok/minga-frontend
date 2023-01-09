@@ -4,6 +4,7 @@ import AccountType from "../components/AccountType/AccountType"
 import Home from "../router/Home/Home"
 import Layout from "../layouts/Layout/Layout"
 import NewCompany from "../components/NewCompany/NewCompany"
+import NewChapter from "./NewChapter/NewChapter"
 import MyComics from "../router/MyComics/MyComics"
 import NewComic from "./NewComic/NewComic"
 import SigninForm from "../components/SigninForm/SigninForm"
@@ -30,7 +31,10 @@ const indexRouter = createBrowserRouter([
     path: "/newcomics",
     element: <NewComic />
   },
-
+  {
+    path: "/new-chapter",
+    element: <NewChapter />
+  },
   {
     path: "/signup",
     element: <Signup />,
