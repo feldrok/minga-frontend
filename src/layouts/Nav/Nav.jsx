@@ -1,12 +1,16 @@
-import "./Nav.css"
+import "./Nav.css";
 
-import { Link, NavLink } from "react-router-dom"
-import React, { useState } from "react"
+import { Link, NavLink } from "react-router-dom";
+import React, { useState } from "react";
 
 const routes = [
   {
     path: "/",
     name: "Home",
+  },
+  {
+    path: "/new-chapter",
+    name: "New Chapter"
   },
   {
     path: "/comics",
@@ -19,22 +23,22 @@ const routes = [
 ]
 
 function Nav() {
-  const [navigation, setNavigation] = useState(false)
-  const [navBar, setNavBar] = useState(false)
+  const [navigation, setNavigation] = useState(false);
+  const [navBar, setNavBar] = useState(false);
 
   const toggleNav = () => {
-    setNavigation(!navigation)
-  }
+    setNavigation(!navigation);
+  };
 
   const changeBackground = () => {
     if (window.scrollY >= 80) {
-      setNavBar(true)
+      setNavBar(true);
     } else {
-      setNavBar(false)
+      setNavBar(false);
     }
-  }
+  };
 
-  window.addEventListener("scroll", changeBackground)
+  window.addEventListener("scroll", changeBackground);
 
   return (
     <nav>
@@ -120,7 +124,7 @@ function Nav() {
         </div>
       </div>
     </nav>
-  )
+  );
 }
 
-export default Nav
+export default Nav;
