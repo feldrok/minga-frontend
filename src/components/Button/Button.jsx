@@ -11,3 +11,4 @@ function Button({type, action, text}) {
 }
 
 export default Button
+

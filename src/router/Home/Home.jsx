@@ -3,8 +3,9 @@ import "./Home.css"
 import { Link, Outlet } from "react-router-dom"
 import React, { useState } from "react"
 
-import Button from "../../components/Button/Button"
 import Hero from "../../components/Hero/Hero"
+import { Link } from "react-router-dom"
+import React from "react"
 
 function Home() {
   return (
