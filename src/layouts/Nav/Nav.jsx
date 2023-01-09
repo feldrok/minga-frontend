@@ -9,7 +9,7 @@ const routes = [
     name: "Home",
   },
   {
-    path: "/new-chapter",
+    path: "/newchapter",
     name: "New Chapter"
   },
   {

@@ -1,4 +1,4 @@
-import "./FormComics.css";
+import "./NewComicForm.css";
 
 import { useRef, useState } from "react";
 
@@ -8,7 +8,7 @@ import { useDispatch } from "react-redux";
 
 const { createNewComic } = comicActions;
 
-function FormComics() {
+function NewComicForm() {
   
   const dispatch = useDispatch();
 
@@ -37,21 +37,22 @@ function FormComics() {
 }
 
   return (
-    <>
-      <form action="" className="container_form" onSubmit={createComic}>
+    <div className="divContainerForm">
+      <p>New Comic</p>
+      <form action="" className="formNewComic" onSubmit={createComic}>
         <input
           type="text"
           ref={inputTitle}
           placeholder="Insert title"
-          className="input"
+          className="inpForm"
         />
         <select
           name="categories"
-          className="input"
+          className={value === "" ? "inpForm-select" : "inpForm-select selected"}
           id="categories"
-          onChange={(e) => setValue(e.target.value)}
-        >
-          <option value="">Insert category</option>
+          onChange={(e) => setValue(e.target)}
+        >.value
+          <option className="default-select" value="">Insert category</option>
           <option value="Shonen">Comic Shonen</option>
           <option value="Sheinen">Comic Seinen</option>
           <option value="Shojo">Comic Shojo</option>
@@ -61,13 +62,13 @@ function FormComics() {
           type="text"
           ref={inputDescription}
           placeholder="Insert description"
-          className="input"
+          className="inpForm"
         />
         <input
           type="text"
           ref={inputPhoto}
           placeholder="Insert cover photo"
-          className="input"
+          className="inpForm"
         />
         <input
           type="submit"
@@ -75,8 +76,8 @@ function FormComics() {
           className="button_create"
         />
       </form>
-    </>
+    </div>
   );
 }
 
-export default FormComics;
+export default NewComicForm;

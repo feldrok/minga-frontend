@@ -8,7 +8,7 @@ function SignupUserType() {
     <>
       <div className="title-container">
         <h4>Choose your</h4>
-        <h1>Account type</h1>
+        <h1 className="account-type-h1">Account type</h1>
         <p>Are you looking for a manga read or manga reviewers?</p>
       </div>
       <div className="accounttype-container">

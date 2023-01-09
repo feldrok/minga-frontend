@@ -9,12 +9,12 @@ const newChapter = createAsyncThunk("newChapter", async (chapter) => {
         )
         return {
             response: { chapter: response.data },
-            message: " ✓ CHAPTER SUCCESSFULLY CREATED",
+            message: "Chapter created successfully",
         }
     } catch (error) {
         return {
             response: { chapter: error.response.data },
-            message: " ✘ ERROR: FAILED TO CREATE NEW CHAPTER",
+            message: "Error creating chapter",
         }
     }
 });

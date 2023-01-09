@@ -4,8 +4,8 @@ import "react-toastify/dist/ReactToastify.css";
 import React, { useEffect } from "react";
 import { Slide, ToastContainer, toast } from "react-toastify";
 
-import FormComics from "../../components/FormComics/FormComics";
 import Nav from "../../layouts/Nav/Nav";
+import NewComicForm from "../../components/NewComicForm/NewComicForm";
 import { useSelector } from "react-redux";
 
 function NewComic() {
@@ -35,7 +35,7 @@ function NewComic() {
       <Nav />
       <div className="container_newcomics">
         <div className="container_form">
-          <FormComics />
+          <NewComicForm />
         </div>
       </div>
     </>

@@ -6,13 +6,13 @@ const addComment = createAsyncThunk("comments/addComment", async (comment) => {
     const response = await axios.post("http://localhost:8000/api/comments", comment)
     return {
       response: { comment: response.data },
-      message: "Comentario agregado",
+      message: "Comment added successfully",
     
     }
   } catch (error) {
     return {
       response: { comment: error.response.data },
-      message: "Error agregando el comentario"
+      message: "Error adding comment"
     }
   }
   

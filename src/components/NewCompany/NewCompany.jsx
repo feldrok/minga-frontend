@@ -26,13 +26,14 @@ function SignupCompany() {
   return (
     <>
       <div className="title-container">
-        <h2>Company Sign up</h2>
+        <h2>You are a Company</h2>
+        <p>Please complete the form</p>
       </div>
       <div className="signup-form-container">
         <form onSubmit={handleSubmit}>
           <div className="form-row">
-            <div className="form-group">
-              <label htmlFor="name">Name</label>
+            <div className="form-signup-row">
+              <label className="label-sign" htmlFor="name">Name</label>
               <input
                 ref={companyName}
                 autoComplete="false"
@@ -41,8 +42,8 @@ function SignupCompany() {
                 id="name"
               />
             </div>
-            <div className="form-group">
-              <label htmlFor="logo">Logo</label>
+            <div className="form-signup-row">
+              <label className="label-sign" htmlFor="logo">Logo</label>
               <input
                 ref={companyLogo}
                 autoComplete="false"
@@ -53,8 +54,8 @@ function SignupCompany() {
             </div>
           </div>
           <div className="form-row">
-            <div className="form-group">
-              <label htmlFor="website">Website</label>
+            <div className="form-signup-row">
+              <label className="label-sign" htmlFor="website">Website</label>
               <input
                 ref={companyWebsite}
                 autoComplete="false"
@@ -63,8 +64,8 @@ function SignupCompany() {
                 id="website"
               />
             </div>
-            <div className="form-group">
-              <label htmlFor="description">Description</label>
+            <div className="form-signup-row">
+              <label className="label-sign" htmlFor="description">Description</label>
               <input
                 ref={companyDescription}
                 autoComplete="false"
@@ -74,29 +75,8 @@ function SignupCompany() {
               />
             </div>
           </div>
-{/*           <div className="form-row">
-            <div className="form-group">
-              <label htmlFor="password">Password</label>
-              <input
-                ref={}
-                autoComplete="false"
-                type="password"
-                className="form-control"
-                id="password"
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="confirm-password">Confirm Password</label>
-              <input
-                autoComplete="false"
-                type="password"
-                className="form-control"
-                id="confirm-password"
-              />
-            </div>
-          </div> */}
           <div className="form-row">
-            <input className="submitButton" type="submit" value="Sign up" />
+            <input className="submitButton" type="submit" value="Continue" />
           </div>
         </form>
       </div>

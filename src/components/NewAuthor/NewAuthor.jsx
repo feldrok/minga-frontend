@@ -1,6 +1,8 @@
 import React, { useRef } from "react";
+
 import authorActions from "../../store/authors/actions";
 import { useDispatch } from "react-redux";
+
 const { addAuthor } = authorActions;
 
 function NewAuthor() {
@@ -28,13 +30,14 @@ function NewAuthor() {
   return (
     <>
       <div className="title-container">
-        <h2>Author Sign up</h2>
+        <h2>You are an Author</h2>
+        <p>Please complete the form</p>
       </div>
       <div className="signup-form-container">
         <form onSubmit={handleSubmit}>
           <div className="form-row">
-            <div className="form-group">
-              <label htmlFor="name">Name</label>
+            <div className="form-signup-row">
+              <label className="label-sign" htmlFor="name">Name</label>
               <input
                 ref={authorName}
                 autoComplete="false"
@@ -43,8 +46,8 @@ function NewAuthor() {
                 id="name"
               />
             </div>
-            <div className="form-group">
-              <label htmlFor="lastName">Last Name</label>
+            <div className="form-signup-row">
+              <label className="label-sign" htmlFor="lastName">Last Name</label>
               <input
                 ref={authorLastName}
                 autoComplete="false"
@@ -55,8 +58,8 @@ function NewAuthor() {
             </div>
           </div>
           <div className="form-row">
-            <div className="form-group">
-              <label htmlFor="city">City</label>
+            <div className="form-signup-row">
+              <label className="label-sign" htmlFor="city">City</label>
               <input
                 ref={authorCity}
                 autoComplete="false"
@@ -65,8 +68,8 @@ function NewAuthor() {
                 id="city"
               />
             </div>
-            <div className="form-group">
-              <label htmlFor="country">Country</label>
+            <div className="form-signup-row">
+              <label className="label-sign" htmlFor="country">Country</label>
               <input
                 ref={authorCountry}
                 autoComplete="false"
@@ -77,8 +80,8 @@ function NewAuthor() {
             </div>
           </div>
             <div className="form-row">
-              <div className="form-group">
-                <label htmlFor="date">Date</label>
+              <div className="form-signup-row">
+                <label className="label-sign" htmlFor="date">Date</label>
                 <input
                   ref={authorDate}
                   autoComplete="false"
@@ -87,8 +90,8 @@ function NewAuthor() {
                   id="date"
                 />
               </div>
-              <div className="form-group">
-                <label htmlFor="photo">Photo</label>
+              <div className="form-signup-row">
+                <label className="label-sign" htmlFor="photo">Photo</label>
                 <input
                   ref={authorPhoto}
                   autoComplete="false"
@@ -99,7 +102,7 @@ function NewAuthor() {
               </div>
             </div>
           <div className="form-row">
-            <input className="submitButton" type="submit" value="Sign up" />
+            <input className="submitButton" type="submit" value="Continue" />
           </div>
         </form>
       </div>
