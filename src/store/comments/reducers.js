@@ -5,23 +5,24 @@ const { addComment } = commentActions
 
 const initialState = {
   comments: [],
-  loading: false,
-  error: null
+  message: "",
 }
 
 const commentReducer = createReducer(initialState, (builder) => {
   builder
-  .addCase(addComment.pending, (state) => {
-    state.loading = true
-  })
-  .addCase(addComment.fulfilled, (state, action) => {
-    state.loading = false
-    state.comments = action.payload.response.comment
-  })
-  .addCase(addComment.rejected, (state, action) => {
-    state.loading = false
-    state.error = action.payload
-  })
+    .addCase(addComment.fulfilled, (state, action) => {
+      let newState = {
+        comments: action.payload.response.comment,
+        message: action.payload.message
+      }
+      return newState
+    })
+    .addCase(addComment.rejected, (state, action) => {
+      let newState = {
+        message: "error"
+      }
+      return newState
+    })
 })
 
 export default commentReducer

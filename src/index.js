@@ -1,4 +1,5 @@
 import './index.css';
+import "@fontsource/poppins"
 
 import App from './App';
 import React from 'react';
