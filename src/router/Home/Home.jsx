@@ -1,4 +1,4 @@
-import './Home.css'
+import "./Home.css"
 
 import Hero from "../../components/Hero/Hero"
 import { Link } from "react-router-dom"
@@ -23,6 +23,8 @@ function Home() {
           </Link>
         </>
       </Hero>
+      <div className="main-content">
+      </div>
     </>
   )
 }

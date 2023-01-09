@@ -1,0 +1,16 @@
+.button-new-comment {
+  background-color: hsl(245, 58%, 51%);
+  border: none;
+  padding: 1.2em 2em;
+  border-radius: 2em;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.button-new-comment:hover {
+  background-color: hsl(245, 58%, 41%);
+  transition: all 0.3s ease-in-out;
+  transition-duration: 0.3s;
+}
