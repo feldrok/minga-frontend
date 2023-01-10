@@ -1,5 +1,6 @@
 import AccountSetup from "../router/AccountSetup/AccountSetup"
 import AccountType from "../components/AccountType/AccountType"
+import Comics from "../router/Comics/Comics"
 import Home from "../router/Home/Home"
 import Layout from "../layouts/Layout/Layout"
 import ListComments from "../components/ListComments/ListComments"
@@ -85,6 +86,10 @@ const indexRouter = createBrowserRouter([
             },
         ],
     },
+    {
+        path: "/comics",
+        element: <Comics />,
+    }
 ])
 
 export default indexRouter

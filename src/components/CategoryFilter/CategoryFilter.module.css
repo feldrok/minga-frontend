@@ -1,0 +1,52 @@
+.container {
+    display: flex;
+    padding: .7em 1em;
+    margin: .5em;
+    border-radius: 20em;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    min-width: 100px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease-in-out;
+}
+
+.red {
+    background-color: #FFE0DF;
+    color: #EF8481;
+}
+
+.red:hover {
+    background-color: #ffeceb;
+}
+
+.orange {
+    background-color: #FFDFC8;
+    color: #FC9C57;
+}
+
+.orange:hover {
+    background-color: #ffede0;
+}
+
+.green {
+    background-color: #D1FBF0;
+    color: #00BA88;
+}
+
+.green:hover {
+    background-color: #e0fff4;
+}
+
+.purple {
+    background-color: #E0DBFF;
+    color: #8883F0;
+}
+
+.purple:hover {
+    background-color: #ebe7ff;
+}
+
+.checkbox {
+    display: none;
+}
