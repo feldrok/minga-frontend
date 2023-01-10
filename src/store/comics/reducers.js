@@ -6,6 +6,7 @@ const { createNewComic, getComics, getComicsByTitle, getComicsByCategory, getCom
 const initialState = {
     comics: [],
     message: "",
+    limit: 10,
     search: "",
 }
 
@@ -27,6 +28,7 @@ const comicReducer = createReducer(initialState, (builder) => {
         .addCase(getComics.fulfilled, (state, action) => {
             let newState = {
                 comics: action.payload.response.comics,
+                limit: action.payload.limit,
                 message: action.payload.message,
             }
             return newState

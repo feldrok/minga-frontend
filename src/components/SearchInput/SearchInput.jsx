@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 
 import comicActions from "../../store/comics/actions"
 import styles from "./SearchInput.module.css"
@@ -15,24 +15,12 @@ function SearchInput() {
     const updateURL = (e) => {
         e.preventDefault()
         dispatch(getComicsByTitle(inputValue))
-    }
-
-    useEffect(() => {
-        const urlParams = new URLSearchParams(window.location.search)
-        const title = urlParams.get("title")
-        if (title) {
-            setInputValue(title)
-            dispatch(getComicsByTitle(title))
-        }
-    }, [])
-
-    useEffect(() => {
-        if (inputValue === "") {
-            window.history.pushState({}, "", "/comics")
+        if (window.location.search.includes('category_id')) {
+            window.history.pushState({}, "", `?title=${inputValue}&category_id=${window.location.search.split('=')[1]}`)
         } else {
-            window.history.pushState({}, "", `/comics?title=${inputValue}`)
+            window.history.pushState({}, "", `?title=${inputValue}`)
         }
-    }, [inputValue])
+    }
 
     return (
         <>

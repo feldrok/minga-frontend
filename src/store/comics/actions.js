@@ -21,11 +21,17 @@ const createNewComic = createAsyncThunk("createNewComic", async (comic) => {
     }
 })
 
-const getComics = createAsyncThunk("getComics", async () => {
+const getComics = createAsyncThunk("getComics", async (limit) => {
+    if (limit === undefined) {
+        limit = 10
+    }
     try {
-        let response = await axios.get("http://localhost:8000/api/comics")
+        let response = await axios.get(
+            `http://localhost:8000/api/comics/?limit=${limit}`
+        )
         return {
             response: { comics: response.data },
+            limit: limit,
             message: "Comics obtained",
         }
     } catch (error) {
@@ -38,7 +44,9 @@ const getComics = createAsyncThunk("getComics", async () => {
 
 const getComicsByTitle = createAsyncThunk("getComicsByTitle", async (title) => {
     try {
-        let response = await axios.get(`http://localhost:8000/api/comics/?title=${title}`)
+        let response = await axios.get(
+            `http://localhost:8000/api/comics/?title=${title}`
+        )
         return {
             response: { comics: response.data },
             search: title,
@@ -52,38 +60,48 @@ const getComicsByTitle = createAsyncThunk("getComicsByTitle", async (title) => {
     }
 })
 
-const getComicsByCategory = createAsyncThunk("getComicsByCategory", async (category) => {
-    try {
-        let response = await axios.get(`http://localhost:8000/api/comics/?category=${category}`)
-        return {
-            response: { comics: response.data },
-            search: category,
-            message: "Comics obtained",
-        }
-    } catch (error) {
-        return {
-            response: { comics: error.response.data },
-            message: "Error obtaining comics",
-        }
-    }
-})
-
-const getComicsByTitleAndCategory = createAsyncThunk("getComicsByTitleAndCategory", async (title, category) => {
-    try {
-        let response = await axios.get(`http://localhost:8000/api/comics/?title=${title}&category=${category}`)
-        return {
-            response: { comics: response.data },
-            search: title,
-            message: "Comics obtained",
-        }
-    } catch (error) {
-        return {
-            response: { comics: error.response.data },
-            message: "Error obtaining comics",
+const getComicsByCategory = createAsyncThunk(
+    "getComicsByCategory",
+    async (category) => {
+        try {
+            let response = await axios.get(
+                `http://localhost:8000/api/comics/?category_id=${category}`
+            )
+            return {
+                response: { comics: response.data },
+                search: category,
+                message: "Comics obtained",
+            }
+        } catch (error) {
+            return {
+                response: { comics: error.response.data },
+                message: "Error obtaining comics",
+            }
         }
     }
-})
+)
 
+const getComicsByTitleAndCategory = createAsyncThunk(
+    "getComicsByTitleAndCategory",
+    async (object) => {
+        try {
+            console.log(object)
+            let response = await axios.get(
+                `http://localhost:8000/api/comics/?title=${object.title}&category_id=${object.category_id}`
+            )
+            console.log(response)
+            return {
+                response: { comics: response.data },
+                message: "Comics obtained",
+            }
+        } catch (error) {
+            return {
+                response: { comics: error.response.data },
+                message: "Error obtaining comics",
+            }
+        }
+    }
+)
 
 const comicActions = {
     createNewComic,

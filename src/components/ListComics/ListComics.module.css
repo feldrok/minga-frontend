@@ -28,10 +28,34 @@
 
 .comicsContainer {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     width: 100%;
+    gap: 1em;
+}
+
+.loadContainer {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 2em 0;
+}
+
+.loadContainer button {
+    background-color: #4338CA;
+    border: none;
+    border-radius: 20rem;
+    padding: 1em;
+    font-size: 1.2em;
+    font-weight: 600;
+    color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+.loadContainer button:hover {
+    background-color: #5B4BD8;
 }
 
 @media (width >= 768px) {

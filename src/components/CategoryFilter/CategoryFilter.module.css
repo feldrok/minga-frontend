@@ -47,6 +47,24 @@
     background-color: #ebe7ff;
 }
 
+.blue {
+    background-color: #D8EFFF;
+    color: #4A90E2;
+}
+
+.blue:hover {
+    background-color: #e6f2ff;
+}
+
+.yellow {
+    background-color: #FFF8D8;
+    color: #F5A623;
+}
+
+.yellow:hover {
+    background-color: #fffbe6;
+}
+
 .checkbox {
     display: none;
 }

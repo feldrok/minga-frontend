@@ -24,7 +24,8 @@
 .imageContainer {
     display: flex;
     height: 180px;
-    width: 180px;
+    max-width: 150px;
+    width: 100%;
 }
 
 .imageContainer img {

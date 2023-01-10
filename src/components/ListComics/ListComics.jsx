@@ -1,8 +1,13 @@
+import React, { useRef } from "react"
+import { useDispatch, useSelector } from "react-redux"
+
 import CategoryFilters from "../CategoryFilters/CategoryFilters"
 import ComicCards from "../ComicCards/ComicCards"
 import ExploreCard from "../ExploreCard/ExploreCard"
-import React from "react"
+import comicActions from "../../store/comics/actions"
 import styles from "./ListComics.module.css"
+
+const { getComics } = comicActions
 
 const exploreCategories = [
     {
@@ -23,7 +28,26 @@ const exploreCategories = [
 ]
 
 function ListComics() {
-    
+    const listLoadRef = useRef()
+    const comicsStore = useSelector((state) => state.comics)
+    const dispatch = useDispatch()
+
+    const handleLoadMore = () => {
+        const limit = comicsStore.comics.response?.length
+        dispatch(getComics(limit + 4))
+    }
+
+    const renderLoadMore = () => {
+        if (window.location.search.includes("title") || window.location.search.includes("category")) {
+            return null
+        } else {
+            return (
+                <div className={styles.loadContainer} ref={listLoadRef}>
+                    <button onClick={handleLoadMore}>Load More</button>
+                </div>
+            )
+        }
+    }
 
     return (
         <div className={styles.container}>
@@ -45,6 +69,7 @@ function ListComics() {
             <div className={styles.comicsContainer}>
                 <ComicCards />
             </div>
+            {renderLoadMore()}
         </div>
     )
 }
