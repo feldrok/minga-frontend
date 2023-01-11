@@ -5,6 +5,11 @@ import Nav from "../../layouts/Nav/Nav";
 import chapterActions from "../../store/chapters/actions";
 import styles from "./Pages.module.css";
 
+/* import Carousel from "../../components/Carousel/Carousel"; */
+
+
+
+
 const { getChapterDetails } = chapterActions
 
 function Pages() {
@@ -21,7 +26,7 @@ function Pages() {
     if (chapterStore.chapters?.length === 0) {
       return <p>Loading...</p>
     } else {
-      return chapterStore.chapters.response.pages?.map((page) => (
+      return chapterStore.chapters.response?.pages.map((page) => (
         <div className={styles.imageContainer} key={page}><img src={page} alt="Comic Page" /></div>
       ))
     }
@@ -45,10 +50,8 @@ function Pages() {
         <div className={styles.comicPage}>
           {getPagesImages()}
           <div className={styles.leftButton}>
-
           </div>
           <div className={styles.rightButton}>
-
           </div>
         </div>
         <div className={styles.commentContainer}>
