@@ -1,8 +1,7 @@
-import { useDispatch, useSelector } from "react-redux"
-
 import React from "react"
 import comicActions from "../../store/comics/actions"
 import styles from "./CategoryFilter.module.css"
+import { useDispatch } from "react-redux"
 import { useSearchParams } from "react-router-dom"
 
 const { getComicsByCategory, getComicsByTitleAndCategory } = comicActions
@@ -10,6 +9,7 @@ const { getComicsByCategory, getComicsByTitleAndCategory } = comicActions
 
 function CategoryFilter({ title, color, value }) {
     const dispatch = useDispatch()
+    const [searchParams, setSearchParams] = useSearchParams()
 
     if (color === 'red') {
         color = styles.red
@@ -24,7 +24,6 @@ function CategoryFilter({ title, color, value }) {
     } else if (color === 'yellow') {
         color = styles.yellow
     }
-    const [searchParams] = useSearchParams()
 
 
     const updateURL = (e) => {
@@ -32,15 +31,17 @@ function CategoryFilter({ title, color, value }) {
         const currentParams = Object.fromEntries([...searchParams])
         if (window.location.search.includes('title')) {
             window.history.pushState({}, "", `?title=${currentParams.title}&category_id=${e.target.getAttribute('value')}`)
+            setSearchParams({title: currentParams.title, category_id: e.target.getAttribute('value')})
             dispatch(getComicsByTitleAndCategory({title: currentParams.title, category_id: e.target.getAttribute('value')}))
         } else {
             window.history.pushState({}, "", `?category_id=${e.target.getAttribute('value')}`)
+            setSearchParams({category_id: e.target.getAttribute('value')})
             dispatch(getComicsByCategory(e.target.getAttribute('value')))
         }
     }
 
     return (
-        <label value={value} onClick={updateURL} htmlFor={title} className={`${styles.container} ${color}`}>
+        <label value={value} onClick={updateURL} htmlFor={title} className={`${styles.container} ${color} `}>
             <input
                 className={styles.checkbox}
                 type="checkbox"

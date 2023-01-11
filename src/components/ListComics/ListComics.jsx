@@ -1,13 +1,20 @@
-import React, { useRef } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 
 import CategoryFilters from "../CategoryFilters/CategoryFilters"
 import ComicCards from "../ComicCards/ComicCards"
 import ExploreCard from "../ExploreCard/ExploreCard"
+import { browserHistory } from "react-router"
 import comicActions from "../../store/comics/actions"
 import styles from "./ListComics.module.css"
+import { useSearchParams } from "react-router-dom"
 
-const { getComics } = comicActions
+const {
+    getComics,
+    getComicsByTitle,
+    getComicsByCategory,
+    getComicsByTitleAndCategory,
+} = comicActions
 
 const exploreCategories = [
     {
@@ -31,6 +38,22 @@ function ListComics() {
     const listLoadRef = useRef()
     const comicsStore = useSelector((state) => state.comics)
     const dispatch = useDispatch()
+    const [searchParams] = useSearchParams()
+
+    useEffect(() => {
+        const currentParams = Object.fromEntries([...searchParams])
+        if (window.location.search.includes("title") && window.location.search.includes("category_id")) {
+            dispatch(getComicsByTitleAndCategory({title: currentParams.title, category_id: currentParams.category_id}))
+        } else if (window.location.search.includes("category_id")) {
+            dispatch(getComicsByCategory(currentParams.category_id))
+        } else if (window.location.search.includes("title")) {
+            dispatch(getComicsByTitle(currentParams.title))
+        } else {
+            if (comicsStore.comics?.length === 0) {
+                dispatch(getComics())
+            }
+        }
+    }, [searchParams])
 
     const handleLoadMore = () => {
         const limit = comicsStore.comics.response?.length
@@ -38,7 +61,10 @@ function ListComics() {
     }
 
     const renderLoadMore = () => {
-        if (window.location.search.includes("title") || window.location.search.includes("category")) {
+        if (
+            window.location.search.includes("title") ||
+            window.location.search.includes("category")
+        ) {
             return null
         } else {
             return (

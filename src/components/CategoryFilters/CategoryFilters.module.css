@@ -6,3 +6,25 @@
     flex-wrap: wrap;
     width: 100%;
 }
+
+.allButton {
+    display: flex;
+    padding: .7em 1em;
+    margin: .5em;
+    border-radius: 20em;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    min-width: 100px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+.allButton:hover {
+    background-color: #e0e0e0;
+}
+
+.checkbox {
+    display: none;
+}

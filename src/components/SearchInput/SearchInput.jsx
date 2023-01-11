@@ -3,22 +3,27 @@ import React, { useState } from "react"
 import comicActions from "../../store/comics/actions"
 import styles from "./SearchInput.module.css"
 import { useDispatch } from "react-redux"
+import { useSearchParams } from "react-router-dom"
 
-const { getComicsByTitle } = comicActions
+const { getComicsByTitle, getComicsByTitleAndCategory } = comicActions
 
 
 function SearchInput() {
-    
+    const [searchParams, setSearchParams] = useSearchParams()
     const [inputValue, setInputValue] = useState("")
     const dispatch = useDispatch()
 
     const updateURL = (e) => {
         e.preventDefault()
-        dispatch(getComicsByTitle(inputValue))
+        const currentParams = Object.fromEntries([...searchParams])
         if (window.location.search.includes('category_id')) {
-            window.history.pushState({}, "", `?title=${inputValue}&category_id=${window.location.search.split('=')[1]}`)
+            window.history.pushState({}, "", `?title=${inputValue}&category_id=${currentParams.category_id}`)
+            setSearchParams({ title: inputValue, category_id: currentParams.category_id })
+            dispatch(getComicsByTitleAndCategory({ title: inputValue, category_id: currentParams.category_id}))
         } else {
             window.history.pushState({}, "", `?title=${inputValue}`)
+            setSearchParams({ title: inputValue })
+            dispatch(getComicsByTitle(inputValue))
         }
     }
 
