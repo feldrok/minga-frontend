@@ -1,5 +1,6 @@
+import { createAction, createAsyncThunk } from "@reduxjs/toolkit"
+
 import axios from "axios"
-import { createAsyncThunk } from "@reduxjs/toolkit"
 
 const getCategories = createAsyncThunk("getCategories", async () => {
     try {
@@ -16,8 +17,16 @@ const getCategories = createAsyncThunk("getCategories", async () => {
     }
 })
 
+const setActiveCategory = createAction("setActiveCategory", (category) => {
+    return {
+        response: { activeCategory: category },
+        payload: category,
+    }
+})
+
 const categoryActions = {
     getCategories,
+    setActiveCategory,
 }
 
 export default categoryActions

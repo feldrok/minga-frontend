@@ -1,27 +1,37 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { useLocation, useNavigate, useSearchParams } from "react-router-dom"
 
+import categoryActions from "../../store/categories/actions"
 import comicActions from "../../store/comics/actions"
 import styles from "./SearchInput.module.css"
-import { useDispatch } from "react-redux"
-import { useSearchParams } from "react-router-dom"
 
 const { getComicsByTitle, getComicsByTitleAndCategory } = comicActions
 
 
 function SearchInput() {
+    const categoryStore = useSelector((state) => state.categories)
     const [searchParams, setSearchParams] = useSearchParams()
     const [inputValue, setInputValue] = useState("")
+    const location = useLocation()
+    const navigate = useNavigate()
     const dispatch = useDispatch()
+
+    useEffect(() => {
+        if (categoryStore.activeCategory === 'all') {
+            setInputValue('')
+        }
+    }, [location])
 
     const updateURL = (e) => {
         e.preventDefault()
         const currentParams = Object.fromEntries([...searchParams])
-        if (window.location.search.includes('category_id')) {
-            window.history.pushState({}, "", `?title=${inputValue}&category_id=${currentParams.category_id}`)
+        if (location.search.includes('category_id')) {
+            navigate(`?title=${inputValue}&category_id=${currentParams.category_id}`)
             setSearchParams({ title: inputValue, category_id: currentParams.category_id })
             dispatch(getComicsByTitleAndCategory({ title: inputValue, category_id: currentParams.category_id}))
         } else {
-            window.history.pushState({}, "", `?title=${inputValue}`)
+            navigate(`?title=${inputValue}`)
             setSearchParams({ title: inputValue })
             dispatch(getComicsByTitle(inputValue))
         }

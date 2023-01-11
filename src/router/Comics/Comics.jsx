@@ -1,4 +1,5 @@
 import ComicsHeader from "../../components/ComicsHeader/ComicsHeader"
+import ListComics from "../../components/ListComics/ListComics"
 import ListContainer from "../../components/ListContainer/ListContainer"
 import Nav from "../../layouts/Nav/Nav"
 import React from "react"
@@ -12,7 +13,9 @@ function Comics() {
             <ComicsHeader>
                 <SearchInput />
             </ComicsHeader>
-            <ListContainer></ListContainer>
+            <ListContainer>
+                <ListComics />
+            </ListContainer>
         </div>
     )
 }
