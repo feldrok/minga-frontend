@@ -27,7 +27,7 @@
 }
 
 .nav-logo {
-  height: 3rem;
+  height: 2.5rem;
   margin: 10px;
 }
 
@@ -186,12 +186,12 @@
 
 .login-btn {
   text-decoration: none;
-  padding: 0.7em 1em;
+  padding: 0.7em .5em;
   border: 1px solid white;
   border-radius: .5em;
   background-color: transparent;
   color: white;
-  font-size: 1rem;
+  font-size: .9rem;
   cursor: pointer;
   height: auto;
   width: 100%;
@@ -209,7 +209,6 @@
 
 .log-button {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -238,5 +237,8 @@
 
   .main-nav{
     flex-direction: row-reverse;
+  }
+  .login-btn {
+    font-size: 1rem;
   }
 }
