@@ -10,6 +10,8 @@
     box-shadow: 0 0 .5em rgba(0, 0, 0, .1);
     transition: .2s;
     cursor: pointer;
+    text-decoration: none;
+    color: black
 }
 
 .container:hover {
@@ -20,6 +22,30 @@
 .textContainer {
     padding: 1.6em 2em;
     border-left: .6rem solid #e0e0e0;
+}
+
+.red {
+    border-left: .6rem solid #fc736e;
+}
+
+.orange {
+    border-left: .6rem solid #f98b46;
+}
+
+.blue {
+    border-left: .6rem solid #3980d1;
+}
+
+.green {
+    border-left: .6rem solid #00a877;
+}
+
+.yellow {
+    border-left: .6rem solid #fff0ab;
+}
+
+.purple {
+    border-left: .6rem solid #7771e0;
 }
 
 .imageContainer {
@@ -34,4 +60,9 @@
     height: 100%;
     object-fit: cover;
     border-radius: 3.5rem 1rem 1rem 3.5rem;
+}
+
+.comicCategory {
+    font-style: italic;
+    font-size: 1rem;
 }

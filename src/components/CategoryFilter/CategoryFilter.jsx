@@ -31,7 +31,7 @@ function CategoryFilter({ title, color, value }) {
     } else if (color === 'yellow') {
         color = styles.yellow
     }
-
+    
     const updateURL = (e) => {
         e.preventDefault()
         const currentParams = Object.fromEntries([...searchParams])
