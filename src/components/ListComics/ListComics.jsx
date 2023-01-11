@@ -1,12 +1,12 @@
-import React, { useEffect, useRef, useState } from "react"
+import React, { useEffect, useRef } from "react"
 import { useDispatch, useSelector } from "react-redux"
 
 import CategoryFilters from "../CategoryFilters/CategoryFilters"
 import ComicCards from "../ComicCards/ComicCards"
 import ExploreCard from "../ExploreCard/ExploreCard"
-import { browserHistory } from "react-router"
 import comicActions from "../../store/comics/actions"
 import styles from "./ListComics.module.css"
+import { useLocation } from "react-router-dom"
 import { useSearchParams } from "react-router-dom"
 
 const {
@@ -37,16 +37,18 @@ const exploreCategories = [
 function ListComics() {
     const listLoadRef = useRef()
     const comicsStore = useSelector((state) => state.comics)
+    const categoryStore = useSelector((state) => state.categories)
+    const location = useLocation()
     const dispatch = useDispatch()
     const [searchParams] = useSearchParams()
 
     useEffect(() => {
         const currentParams = Object.fromEntries([...searchParams])
-        if (window.location.search.includes("title") && window.location.search.includes("category_id")) {
+        if (location.search.includes("title") && location.search.includes("category_id")) {
             dispatch(getComicsByTitleAndCategory({title: currentParams.title, category_id: currentParams.category_id}))
-        } else if (window.location.search.includes("category_id")) {
+        } else if (location.search.includes("category_id")) {
             dispatch(getComicsByCategory(currentParams.category_id))
-        } else if (window.location.search.includes("title")) {
+        } else if (location.search.includes("title")) {
             dispatch(getComicsByTitle(currentParams.title))
         } else {
             if (comicsStore.comics?.length === 0) {
@@ -61,17 +63,20 @@ function ListComics() {
     }
 
     const renderLoadMore = () => {
-        if (
-            window.location.search.includes("title") ||
-            window.location.search.includes("category")
-        ) {
-            return null
-        } else {
+        if (categoryStore.activeCategory === "all" && (comicsStore.comics?.response?.length === comicsStore.limit)) {
+                return (
+                    <div className={styles.loadContainer} ref={listLoadRef}>
+                        <button onClick={handleLoadMore}>Load More</button>
+                    </div>
+                )
+        } else if (categoryStore.activeCategory === "all" && (comicsStore.comics?.response?.length < comicsStore.limit)) {
             return (
                 <div className={styles.loadContainer} ref={listLoadRef}>
-                    <button onClick={handleLoadMore}>Load More</button>
+                    <p>No more comics available!</p>
                 </div>
             )
+        } else {
+            return null
         }
     }
 

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useLocation, useNavigate, useSearchParams } from "react-router-dom"
 
-import categoryActions from "../../store/categories/actions"
 import comicActions from "../../store/comics/actions"
 import styles from "./SearchInput.module.css"
 
