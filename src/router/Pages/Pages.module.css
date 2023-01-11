@@ -36,4 +36,23 @@
     display: flex;
     justify-content: center;
     padding: 1em;
+    z-index: 100;
+}
+
+.leftButton {
+    position: absolute;
+    top: 68px;
+    left: 0;
+    height: 100%;
+    width: 50%;
+    background-color: transparent;
+}
+
+.rightButton {
+    position: absolute;
+    top: 68px;
+    right: 0;
+    height: 100%;
+    width: 50%;
+    background-color: transparent;
 }

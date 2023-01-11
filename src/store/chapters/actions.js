@@ -42,3 +42,6 @@ const chapterActions = {
 }
 
 export default chapterActions
+
+//Para obtener el sig capitulo, vamos a llamar al store, que esta guardado en el estado de chapters, y el capitulo actual se está guardando en chapter
+//Para pasar al siguiente, revisamos si estamos en la ultima pagina, y si es asi, despacharemos la accion pasando el ID que sacaremos del estado de chapters
