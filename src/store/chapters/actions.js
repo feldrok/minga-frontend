@@ -19,10 +19,10 @@ const newChapter = createAsyncThunk("newChapter", async (chapter) => {
     }
 });
 
-const getChapter = createAsyncThunk("getChapter", async ({comic: comic_id, chapter: order}) => {
+const getChapterDetails = createAsyncThunk("getChapterDetails", async (_id) => {
     try {
         const response = await axios.get(
-            `http://localhost:8000/api/chapters/?comic_id=${comic_id}&order=${order}`
+            `http://localhost:8000/api/chapters/${_id}`
         )
         return {
             response: {chapter: response.data},
@@ -38,7 +38,7 @@ const getChapter = createAsyncThunk("getChapter", async ({comic: comic_id, chapt
 
 const chapterActions = {
     newChapter,
-    getChapter,
+    getChapterDetails,
 }
 
 export default chapterActions

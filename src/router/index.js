@@ -51,8 +51,8 @@ const indexRouter = createBrowserRouter([
         element: <NewChapter />,
     },
     {
-        path: "/pages",
-        element: <Pages/>
+        path: "/pages/:_id",
+        element: <Pages />
     },
     {
         path: "/signup",
