@@ -1,7 +1,6 @@
 import './ListComments.css'
 
 import Comment from '../Comment/Comment'
-import { Link } from "react-router-dom"
 import NewComment from '../NewComment/NewComment'
 import { useNavigate } from "react-router"
 import React from "react"
