@@ -4,6 +4,7 @@ import comicReducer from "./comics/reducers"
 import { configureStore } from "@reduxjs/toolkit"
 import chapterReducer from "./chapters/reducers"
 import authorReducer from "./authors/reducers"
+import categoryReducer from "./categories/reducers"
 
 const store = configureStore({
   reducer: {
@@ -11,7 +12,8 @@ const store = configureStore({
     comments: commentReducer,
     company: companyReducer,
     comics: comicReducer,
-    chapters: chapterReducer
+    chapters: chapterReducer,
+    categories: categoryReducer
   }
   
 })

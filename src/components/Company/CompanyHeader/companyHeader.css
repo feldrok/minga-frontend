@@ -1,0 +1,37 @@
+
+.companyHeader{
+    background-image: url(../../../../public/companyHeader.png);
+    background-size: cover;
+    background-position: center;
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.titleContainer{
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.5);
+    height: 70vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.titleHeader{
+    position: absolute;
+    color: #fff;
+    text-align: center;
+}
+.h2Header{
+    font-size: 5rem;
+    margin-bottom: 2rem;
+}
+.pHeader{
+    font-size: 1.5rem;
+}
+
+@media only screen and (max-width: 768px){
+    .pHeader{
+        display: none;
+    }
+}
