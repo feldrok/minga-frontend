@@ -36,9 +36,28 @@ const getChapterDetails = createAsyncThunk("getChapterDetails", async (_id) => {
     }
 })
 
+const getChapters = createAsyncThunk(
+    "getChapters",
+    async (comic) => {
+        try {
+            const response= await axios.get(`http://localhost:8000/api/chapters?comic_id=${comic}`)
+        return {
+            response: {chapters: response.data},
+            message: "Chapters obtained"
+        }
+        } catch (error) {
+            return {
+                response: {chapters: error.response.data},
+                message: "Error obtained chapters"
+            }
+        }
+    }
+)
+
 const chapterActions = {
     newChapter,
     getChapterDetails,
+    getChapters
 }
 
 export default chapterActions

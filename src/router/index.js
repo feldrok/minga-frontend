@@ -52,7 +52,19 @@ const indexRouter = createBrowserRouter([
     },
     {
         path: "/pages/:_id",
-        element: <Pages />
+        element: <Pages />,
+        children: [
+            {
+                path: "/pages/:_id/newcomment",
+                element: <ListComments />,
+                children: [
+                    {
+                        path: "/pages/:_id/newcomment/:comment_id",
+                        element: <ListComments />,
+                    },
+                ],
+            },
+        ],
     },
     {
         path: "/signup",
