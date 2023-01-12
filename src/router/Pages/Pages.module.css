@@ -56,3 +56,11 @@
     width: 50%;
     background-color: transparent;
 }
+
+.leftButton:hover {
+    background-color: rgba(0, 0, 0, 0.193);
+}
+
+.rightButton:hover {
+    background-color: rgba(0, 0, 0, 0.193);
+}
