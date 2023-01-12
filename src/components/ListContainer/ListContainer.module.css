@@ -1,0 +1,13 @@
+.container {
+    background-color: #EBEBEB;
+    padding: 2em 1em;
+    width: 100%;
+    max-width: 1000px;
+    border-top-left-radius: 5em;
+    border-top-right-radius: 5em;
+    position: relative;
+    top: -5em;
+    margin: 0 auto;
+    display: flex;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+}

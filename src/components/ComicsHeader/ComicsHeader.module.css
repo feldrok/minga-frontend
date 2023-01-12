@@ -1,0 +1,21 @@
+.container {
+    height: 50vh;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+}
+
+.headerContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.headerTitle {
+    font-size: 3rem;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}

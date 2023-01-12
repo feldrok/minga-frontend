@@ -1,0 +1,111 @@
+.container {
+    display: flex;
+    padding: 1em 1em;
+    margin: 0.5em;
+    border: none;
+    font-weight: 600;
+    border-radius: 20em;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    min-width: 100px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+.red {
+    background-color: #ffe0df;
+    color: #ef8481;
+}
+
+.red:hover {
+    background-color: #ffeceb;
+}
+
+.red.active {
+    background-color: #fc736e;
+    color: #ffe0df;
+    scale: 1.1;
+    box-shadow: none;
+}
+
+.orange {
+    background-color: #ffdfc8;
+    color: #fc9c57;
+}
+
+.orange:hover {
+    background-color: #ffede0;
+}
+
+.orange.active {
+    background-color: #f98b46;
+    color: #ffdfc8;
+    scale: 1.1;
+    box-shadow: none;
+}
+
+.green {
+    background-color: #d1fbf0;
+    color: #00ba88;
+}
+
+.green:hover {
+    background-color: #e0fff4;
+}
+
+.green.active {
+    background-color: #00a877;
+    color: #d1fbf0;
+    scale: 1.1;
+    box-shadow: none;
+}
+
+.purple {
+    background-color: #e0dbff;
+    color: #8883f0;
+}
+
+.purple:hover {
+    background-color: #ebe7ff;
+}
+
+.purple.active {
+    background-color: #7771e0;
+    color: #e0dbff;
+    scale: 1.1;
+    box-shadow: none;
+}
+
+.blue {
+    background-color: #d8efff;
+    color: #4a90e2;
+}
+
+.blue:hover {
+    background-color: #e6f2ff;
+}
+
+.blue.active {
+    background-color: #3980d1;
+    color: #d8efff;
+    scale: 1.1;
+    box-shadow: none;
+}
+
+.yellow {
+    background-color: #fff8d8;
+    color: #f5a623;
+}
+
+.yellow:hover {
+    background-color: #fffbe6;
+}
+
+.yellow.active {
+    background-color: #ffdb3c;
+    color: #fff8d8;
+    scale: 1.1;
+    box-shadow: none;
+}
