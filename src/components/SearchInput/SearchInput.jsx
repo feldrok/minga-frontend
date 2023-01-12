@@ -30,9 +30,15 @@ function SearchInput() {
             setSearchParams({ title: inputValue, category_id: currentParams.category_id })
             dispatch(getComicsByTitleAndCategory({ title: inputValue, category_id: currentParams.category_id}))
         } else {
-            navigate(`?title=${inputValue}`)
-            setSearchParams({ title: inputValue })
-            dispatch(getComicsByTitle(inputValue))
+            if (categoryStore.activeCategory === 'all') {
+                navigate(`?title=${inputValue}`)
+                setSearchParams({ title: inputValue })
+                dispatch(getComicsByTitle(inputValue))
+            } else {
+                navigate(`?title=${inputValue}&category_id=${categoryStore.activeCategory}`)
+                setSearchParams({ title: inputValue, category_id: categoryStore.activeCategory })
+                dispatch(getComicsByTitleAndCategory({ title: inputValue, category_id: categoryStore.activeCategory }))
+            }
         }
     }
 
