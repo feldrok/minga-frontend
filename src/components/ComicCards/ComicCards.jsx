@@ -13,7 +13,7 @@ function ComicCards() {
         if (categoryStore.categories.response?.length === 0) {
             return <h4>No category found</h4>
         } else {
-            return colors[categoryStore.categories.response?.findIndex((category) => category._id === id)]
+            return colors[categoryStore.categories?.response?.findIndex((category) => category._id === id)]
         }
     }
     
