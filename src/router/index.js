@@ -70,6 +70,9 @@ const indexRouter = createBrowserRouter([
         element: <Comic />, 
     },
     {
+        path: "/pages",
+    },
+    {
         path: "/accountsetup",
         element: <AccountSetup />,
         children: [

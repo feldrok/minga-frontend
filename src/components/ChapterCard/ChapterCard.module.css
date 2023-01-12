@@ -1,0 +1,75 @@
+.container{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.container_card{
+    width: 100%;
+    display: flex;
+    border: solid 1px gray;
+    border-radius: 2rem;
+    height: 5rem;
+    margin: 1rem;
+}
+
+.container_img {
+    width: 33.33%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container_title{
+    width: 33.33%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title{
+    font-family: ubuntu;
+    font-weight: 400;
+}
+
+.container_button{
+    width: 33.33%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button {
+    padding: 1.2em 1.3em;
+    color: white;
+    background-color: #4338ca;
+    font-family: roboto;
+    border-radius: 2rem;
+    font-size: 1rem;
+    text-decoration: none;
+}
+
+.button:hover{
+    background: #281ca3;
+}
+
+.imagen {
+    width: 5em;
+    height: 4.5em;
+    border-radius: 40%;
+}
+
+@media (min-width: 768px) {
+    .container_card {
+        width: 40%;
+        height: 8rem;
+    }
+    .imagen{
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+        border-radius: 1rem;
+    }
+}
+

@@ -1,0 +1,19 @@
+.next {
+    padding: 0.9em 2.5em;
+    margin-bottom: 1rem;
+    border-radius: 1rem;
+    color: white;
+    background-color: #4338ca; 
+    letter-spacing: 0.1rem;
+    font-family: ubuntu;
+}
+
+.next:hover{
+    background-color: #3226b5;
+}
+
+.button_next{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

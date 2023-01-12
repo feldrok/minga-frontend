@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 
 import Chapters from "../../components/Chapters/Chapters";
+import Footer from "../../layouts/Footer/Footer";
 import Nav from "../../layouts/Nav/Nav";
 import React from "react";
 import comicActions from "../../store/comics/actions";
@@ -11,53 +12,71 @@ import { useParams } from "react-router-dom";
 const { getComic } = comicActions;
 
 export default function Comic() {
-  const comicStore = useSelector(store => store.comics) 
-  const dispatch= useDispatch()
+  const comicStore = useSelector((store) => store.comics);
+  const dispatch = useDispatch();
 
-const { id } = useParams() 
+  const { id } = useParams();
 
-  useEffect(()  => {
-    dispatch(getComic(id))
-  }, [])
 
-  const [chapter, setChapter] = useState(false) 
-  const handleClick = () => {
-    setChapter(!chapter) 
-  }
+  useEffect(() => {
+    if(comicStore.comic?.length === 0) {
+      dispatch(getComic(id));
+      console.log(comicStore)
+    }
+  }, []); 
 
+  const [chapter, setChapter] = useState(false);
+  const showChapter = () => {
+    setChapter(true);
+  }; 
+
+  const showManga = () => {
+    setChapter(false); 
+  } 
+  
 
   return (
-    <div> 
+    <div>
       <Nav />
-      <img src={comicStore.comics.response?.photo}  alt={comicStore.comics.response?.photo} /> 
-      <p className={styles.description}>{comicStore.comics.response?.description}</p>
-      <button onClick={handleClick}> Chapter </button> { chapter ? (<Chapters />) : null } 
+      <div className={styles.container}>
+        
+        <div className={styles.container_img}>
+          <img
+            className={styles.imagen}
+            src={comicStore.comic.response?.photo}
+            alt={comicStore.comic.response?.photo}
+          />
+        </div>
+        <p className={styles.title}>{comicStore.comic.response?.title}</p>
+        <div className={styles.container_emojis}>
+          <p className={styles.emojis}>&#128077;</p>
+          <p className={styles.emojis}> &#128078;</p>
+          <p className={styles.emojis}>&#128558;</p>
+          <p className={styles.emojis}>&#128525;</p> 
+        </div>
+        <div className={styles.container_button}>
+          <button className={styles.button_manga} onClick={showManga} >Manga</button>
+          <button className={styles.button_chapter} onClick={showChapter}>
+            Chapter
+          </button>
+        </div>
+
+        <div>
+          {chapter ? (
+            <div className={styles.container_chapter}>
+              <Chapters />
+            </div>
+          ) : (
+            <div className={styles.container_description}>
+              <p className={styles.description}>
+                {comicStore.comic.response?.description}
+              </p>
+            </div>
+          )}
+        </div>
+      </div>
+      
     </div>
   );
 } 
 
-
-
-/* 
-
-    const url= window.location.href.split("/")
-    console.log(url[url.length-1]) 
-    dispatch(getComic(url[url.length-1]))
-    dispatch(getChapter(url[url.length-1])) 
-
-*/
-
-/* 
-const response = await axios.get(
-        "http://localhost:8000/api/comics/63bcc0093f33b0f658f28cdc"
-      );
-      let datos = response.data.response;
-      setComics(datos);
-    } catch (err) {
-      console.log(err);
-    } 
-  };
-  useEffect(() => {
-    obtenerComic();
-  }, []);
-*/

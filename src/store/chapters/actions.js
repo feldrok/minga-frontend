@@ -19,7 +19,7 @@ const newChapter = createAsyncThunk("newChapter", async (chapter) => {
     }
 })
 
-const getChapter = createAsyncThunk( //cambiar chapters
+const getChapters = createAsyncThunk( 
     "getChapter",
     async (comic) => {
         try {
@@ -38,6 +38,6 @@ const getChapter = createAsyncThunk( //cambiar chapters
 )
 
 const chapterActions = {
-    newChapter, getChapter
+    newChapter, getChapters
 } 
 export default chapterActions
