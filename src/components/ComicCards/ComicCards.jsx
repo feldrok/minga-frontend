@@ -13,13 +13,17 @@ function ComicCards() {
         if (categoryStore.categories.response?.length === 0) {
             return <h4>No category found</h4>
         } else {
-            return colors[categoryStore.categories?.response?.findIndex((category) => category._id === id)]
+            return colors[
+                categoryStore.categories?.response?.findIndex(
+                    (category) => category._id === id
+                )
+            ]
         }
     }
-    
+
     const renderComics = () => {
         if (comicsStore.comics.response?.length === 0) {
-            return <p>There are no comics</p>
+            return <p>{comicsStore.comics?.message}</p>
         } else {
             return comicsStore.comics.response?.map((comic) => (
                 <div className={styles.container} key={comic.title}>

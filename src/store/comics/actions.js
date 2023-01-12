@@ -87,16 +87,15 @@ const getComicsByTitleAndCategory = createAsyncThunk(
     "getComicsByTitleAndCategory",
     async (object) => {
         try {
-            console.log(object)
             let response = await axios.get(
                 `${API_URL}/comics/?title=${object.title}&category_id=${object.category_id}`
             )
-            console.log(response)
             return {
                 response: { comics: response.data },
                 message: "Comics obtained",
             }
         } catch (error) {
+            console.log(error)
             return {
                 response: { comics: error.response.data },
                 message: "Error obtaining comics",
