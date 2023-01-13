@@ -20,6 +20,7 @@ function SearchInput() {
         if (categoryStore.activeCategory === 'all') {
             setInputValue('')
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [location])
 
     const updateURL = (e) => {
