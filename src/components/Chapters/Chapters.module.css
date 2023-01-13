@@ -1,15 +1,18 @@
 .next {
     padding: 0.9em 2.5em;
-    margin-bottom: 1rem;
+    margin: 0.5rem;
     border-radius: 1rem;
     color: white;
     background-color: #4338ca; 
     letter-spacing: 0.1rem;
     font-family: ubuntu;
+    border: none;
+
 }
 
 .next:hover{
-    background-color: #3226b5;
+    background-color: #0c0090;
+    transition: all 0.3s;
 }
 
 .button_next{
@@ -17,3 +20,8 @@
     justify-content: center;
     align-items: center;
 }
+
+.mensaje {
+    text-align: center;
+}
+
