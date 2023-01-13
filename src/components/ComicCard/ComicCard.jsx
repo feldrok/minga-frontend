@@ -59,7 +59,7 @@ function ComicCard({ title, image, link, comicCategory, color }) {
 
     return (
         <>
-            <Link className={styles.container} to={`/comics/${link}`}>
+            <Link className={styles.container} to={`/comic/${link}`}>
                 <div className={`${styles.textContainer} ${color} `}>
                     <h3>{title}</h3>
                     {renderCategoryType()}
