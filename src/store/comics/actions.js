@@ -2,6 +2,14 @@ import axios from "axios"
 import { createAsyncThunk } from "@reduxjs/toolkit"
 
 const API_URL = process.env.REACT_APP_API_URL
+const BEARER_TOKEN = process.env.REACT_APP_BEARER_TOKEN
+
+let config = {
+    headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${BEARER_TOKEN}`,
+    },
+}
 
 const createNewComic = createAsyncThunk("createNewComic", async (comic) => {
     try {
@@ -27,9 +35,10 @@ const getComics = createAsyncThunk("getComics", async (limit) => {
     if (limit === undefined) {
         limit = 10
     }
+    
     try {
         let response = await axios.get(
-            `${API_URL}/comics?limit=${limit}`
+            `${API_URL}/comics?limit=${limit}`, config
         )
         return {
             response: { comics: response.data },
@@ -47,7 +56,7 @@ const getComics = createAsyncThunk("getComics", async (limit) => {
 const getComicsByTitle = createAsyncThunk("getComicsByTitle", async (title) => {
     try {
         let response = await axios.get(
-            `${API_URL}/comics/?title=${title}`
+            `${API_URL}/comics/?title=${title}`, config
         )
         return {
             response: { comics: response.data },
@@ -67,7 +76,7 @@ const getComicsByCategory = createAsyncThunk(
     async (category) => {
         try {
             let response = await axios.get(
-                `${API_URL}/comics/?category_id=${category}`
+                `${API_URL}/comics/?category_id=${category}`, config
             )
             return {
                 response: { comics: response.data },
@@ -88,7 +97,7 @@ const getComicsByTitleAndCategory = createAsyncThunk(
     async (object) => {
         try {
             let response = await axios.get(
-                `${API_URL}/comics/?title=${object.title}&category_id=${object.category_id}`
+                `${API_URL}/comics/?title=${object.title}&category_id=${object.category_id}`, config
             )
             return {
                 response: { comics: response.data },
