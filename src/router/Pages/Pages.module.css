@@ -10,7 +10,7 @@
 }
 
 .titleContainer {
-    background-color: black;
+    background-color: #4338CA;
     margin-top: 68px;
     color: #EBEBEB;
     display: flex;
@@ -23,11 +23,12 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
+    max-height: 600px;
+    padding-top: 1em;
 }
 
 .imageContainer img {
-    object-fit: cover;
+    object-fit: contain;
     max-height: 600px;
 }
 
@@ -57,14 +58,59 @@
     background-color: transparent;
 }
 
+.leftArrow {
+    position: absolute;
+    top: 250px;
+    font-size: 10rem;
+    color: rgba(0, 0, 0, 0.179);
+}
+
+.leftArrow:hover {
+    cursor: pointer;
+}
+
+.rightArrow {
+    position: absolute;
+    top: 250px;
+    right: 10px;
+    text-align: right;
+    font-size: 10rem;
+    color: rgba(0, 0, 0, 0.179);
+}
+
+.rightArrow:hover {
+    cursor: pointer;
+}
+
 .leftButton:hover {
-    background-color: rgba(0, 0, 0, 0.191);
+    background-color: rgba(0, 0, 0, 0.073);
 }
 
 .rightButton:hover {
-    background-color: rgba(0, 0, 0, 0.191);
+    background-color: rgba(0, 0, 0, 0.073);
 }
 
-.comicNewButton {
-    background-color: #EBEBEB;
+.newCommentBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.commentIcon {
+    width: 3em;
+}
+
+.commentIcon:hover {
+    width: 3.2em;
+    transition: all 0.3s ease-in-out;
+    transition-duration: 0.3s;
+}
+
+.commentNumber {
+    font-size: 2rem;
+    margin-left: .5em;
+    color: black;
+    text-decoration: none !important;
 }
