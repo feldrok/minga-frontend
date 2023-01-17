@@ -23,13 +23,17 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    max-height: 600px;
-    padding-top: 1em;
 }
 
 .imageContainer img {
+    display: block;
     object-fit: contain;
     max-height: 600px;
+}
+
+.imageContainer {
+    margin: 0;
+    padding: 0;
 }
 
 .commentContainer {
@@ -44,18 +48,26 @@
     position: absolute;
     top: 68px;
     left: 0;
-    height: 100%;
+    height: 95%;
     width: 50%;
     background-color: transparent;
+}
+
+.leftButton:hover {
+    background-color: rgba(0, 0, 0, 0.079);
 }
 
 .rightButton {
     position: absolute;
     top: 68px;
     right: 0;
-    height: 100%;
+    height: 95%;
     width: 50%;
     background-color: transparent;
+}
+
+.rightButton:hover {
+    background-color: rgba(0, 0, 0, 0.079);
 }
 
 .leftArrow {
@@ -80,14 +92,6 @@
 
 .rightArrow:hover {
     cursor: pointer;
-}
-
-.leftButton:hover {
-    background-color: rgba(0, 0, 0, 0.073);
-}
-
-.rightButton:hover {
-    background-color: rgba(0, 0, 0, 0.073);
 }
 
 .newCommentBox {

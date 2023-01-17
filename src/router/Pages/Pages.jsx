@@ -9,15 +9,23 @@ import styles from "./Pages.module.css";
 
 const { getChapterDetails, getChapters } = chapterActions
 
+const isMobile = () => window.innerWidth < 767
+
 function Pages() {
+
   const [ current, setCurrent ] = useState(0)
   const chapterStore = useSelector(state => state.chapters)
   const dispatch = useDispatch()
   const location = useLocation()
   const navigate = useNavigate()
   const { _id } = useParams()
-/*   const currentPage = JSON.parse(localStorage.getItem(("currentPage"))) */
   console.log(_id);
+  useEffect(() => {
+    const currentPage = localStorage.getItem("currentPage")
+    if (currentPage !== null) {
+      setCurrent(parseInt(currentPage))
+    }
+  }, [])
   useEffect(() => {
       dispatch(getChapters("63c5a7303395adc7174cea88"))
       dispatch(getChapterDetails(_id))
@@ -38,26 +46,29 @@ function Pages() {
     }
   }
   const next = () => {
+    const nextChapter = chapterStore.chapters.response.find(chapter => (chapterStore.chapter.response.order + 1) === chapter.order )
     if (current !== chapterStore.chapter.response.pages?.length - 1) {
       setCurrent(current + 1)
+      localStorage.setItem("currentPage", current + 1)
     } else {
-      const nextChapter = chapterStore.chapters.response.find(chapter => (chapterStore.chapter.response.order + 1) === chapter.order )
       console.log(nextChapter);
       navigate(`/pages/${nextChapter._id}`, {replace: true})
       setCurrent(0)
+      localStorage.setItem("currentPage", 0)
     }
-/*     localStorage.setItem("currentPage", JSON.stringify(chapterStore.chapter.response)) */
   } 
   const prev = () => {
+    const prevChapter = chapterStore.chapters?.response?.find(chapter => (chapterStore.chapter?.response?.order - 1) === chapter.order )
     if (current > 0) {
       setCurrent(current -1)
+      localStorage.setItem("currentPage", current - 1)
     } else if (chapterStore.chapter?.response?.order === 1) {
       navigate(`/comic/${chapterStore.chapter?.response?.comic_id}`, {replace: true})
     } else if (current === 0) {
-      const prevChapter = chapterStore.chapters?.response?.find(chapter => (chapterStore.chapter?.response?.order - 1) === chapter.order )
       console.log(prevChapter);
       navigate(`/pages/${prevChapter._id}`, {replace: true})
       setCurrent(prevChapter.pages.length - 1)
+      localStorage.setItem("currentPage", prevChapter.pages.length - 1)
   }}
   const getChapterTitle = () => {
     if (chapterStore.chapter?.length === 0) {
@@ -81,12 +92,12 @@ function Pages() {
         </header>
         <div className={styles.comicPage}>
           {getPagesImages()}
-          <div className={styles.leftButton} onClick={prev}>
-            <p className={styles.leftArrow}>&lt;</p>
-          </div>
-          <div className={styles.rightButton} onClick={next}>
-            <p className={styles.rightArrow}>&gt;</p>
-          </div>
+              <div className={styles.leftButton} onClick={prev}>
+                <p className={styles.leftArrow}>&lt;</p>
+              </div>
+              <div className={styles.rightButton} onClick={next}>
+                <p className={styles.rightArrow}>&gt;</p>
+              </div>
         </div>
         <div className={styles.commentContainer}>
         <Link
