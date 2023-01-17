@@ -28,6 +28,8 @@ const AuthorCards = () => {
 
     let comicsFiltrados = comicsF
 
+    console.log(comicsFiltrados)
+
     switch(isToggled){
         case false:
             comicsFiltrados = [...comicsF].sort((a, b) => new Date (b.createdAt) - new Date (a.createdAt));
@@ -51,14 +53,24 @@ const AuthorCards = () => {
             <p>Old</p>
         </div>
         <div className='containerCards'>
-                {comicsFiltrados.map(comic => (
-                    <div className="card" key={comic._id}>
-                        <Link to={`/comic/${comic._id}`} key={comic._id}>
-                            <img className="imgCard" src={comic.photo} alt="manga" />
-                        </Link>
-                        <p className="titleComic">{comic.title}</p>
-                    </div>
-                ))}
+        {comicsFiltrados.length < 4 
+    ? comicsFiltrados.map(comic => (
+        <div className="card" key={comic._id}>
+            <Link to={`/comic/${comic._id}`} key={comic._id}>
+                <img className="imgCard" src={comic.photo} alt="manga" />
+            </Link>
+            <p className="titleComic">{comic.title}</p>
+        </div>
+    ))
+    : comicsFiltrados.slice(0, comicsFiltrados.length/2).map(comic => (
+        <div className="card" key={comic._id}>
+            <Link to={`/comic/${comic._id}`} key={comic._id}>
+                <img className="imgCard" src={comic.photo} alt="manga" />
+            </Link>
+            <p className="titleComic">{comic.title}</p>
+        </div>
+    ))
+}
         </div>
         </>
       );
