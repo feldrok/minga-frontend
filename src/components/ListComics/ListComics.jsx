@@ -58,7 +58,7 @@ function ListComics() {
     }, [searchParams])
 
     const handleLoadMore = () => {
-        const limit = comicsStore.comics.response?.length
+        const limit = comicsStore.comics?.response?.length
         dispatch(getComics(limit + 4))
     }
 
