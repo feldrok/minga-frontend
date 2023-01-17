@@ -1,6 +1,4 @@
 import "./MyComics.css"
-
-import Button from "../../components/Button/Button"
 import { Link } from "react-router-dom"
 import Nav from "../../layouts/Nav/Nav"
 import React from "react"
