@@ -1,9 +1,17 @@
 import comicActions from "./actions"
 import { createReducer } from "@reduxjs/toolkit"
 
-const { createNewComic, getComics, getComicsByTitle, getComicsByCategory, getComicsByTitleAndCategory } = comicActions
+const {
+    createNewComic,
+    getComic,
+    getComics,
+    getComicsByTitle,
+    getComicsByCategory,
+    getComicsByTitleAndCategory,
+} = comicActions
 
 const initialState = {
+    comic: [],
     comics: [],
     message: "",
     limit: 10,
@@ -28,6 +36,7 @@ const comicReducer = createReducer(initialState, (builder) => {
         .addCase(getComics.fulfilled, (state, action) => {
             let newState = {
                 comics: action.payload.response.comics,
+                comic: state.comic,
                 limit: action.payload.limit,
                 message: action.payload.message,
             }
@@ -36,6 +45,7 @@ const comicReducer = createReducer(initialState, (builder) => {
         .addCase(getComicsByTitle.fulfilled, (state, action) => {
             let newState = {
                 comics: action.payload.response.comics,
+                comic: state.comic,
                 search: action.payload.search,
                 message: action.payload.message,
             }
@@ -44,6 +54,7 @@ const comicReducer = createReducer(initialState, (builder) => {
         .addCase(getComicsByCategory.fulfilled, (state, action) => {
             let newState = {
                 comics: action.payload.response.comics,
+                comic: state.comic,
                 search: action.payload.search,
                 message: action.payload.message,
             }
@@ -52,7 +63,16 @@ const comicReducer = createReducer(initialState, (builder) => {
         .addCase(getComicsByTitleAndCategory.fulfilled, (state, action) => {
             let newState = {
                 comics: action.payload.response.comics,
+                comic: state.comic,
                 search: action.payload.search,
+                message: action.payload.message,
+            }
+            return newState
+        })
+        .addCase(getComic.fulfilled, (state, action) => {
+            let newState = {
+                comics: state.comics,
+                comic: action.payload.response.comic,
                 message: action.payload.message,
             }
             return newState
