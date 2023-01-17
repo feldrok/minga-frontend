@@ -1,6 +1,6 @@
-import "./Nav.css";
+import "./NavAuthor.css";
 
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import React, { useState } from "react";
 
 const routes = [
@@ -53,14 +53,6 @@ function Nav() {
             </NavLink>
           ))}
         </div>
-        <div className="nav-item log-button">
-          <Link className="login-btn" to={"/signin"}>
-            Log in
-          </Link>
-          <Link className="login-btn" to={"/signup"}>
-            Sign up
-          </Link>
-        </div>
         <div onClick={toggleNav} className="nav-item menu-button">
           <svg
             className={"menu-icon"}
@@ -90,7 +82,6 @@ function Nav() {
               <p className="profile-email">random@email.com</p>
             </div>
           </div>
-
           <div onClick={toggleNav} className="close-button">
             <svg
               xmlns="http://www.w3.org/2000/svg"

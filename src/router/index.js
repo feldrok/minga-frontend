@@ -1,4 +1,4 @@
-import AccountSetup from "../router/AccountSetup/AccountSetup"
+import AccountSetup from "./AccountSetup/AccountSetup"
 import AccountType from "../components/AccountType/AccountType"
 import Home from "../router/Home/Home"
 import Layout from "../layouts/Layout/Layout"
@@ -13,6 +13,7 @@ import SigninForm from "../components/SigninForm/SigninForm"
 import Signup from "../router/Signup/Signup"
 import SignupForm from "../components/SignupForm/SignupForm"
 import { createBrowserRouter } from "react-router-dom"
+import Author from "../router/Author/Author"
 
 const indexRouter = createBrowserRouter([
     {
@@ -85,6 +86,10 @@ const indexRouter = createBrowserRouter([
             },
         ],
     },
+    {
+        path: "authors/:id",
+        element: <Author/>
+    }
 ])
 
 export default indexRouter
