@@ -1,5 +1,7 @@
 import AccountSetup from "../router/AccountSetup/AccountSetup"
 import AccountType from "../components/AccountType/AccountType"
+import Chapters from "../components/Chapters/Chapters"
+import Comic from "./Comic/Comic"
 import Home from "../router/Home/Home"
 import Layout from "../layouts/Layout/Layout"
 import ListComments from "../components/ListComments/ListComments"
@@ -62,6 +64,13 @@ const indexRouter = createBrowserRouter([
     {
         path: "/signin",
         element: <SigninForm />,
+    },
+    {
+        path: "/comic/:id",
+        element: <Comic />, 
+    },
+    {
+        path: "/pages",
     },
     {
         path: "/accountsetup",

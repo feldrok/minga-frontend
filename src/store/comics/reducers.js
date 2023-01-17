@@ -1,12 +1,14 @@
 import comicActions from "./actions";
 import { createReducer } from "@reduxjs/toolkit";
 
-const { createNewComic } = comicActions
+const { createNewComic, getComic } = comicActions
 
 const initialState = {
+    comic: [],
     comics: [],
     message: ""
 } 
+
 
 const comicReducer = createReducer(
     initialState,
@@ -28,8 +30,15 @@ const comicReducer = createReducer(
                 }
                 return newState
             })
-    }
-
+            .addCase(getComic.fulfilled, 
+                (state, action) => {
+                    let newState= {
+                        comics:state.comics,
+                        comic: action.payload.response.comic,
+                        message: action.payload.message 
+                }
+                return newState
+            }) 
+    } 
 )
-
-export default comicReducer 
+export default comicReducer  
