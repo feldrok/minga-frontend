@@ -12,7 +12,9 @@ import React from "react"
 import SigninForm from "../components/SigninForm/SigninForm"
 import Signup from "../router/Signup/Signup"
 import SignupForm from "../components/SignupForm/SignupForm"
+import Company from "../components/Company/Company"
 import { createBrowserRouter } from "react-router-dom"
+
 
 const indexRouter = createBrowserRouter([
     {
@@ -85,6 +87,10 @@ const indexRouter = createBrowserRouter([
             },
         ],
     },
+    {
+        path: "company/:id",
+        element: <Company/>
+    }
 ])
 
 export default indexRouter

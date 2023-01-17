@@ -1,0 +1,157 @@
+.containerCardsCompany{
+    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 3rem 3rem 0 3rem;
+    gap: 1rem;
+}
+.cardBorderPurple{
+    display: flex;
+    justify-content: space-between;
+    background-color: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    width: 400px;
+    height: 200px;
+    margin: 1rem 1rem;
+    border-left: 8px solid #8883F0;
+}
+.cardBorderBlue{
+    display: flex;
+    justify-content: space-between;
+    background-color: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    width: 400px;
+    height: 200px;
+    margin: 1rem 1rem;
+    border-left: 8px solid #6ca1f0;
+}
+.cardBorderRed{
+    display: flex;
+    justify-content: space-between;
+    background-color: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    width: 400px;
+    height: 200px;
+    margin: 1rem 1rem;
+    border-left: 8px solid #EF8481;
+}
+.cardBorderYellow{
+    display: flex;
+    justify-content: space-between;
+    background-color: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    width: 400px;
+    height: 200px;
+    margin: 1rem 1rem;
+    border-left: 8px solid #b6af52;
+}
+.cardBorderGreen{
+    display: flex;
+    justify-content: space-between;
+    background-color: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    width: 400px;
+    height: 200px;
+    margin: 1rem 1rem;
+    border-left: 8px solid #00BA88;
+}
+.cardBorderOrange{
+    display: flex;
+    justify-content: space-between;
+    background-color: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    width: 400px;
+    height: 200px;
+    margin: 1rem 1rem;
+    border-left: 8px solid #FC9C57;
+}
+.titleAndButtons{
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    padding: 0 0 1rem 1rem;
+}
+.pTitle{
+    font-weight: 600;
+    text-decoration: none;
+    color: #000;
+    display: inline;
+}
+.titleComicCard{
+    padding-bottom: .5rem;
+}
+.buttonsComicCard{
+    display: flex;
+    justify-content: flex-start;
+    gap: .5rem;
+}
+.butEditComic, .butDeleteComic{
+    width: 56px;
+    height: 35px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.04);
+    border-radius: 50px;
+    border: none;
+    font-weight: 500;
+}
+.butDeleteComic{
+    background-color: #FBDDDC;
+    color: #EE8380;
+    cursor: pointer;
+}
+.butDeleteComic:hover{
+    background-color: #EE8380;
+    color: #ffffff;
+}
+.butEditComic{
+    color: #8883F0;
+    background-color: #E0DBFF;
+    cursor: pointer;
+}
+.butEditComic:hover{
+    color: #ffffff;
+    background-color: #8883F0;
+}
+.imgLink, .cardsCompany img {
+    width: 200px;
+    height: 100%;
+    align-self: flex-end;
+    border-radius: 45% 10px 10px 45%;
+    object-fit: cover;
+    object-position: center 10%;
+}
+.catColorPurple{
+    color: #8883F0;
+}
+.catColorBlue{
+    color: #6ca1f0;
+}
+.catColorRed{
+    color: #EF8481;
+}
+.catColorYellow{
+    color: #b6af52;
+}
+.catColorGreen{
+    color: #00BA88;
+}
+.catColorOrange{
+    color: #FC9C57;
+}
+.pNotFound{
+    padding: 4rem;
+    font-size: 2rem;
+    font-weight: 600;
+}
