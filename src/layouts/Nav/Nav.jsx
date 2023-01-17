@@ -82,7 +82,7 @@ function Nav() {
           <div className="profile-container">
             <img
               className="profile-picture-mobile-nav"
-              src="./userpic.png"
+              src="/userpic.png"
               alt="logo"
             />
             <div>

@@ -1,0 +1,120 @@
+.header {
+    background-color: #EBEBEB;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+}
+
+.titleContainer {
+    background-color: #4338CA;
+    margin-top: 68px;
+    color: #EBEBEB;
+    display: flex;
+    justify-content: center;
+    padding: 1em;
+}
+
+.comicPage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.imageContainer img {
+    display: block;
+    object-fit: contain;
+    max-height: 600px;
+}
+
+.imageContainer {
+    margin: 0;
+    padding: 0;
+}
+
+.commentContainer {
+    background-color: grey;
+    display: flex;
+    justify-content: center;
+    padding: 1em;
+    z-index: 100;
+}
+
+.leftButton {
+    position: absolute;
+    top: 68px;
+    left: 0;
+    height: 95%;
+    width: 50%;
+    background-color: transparent;
+}
+
+.leftButton:hover {
+    background-color: rgba(0, 0, 0, 0.079);
+}
+
+.rightButton {
+    position: absolute;
+    top: 68px;
+    right: 0;
+    height: 95%;
+    width: 50%;
+    background-color: transparent;
+}
+
+.rightButton:hover {
+    background-color: rgba(0, 0, 0, 0.079);
+}
+
+.leftArrow {
+    position: absolute;
+    top: 250px;
+    font-size: 10rem;
+    color: rgba(0, 0, 0, 0.179);
+}
+
+.leftArrow:hover {
+    cursor: pointer;
+}
+
+.rightArrow {
+    position: absolute;
+    top: 250px;
+    right: 10px;
+    text-align: right;
+    font-size: 10rem;
+    color: rgba(0, 0, 0, 0.179);
+}
+
+.rightArrow:hover {
+    cursor: pointer;
+}
+
+.newCommentBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.commentIcon {
+    width: 3em;
+}
+
+.commentIcon:hover {
+    width: 3.2em;
+    transition: all 0.3s ease-in-out;
+    transition-duration: 0.3s;
+}
+
+.commentNumber {
+    font-size: 2rem;
+    margin-left: .5em;
+    color: black;
+    text-decoration: none !important;
+}

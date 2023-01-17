@@ -3,7 +3,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit"
 
 const newChapter = createAsyncThunk("newChapter", async (chapter) => {
     try {
-        const response = await axios?.post(
+        const response = await axios.post(
             "http://localhost:8000/api/chapters",
             chapter
         )
@@ -19,25 +19,44 @@ const newChapter = createAsyncThunk("newChapter", async (chapter) => {
     }
 })
 
-const getChapters = createAsyncThunk( 
-    "getChapters",
-    async ({id, pages}) => {
-        try {
-            const response= await axios.get(`http://localhost:8000/api/chapters?comic_id=${id}&page=${pages}`)
+const getChapters = createAsyncThunk("getChapters", async ({ id, pages }) => {
+    try {
+        const response = await axios.get(
+            `http://localhost:8000/api/chapters?comic_id=${id}&page=${pages}`
+        )
         return {
-            response: {chapter: response.data},
-            message: "Chapter obtained"
+            response: { chapter: response.data },
+            message: "Chapter obtained",
         }
-        } catch (error) {
-            return {
-                response: {chapter: error.response.data},
-                message: "Error obtained chapter"
-            }
+    } catch (error) {
+        return {
+            response: { chapter: error.response.data },
+            message: "Error obtained chapter",
         }
     }
-)
+})
+
+const getChapterDetails = createAsyncThunk("getChapterDetails", async (_id) => {
+    try {
+        const response = await axios.get(
+            `http://localhost:8000/api/chapters/${_id}`
+        )
+        return {
+            response: { chapter: response.data },
+            message: "Chapter successfully obtained!",
+        }
+    } catch (error) {
+        return {
+            response: { chapter: error.response.data },
+            message: "Error: Chapter cannot be obtained.",
+        }
+    }
+})
 
 const chapterActions = {
-    newChapter, getChapters
-} 
+    newChapter,
+    getChapterDetails,
+    getChapters,
+}
+
 export default chapterActions

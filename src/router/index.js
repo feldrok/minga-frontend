@@ -11,6 +11,7 @@ import NewAuthor from "../components/NewAuthor/NewAuthor"
 import NewChapter from "./NewChapter/NewChapter"
 import NewComic from "./NewComic/NewComic"
 import NewCompany from "../components/NewCompany/NewCompany"
+import Pages from "./Pages/Pages"
 import React from "react"
 import SigninForm from "../components/SigninForm/SigninForm"
 import Signup from "../router/Signup/Signup"
@@ -51,6 +52,22 @@ const indexRouter = createBrowserRouter([
     {
         path: "/newchapter",
         element: <NewChapter />,
+    },
+    {
+        path: "/pages/:_id",
+        element: <Pages />,
+        children: [
+            {
+                path: "/pages/:_id/newcomment",
+                element: <ListComments />,
+                children: [
+                    {
+                        path: "/pages/:_id/newcomment/:comment_id",
+                        element: <ListComments />,
+                    },
+                ],
+            },
+        ],
     },
     {
         path: "/signup",

@@ -12,7 +12,7 @@ function Comment() {
       return (
         <div className="comment-container">
           <div className="comment-user-data">
-            <img src="./userpic.png" alt="" />
+            <img src="/userpic.png" alt="" />
             <h3>Ignacio Borraz</h3>
           </div>
           <div className="comment-text">
