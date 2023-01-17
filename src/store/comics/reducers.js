@@ -30,7 +30,7 @@ const comicReducer = createReducer(
                 }
                 return newState
             })
-            .addCase(getComic.fulfilled,
+            .addCase(getComic.fulfilled, 
                 (state, action) => {
                     let newState= {
                         comics:state.comics,

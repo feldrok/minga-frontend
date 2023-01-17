@@ -1,26 +1,37 @@
 .imagen {
-    width: 95vw;
-    height: 10rem;
+    width: 95%;
+    height: 8rem;
     object-fit: cover;
-    border-radius: 1em;
+    border-radius: 0.5rem;
+    margin-top: 1em;
+}
+
+.container_img {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 7rem;
+    width: 100%;
 }
 
 .container {
     background: #ebebeb;
     height: 100%;
+    width: 100%;
 }
 
 .container_emojis {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    height: 20vh;
+    height: 18vh;
 }
 
-.emojis{
+.emojis {
     background-color: white;
-    width: 5rem;
-    height: 5rem;
+    width: 3.8rem;
+    height: 3.8rem;
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -28,67 +39,101 @@
     font-size: 30px;
 }
 .emojis:hover{
-    background-color: rgb(243, 222, 222);
+    background-color: #4338ca;
     transition: all 0.3s;
 }
 
-.container_img {
+.container_category{
+    width: 100%;
+    margin-top: 1em;
+    display: flex;
+    justify-content: space-between;
+}
+.category {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 7rem; 
+    border-radius: 1rem;
+    text-align: center;
+    color: #ef8481;
+    background-color: #ffe0df;
+    margin-left: 1em;
+    font-size: 16px;
+    padding: 0.5rem 0.5rem;
+}
+.company{
+    margin-right: 0.5em;
+    color: #9d9d9d;
+    padding: 0.5rem 0.5rem;
+}
+
+.container_author{
+    margin-left: 1.2em;
+    margin-top: 0.4em;
+}
+.author{
+    color: #9795a4;
+}
+
+.container_title{
+    width: 150px;
 }
 
 .title {
-    font-family: ubuntu;
     font-weight: 400;
     font-size: 30px;
     text-align: center;
+    margin-top: 0.8em;
+    margin-left: 0.5em;
+}
+
+.buttons{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin: 1em 1em;
 }
 
 .container_button{
-    width: 100vw;
     display: flex;
     justify-content: center;
-    margin: 0.5rem;
+    border: 1px solid #292121;
+    border-radius: 10rem;
+    width: 100%;
 }
 
-.button_manga{
-    color: white;
-    background-color: #4338ca;
-    font-family: ubuntu;
+.button_category {
+    width: 100%;
+    padding: 0.5em 1em;
     border: none;
-    padding: 0.2rem;
-    width: 45%;
-    border-radius: 1rem;
-    margin: 0.4rem;
+    cursor: pointer;
+    border-radius: 10rem;
+    transition: 0.2s ease-in-out;
 }
 
-.button_chapter {
-    font-family: ubuntu;
-    padding: 0.2rem;
-    width: 45%;
-    border: solid 1px gray;
-    border-radius: 1rem;
-    margin: 0.4rem;
-}
-
-.button_chapter:hover{
-    background: #4338ca;
+.button_category:hover {
+    background-color: #675fdb;
     color: white;
-    transition: all 0.2s;
 }
 
-.container_description{
+.button_category.active{
+    background-color:#4338ca;
+    color: white;
+} 
+
+.container_description {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     width: 100%;
-    height: 40vh;
+    height: 60%;
+    padding-bottom: rem;
 }
+
 .description{
-    margin: 1rem;
+    margin: 1em;
     font-size: 15px;
     width: 80%;
     text-align: center;
@@ -97,28 +142,51 @@
 .synopsis{
     text-align: center;
     width: 50%;
+    border-bottom: solid 0.5px black; 
+    padding-bottom: 0.8rem;
 }
 
 
+
+
 @media (min-width: 768px) {
-        .imagen {
-        width: 55vw;
-        height: 22rem;
-        object-fit: cover;
-        border-radius: 1em;
-    } 
     .container_button{
+        width: 60%;
+    }
+    .button_category{
+        width: 100%;
+    }
+    .imagen {
+        width: 76%;
+        height: 16rem;
+    }
+    .author{
+        font-size: 20px;
+    }
+    .container_title{
+        width: 100%;
+    }
+    .title{
+        font-size: 75px;
+    }
+    .container_author {
+        text-align: center;
+    }
+    .container_category{
+        justify-content: space-evenly;
+        width: 100%;
+    }
+    .category{
+        font-size: 20px;
+        width: 15%;
+    }
+    .company{
+        font-size: 20px;
+    }
+    .container_category{
         width: 100%;
         padding: 1rem;
-    }
-
-    .button_manga{
-        width: 20%;
-        padding: 1.4em 1.8em;
-    }
-    
-    .button_chapter {
-        width: 20%;
+        margin: 0;
     }
     .description {
         width: 50%;
@@ -126,6 +194,10 @@
     }
     .container_emojis{
         justify-content: center;
+        height: 12vh;
+    }
+    .emojis{
+        margin: 2rem;
     }
     .container_description{
         display: flex;
@@ -133,7 +205,6 @@
         align-items: center;
         flex-direction: column;
         width: 100%;
-        height: 20vh;
+        height: 25vh;
     }
-
 }

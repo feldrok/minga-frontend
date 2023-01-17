@@ -7,11 +7,9 @@ import styles from "./ChapterCard.module.css";
 import { useEffect } from "react";
 import { useParams } from "react-router";
 
-const modalContainer = document.querySelector("#modalContainer");
-
 const { getComic } = comicActions;
 
-const ChapterCard = ({ title, chapterId, isOpened, onClose }) => {
+const ChapterCard = ({ title, chapterId }) => {
   const comicStore = useSelector((store) => store.comics);
   const dispatch = useDispatch();
   const { id } = useParams();

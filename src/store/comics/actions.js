@@ -6,7 +6,7 @@ const createNewComic = createAsyncThunk(
     async (comic) => {
         try {
             let response = await axios?.post('http://localhost:8000/api/comics', comic)
-            console.log(response) 
+            console.log(response)
             return {
                 response: { comic: response.data },
                 message: "comic creado"
@@ -14,28 +14,27 @@ const createNewComic = createAsyncThunk(
         } catch (error) {
             console.log(error)
             return {
-                response: { comic: error.response.data }, 
+                response: { comic: error.response.data },
                 message: 'Error al crear comic'
             }
         }
     }
-) 
+)
 
 
-const getComic= createAsyncThunk(
+const getComic = createAsyncThunk(
     "getComic",
-    async (comic) => { 
-        try{ 
-            let response= await axios.get(`http://localhost:8000/api/comics/${comic}`) 
+    async (comic) => {
+        try {
+            let response = await axios.get(`http://localhost:8000/api/comics/${comic}`)
             console.log(response)
             return {
-                response: {comic: response.data},
+                response: { comic: response.data },
                 message: "comic obtained"
-            } 
-        }catch(error) {
-            console.log(error)
+            }
+        } catch (error) {
             return {
-                response: {comic: error.response.data},
+                response: { comic: error.response.data },
                 message: "error obtained comic"
             }
         }
@@ -43,5 +42,5 @@ const getComic= createAsyncThunk(
 )
 
 
-const comicActions = { createNewComic, getComic } 
+const comicActions = { createNewComic, getComic }
 export default comicActions 

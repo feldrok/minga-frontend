@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 
-import { Link as Anchor } from "react-router-dom";
 import ChapterCard from "../ChapterCard/ChapterCard";
 import React from "react";
 import chapterActions from "../../store/chapters/actions";
@@ -22,12 +21,12 @@ export default function Chapters() {
     dispatch(getChapters({ id, pages }));
   }, [pages]);
 
-  const next = () => {
-    setPages(pages + 1);
-  };
-
   const prev = () => {
     setPages(pages - 1);
+  };
+
+  const next = () => {
+    setPages(pages + 1);
   };
 
   return (
@@ -41,7 +40,7 @@ export default function Chapters() {
           ))}
           <div className={styles.button_next}>
             {pages === 1 ? null : (
-              <button className={styles.next} onClick={prev}>
+              <button className={styles.prev} onClick={prev}>
                 Prev
               </button>
             )}

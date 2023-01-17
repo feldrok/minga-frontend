@@ -9,10 +9,11 @@
 .container_card{
     width: 100%;
     display: flex;
-    border: solid 1px gray;
+    border: none;
     border-radius: 2rem;
     height: 5rem;
     margin: 1rem;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
 }
 
 .container_img {
@@ -31,8 +32,8 @@
 }
 
 .title{
-    font-family: ubuntu;
     font-weight: 400;
+    text-align: center;
 }
 
 .container_button{
@@ -43,13 +44,13 @@
 }
 
 .button {
-    padding: 1.2em 1.3em;
+    padding: 0.8rem 1.2rem;
     color: white;
     background-color: #4338ca;
-    font-family: roboto;
     border-radius: 2rem;
     font-size: 1rem;
     text-decoration: none;
+    text-align: center;
 }
 
 .button:hover{
@@ -67,7 +68,7 @@
 
 @media (min-width: 768px) {
     .container_card {
-        width: 45%;
+        width: 80%;
         height: 8rem;
     }
     .imagen{
@@ -77,9 +78,8 @@
         border-radius: 1rem;
     }
     .button{
-        width: 150px;
-        padding: 0.8em 2em;
+        width: 200px;
+        padding: 1.2em 1.8em;
         text-align: center;
     }
 }
-
