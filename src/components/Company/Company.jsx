@@ -4,6 +4,7 @@ import Nav from "../../layouts/Nav/Nav"
 import Footer from "../../layouts/Footer/Footer"
 import CompanyMain from "./CompanyMain/CompanyMain"
 import ListCategories from "./ListCategories/ListCategories"
+import RenderCardsInCompany from "./ComicsCards/RenderComicsCards"
 
 
 const Company = () => {
@@ -14,6 +15,7 @@ const Company = () => {
             <CompanyHeader/>
             <CompanyMain>
                 <ListCategories/>
+                <RenderCardsInCompany/>
             </CompanyMain>
             <Footer/>
         </>

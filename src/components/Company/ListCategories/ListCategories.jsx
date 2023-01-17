@@ -6,59 +6,57 @@ import "./listCategories.css"
 import { useParams } from "react-router";
 
 const { get_categories } = categoryActions
-const { get_comics_from_cia } = comicActions
+const { get_comics_from_cia, get_comics_company } = comicActions
 
 const ListCategories = () => {
 
     const storeCategory = useSelector(store => store.categories)
+    const storeComics = useSelector(store => store.comics)
     const catStored = storeCategory.categories?.response
-    const storeComic = useSelector(store => store.comics)
     const dispatch = useDispatch()
     const params = useParams()
 
+    useEffect(() => {
+        if (storeComics.comics?.length === 0) {
+            dispatch(get_comics_company({ company_id: params.id }))
+        }
+    }, [])
+    
     useEffect(() => {
         if (storeCategory.categories?.length === 0) {
             dispatch(get_categories())
         }
     }, [])
 
-    // useEffect(() => {
-    //     dispatch(get_comics_from_cia([params.id, "", "63bcc0003f33b0f658f28c74"]))
-    //     console.log(storeComic.comics)
-    // }, [])
-
-    
     const handleClick = (e) => {
         let obj = {
             company_id: params.id,
-            category_id: e.target.value,
-            page: 2
+            limit: "",
+            category_id: e?.target.value
         }
         dispatch(get_comics_from_cia(obj))
     }
 
-    console.log(storeComic.comics)
+    const styleCategory = ["buttonRed", "buttonOrange", "buttonGreen", "buttonPurple","buttonBlue", "buttonYellow"]
+    let i = 0
 
-    
     return (
         <>
-            <div className="divCategories" onClick={handleClick}>
-                <button id="buttonCat" className="inpCategories">all</button>
+            <div className="divCategories">
+                <button onClick={handleClick} id="buttonCat" className="buttonAll">All</button>
                 {
                     catStored?.map(cat =>
                         <button
-                            key={cat._id}
+                            onClick={handleClick}
                             id={cat?.name}
                             value={cat?._id}
-                            className="inpCategories"
+                            className={`${styleCategory[i]}`}
+                            key={i++}
                         >
                             {cat.name}
                         </button>
                     )
                 }
-            </div>
-            <div className="cardsMain">
-                
             </div>
         </>
     )
