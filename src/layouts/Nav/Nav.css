@@ -213,6 +213,14 @@
     text-align: center;
 }
 
+.logout-button {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
 .close-icon {
     color: #fff;
     cursor: pointer;
@@ -238,5 +246,11 @@
     }
     .login-btn {
         font-size: 1rem;
+    }
+    .logout-button {
+        display: none;
+    }
+    .log-button {
+        display: none;
     }
 }

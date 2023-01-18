@@ -5,17 +5,18 @@ import comicReducer from "./comics/reducers"
 import commentReducer from "./comments/reducers"
 import companyReducer from "./companies/reducers"
 import { configureStore } from "@reduxjs/toolkit"
+import userReducer from "./user/reducers"
 
 const store = configureStore({
-  reducer: {
-    author: authorReducer,
-    comments: commentReducer,
-    company: companyReducer,
-    comics: comicReducer,
-    chapters: chapterReducer,
-    categories: categoryReducer
-  }
-  
+    reducer: {
+        author: authorReducer,
+        comments: commentReducer,
+        company: companyReducer,
+        comics: comicReducer,
+        chapters: chapterReducer,
+        categories: categoryReducer,
+        user: userReducer,
+    },
 })
 
 export default store
