@@ -119,7 +119,7 @@ const indexRouter = createBrowserRouter([
         element: <Comics />,
     },
     {
-        path: "authors/:id",
+        path: "/authors/:id",
         element: <Author/>
     }
 ])

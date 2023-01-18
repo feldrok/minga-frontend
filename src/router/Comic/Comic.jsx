@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux"
 import { useEffect, useState } from "react"
+import { useNavigate, useParams } from "react-router-dom"
 
 import Chapters from "../../components/Chapters/Chapters"
 import Nav from "../../layouts/Nav/Nav"
@@ -7,7 +8,6 @@ import React from "react"
 import chapterActions from "../../store/chapters/actions"
 import comicActions from "../../store/comics/actions"
 import styles from "./Comic.module.css"
-import { useParams } from "react-router-dom"
 
 const { getChapters } = chapterActions
 const { getComic } = comicActions
@@ -16,10 +16,15 @@ export default function Comic() {
     const chapterStore = useSelector((store) => store.chapters)
     const comicStore = useSelector((store) => store.comics)
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     const { id } = useParams()
 
     useEffect(() => {
+        let token = localStorage.getItem("token")
+        if (!token || token === undefined) {
+            navigate("/")
+        }
         if (id !== comicStore?.comic?.response?._id) {
             dispatch(getComic(id))
         }

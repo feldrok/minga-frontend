@@ -1,22 +1,29 @@
-import React from "react"
-import AuthorHeader from "../../components/Author/AuthorHeader/AuthorHeader"
-import NavAuthor from "../../components/Author/NavAuthor/NavAuthor"
-import AuthorMain from "../../components/Author/AuthorMain/AuthorMain"
-import AuthorCards from "../../components/Author/AuthorCards/AuthorCards"
+import React, { useEffect } from "react"
 
+import AuthorCards from "../../components/AuthorCards/AuthorCards"
+import AuthorHeader from "../../components/AuthorHeader/AuthorHeader"
+import AuthorMain from "../../components/AuthorMain/AuthorMain"
+import Nav from "../../layouts/Nav/Nav"
+import { useNavigate } from "react-router"
 
 const Author = () => {
+    const navigate = useNavigate()
+    useEffect(() => {
+        let token = localStorage.getItem("token")
+        if (!token || token === undefined) {
+            navigate("/")
+        }
+    })
 
     return (
         <>
-            <NavAuthor/>
-            <AuthorHeader/>
+            <Nav />
+            <AuthorHeader />
             <AuthorMain>
-                <AuthorCards/>
+                <AuthorCards />
             </AuthorMain>
         </>
     )
-
 }
 
 export default Author
