@@ -1,3 +1,4 @@
+import ComicCards from "../../components/ComicCards/ComicCards"
 import ComicsHeader from "../../components/ComicsHeader/ComicsHeader"
 import ListComics from "../../components/ListComics/ListComics"
 import ListContainer from "../../components/ListContainer/ListContainer"
@@ -14,7 +15,9 @@ function Comics() {
                 <SearchInput />
             </ComicsHeader>
             <ListContainer>
-                <ListComics />
+                <ListComics>
+                    <ComicCards />
+                </ListComics>
             </ListContainer>
         </div>
     )

@@ -18,12 +18,6 @@ const ListCategories = () => {
     const params = useParams()
 
     useEffect(() => {
-        if (storeComics.comics?.length === 0) {
-            dispatch(get_comics_company({ company_id: params.id }))
-        }
-    }, [])
-
-    useEffect(() => {
         if (storeCategory.categories?.length === 0) {
             dispatch(getCategories())
         }

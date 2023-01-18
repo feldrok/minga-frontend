@@ -131,19 +131,23 @@ const getComicsByTitleAndCategory = createAsyncThunk(
 
 const get_comics_company = createAsyncThunk(
     "get_comics_company",
-    async ({ company_id }) => {
+    async ({ company_id, limit }) => {
+        if (limit === undefined) {
+            limit = 5
+        }
         try {
             let response = await axios.get(
-                `http://localhost:8000/api/comics/profile/company?company_id=${company_id}`
+                `${API_URL}/comics/profile/company?company_id=${company_id}&limit=${limit}`
             )
             return {
-                response: { comic: response.data },
+                response: { comics: response.data },
+                limit: limit,
                 message: "Comic/s Found",
             }
         } catch (error) {
             console.log(error)
             return {
-                response: { comic: error.response.data },
+                response: { comics: error.response.data },
                 message: "Comic not found",
             }
         }
@@ -155,10 +159,31 @@ const get_comics_from_cia = createAsyncThunk(
     async ({ company_id, limit, category_id }) => {
         try {
             let response = await axios.get(
-                `http://localhost:8000/api/comics/profile/company?company_id=${company_id}&limit=${limit}&category_id=${category_id}`
+                `${API_URL}/comics/profile/company?company_id=${company_id}&limit=${limit}&category_id=${category_id}`
             )
             return {
-                response: { comic: response.data },
+                response: { comics: response.data },
+                message: "Comic/s Found",
+            }
+        } catch (error) {
+            console.log(error)
+            return {
+                response: { comics: error.response.data },
+                message: "Comic not found",
+            }
+        }
+    }
+)
+
+const get_comics_from_author = createAsyncThunk(
+    "get_comics_from_author",
+    async ({ author_id }) => {
+        try {
+            let response = await axios.get(
+                `${API_URL}/comics/profile/author?author_id${author_id}`
+            )
+            return {
+                response: { comic: response.data.response },
                 message: "Comic/s Found",
             }
         } catch (error) {
@@ -168,25 +193,6 @@ const get_comics_from_cia = createAsyncThunk(
                 message: "Comic not found",
             }
         }
-    }
-)
-
-const get_comics_from_author = createAsyncThunk(
-    "get_comics_from_author",
-    async ({author_id}) => {
-        try {
-            let response = await axios.get(`http://localhost:8000/api/comics/profile/author?author_id${author_id}`)
-            return {
-                response: { comic: response.data.response },
-                message: "Comic/s Found"
-            }
-        } catch (error) {
-    console.log(error)
-    return {
-        response: { comic: error.response.data },
-        message: 'Comic not found'
-    }
-}
     }
 )
 
@@ -199,7 +205,7 @@ const comicActions = {
     getComicsByTitleAndCategory,
     get_comics_company,
     get_comics_from_cia,
-    get_comics_from_author
+    get_comics_from_author,
 }
 
 export default comicActions
