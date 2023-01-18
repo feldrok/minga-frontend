@@ -44,7 +44,7 @@ function Nav() {
         <nav>
             <div className={`main-nav ${navBar ? "active" : ""}`}>
                 <div className="nav-item">
-                    <img className="nav-logo" src="./logo.png" alt="logo" />
+                    <img className="nav-logo" src="/logo.png" alt="logo" />
                 </div>
                 <div className="nav-item nav-items">
                     {routes.map((route, index) => (

@@ -1,6 +1,6 @@
-import AccountSetup from "../router/AccountSetup/AccountSetup"
+import AccountSetup from "./AccountSetup/AccountSetup"
 import AccountType from "../components/AccountType/AccountType"
-import Chapters from "../components/Chapters/Chapters"
+import Author from "../router/Author/Author"
 import Comic from "./Comic/Comic"
 import Comics from "../router/Comics/Comics"
 import Company from "../components/Company/Company"
@@ -118,6 +118,10 @@ const indexRouter = createBrowserRouter([
         path: "/comics",
         element: <Comics />,
     },
+    {
+        path: "authors/:id",
+        element: <Author/>
+    }
 ])
 
 export default indexRouter

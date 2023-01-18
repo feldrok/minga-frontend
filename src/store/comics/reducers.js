@@ -10,6 +10,7 @@ const {
     getComicsByTitleAndCategory,
     get_comics_from_cia,
     get_comics_company,
+    get_comics_from_author
 } = comicActions
 
 const initialState = {
@@ -32,6 +33,14 @@ const comicReducer = createReducer(initialState, (builder) => {
         .addCase(createNewComic.rejected, (state, action) => {
             let newState = {
                 message: "error",
+            }
+            return newState
+        })
+        .addCase(getComic.fulfilled, (state, action) => {
+            let newState = {
+                comics: state.comics,
+                comic: action.payload.response.comic,
+                message: action.payload.message,
             }
             return newState
         })
@@ -71,14 +80,6 @@ const comicReducer = createReducer(initialState, (builder) => {
             }
             return newState
         })
-        .addCase(getComic.fulfilled, (state, action) => {
-            let newState = {
-                comics: state.comics,
-                comic: action.payload.response.comic,
-                message: action.payload.message,
-            }
-            return newState
-        })
         .addCase(get_comics_from_cia.fulfilled, (state, action) => {
             let newState = {
                 comics: action.payload.response.comic,
@@ -90,6 +91,13 @@ const comicReducer = createReducer(initialState, (builder) => {
             let newState = {
                 comics: action.payload.response.comic,
                 message: action.payload.message,
+            }
+            return newState
+        })
+        .addCase(get_comics_from_author.fulfilled, (state, action) => {
+            let newState = {
+                comics: action.payload.response.comic,
+                message: action.payload.message
             }
             return newState
         })
