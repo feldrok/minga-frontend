@@ -25,6 +25,7 @@ const routes = [
 ]
 
 function Nav() {
+    const userStore = useSelector((state) => state.user)
     const [navigation, setNavigation] = useState(false)
     const [navBar, setNavBar] = useState(false)
     const [isLogged, setIsLogged] = useState(false)
@@ -125,12 +126,14 @@ function Nav() {
                     <div className="profile-container">
                         <img
                             className="profile-picture-mobile-nav"
-                            src="/userpic.png"
+                            src={userStore.user?.response.user.photo}
                             alt="logo"
                         />
                         <div>
                             <p className="profile-name">User name</p>
-                            <p className="profile-email">random@email.com</p>
+                            <p className="profile-email">
+                                {userStore.user?.response.user.mail}
+                            </p>
                         </div>
                     </div>
 
