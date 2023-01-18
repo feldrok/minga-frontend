@@ -173,6 +173,7 @@ const get_comics_from_cia = createAsyncThunk(
             console.log(error)
             return {
                 response: { comics: error.response.data },
+                limit: limit,
                 message: "Comic not found",
             }
         }
