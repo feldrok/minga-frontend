@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { useLocation, useNavigate } from "react-router-dom"
+import {
+    useLocation,
+    useNavigate,
+    useParams,
+    useSearchParams,
+} from "react-router-dom"
 
 import CategoryFilter from "../CategoryFilter/CategoryFilter"
 import categoryActions from "../../store/categories/actions"
@@ -8,15 +13,16 @@ import comicActions from "../../store/comics/actions"
 import styles from "./CategoryFilters.module.css"
 
 const { getCategories, setActiveCategory } = categoryActions
-const { getComics } = comicActions
-
+const { getComics, get_comics_company } = comicActions
 
 function CategoryFilters() {
-    const [active, setActive] = useState('')
+    const [active, setActive] = useState("")
     const categoryStore = useSelector((state) => state.categories)
     const dispatch = useDispatch()
     const location = useLocation()
     const navigate = useNavigate()
+    const [searchParams, setSearchParams] = useSearchParams()
+    const params = useParams()
 
     useEffect(() => {
         dispatch(getCategories())
@@ -24,25 +30,37 @@ function CategoryFilters() {
     }, [])
 
     useEffect(() => {
-        if (location.pathname === '/comics' && categoryStore.activeCategory === 'all') {
+        if (
+            (location.pathname.includes("/comics") ||
+                location.pathname.includes("/company")) &&
+            categoryStore.activeCategory === "all"
+        ) {
             setActive(styles.active)
-        } else if (categoryStore.activeCategory !== 'all') {
-            setActive('')
+        } else if (categoryStore.activeCategory !== "all") {
+            setActive("")
         }
         //eslint-disable-next-line
     }, [location, categoryStore.activeCategory])
 
     const showAllComics = () => {
-        navigate('/comics')
-        dispatch(setActiveCategory('all'))
-        dispatch(getComics())
+        setSearchParams("")
+        dispatch(setActiveCategory("all"))
+        if (location.pathname.includes("/comics")) {
+            dispatch(getComics())
+        } else if (location.pathname.includes("/company")) {
+            dispatch(get_comics_company({ company_id: params.id }))
+        }
     }
 
     const colors = ["red", "orange", "green", "purple", "blue", "yellow"]
 
     return (
         <div className={styles.container}>
-            <button value={""} onClick={showAllComics} className={`${styles.allButton} ${active} `}>
+            <button
+                value={""}
+                onClick={showAllComics}
+                className={`${styles.allButton} ${active} `}
+            >
                 {"all"}
             </button>
             {categoryStore.categories?.response?.map((category) => (

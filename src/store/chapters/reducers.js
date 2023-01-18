@@ -6,6 +6,7 @@ const { newChapter, getChapterDetails, getChapters } = chapterActions;
 const initialState = {
     chapters: [],
     chapter: [],
+    limit: 5,
     message: ""
 };
 
@@ -43,6 +44,7 @@ const chapterReducer = createReducer(initialState, (builder) =>  {
             let newState = {
                 chapters: action.payload.response.chapter,
                 chapter: state.chapter,
+                limit: action.payload.limit,
                 message: action.payload.message
             }
             return newState

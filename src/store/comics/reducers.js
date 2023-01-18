@@ -16,6 +16,7 @@ const {
 const initialState = {
     comic: [],
     comics: [],
+    storedComics: "",
     message: "",
     limit: 10,
     search: "",
@@ -48,6 +49,7 @@ const comicReducer = createReducer(initialState, (builder) => {
             let newState = {
                 comics: action.payload.response.comics,
                 comic: state.comic,
+                storedComics: "allComics",
                 limit: action.payload.limit,
                 message: action.payload.message,
             }
@@ -82,21 +84,28 @@ const comicReducer = createReducer(initialState, (builder) => {
         })
         .addCase(get_comics_from_cia.fulfilled, (state, action) => {
             let newState = {
-                comics: action.payload.response.comic,
+                comic: state.comic,
+                comics: action.payload.response.comics,
+                limit: action.payload.limit,
+                storedComics: "companyComics",
                 message: action.payload.message,
             }
             return newState
         })
         .addCase(get_comics_company.fulfilled, (state, action) => {
             let newState = {
-                comics: action.payload.response.comic,
+                comic: state.comic,
+                comics: action.payload.response.comics,
+                storedComics: "companyComics",
+                limit: action.payload.limit,
                 message: action.payload.message,
             }
             return newState
         })
         .addCase(get_comics_from_author.fulfilled, (state, action) => {
             let newState = {
-                comics: action.payload.response.comic,
+                comic: state.comic,
+                comics: action.payload.response.comics,
                 message: action.payload.message
             }
             return newState

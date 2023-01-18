@@ -19,13 +19,17 @@ const newChapter = createAsyncThunk("newChapter", async (chapter) => {
     }
 })
 
-const getChapters = createAsyncThunk("getChapters", async ({ id, pages }) => {
+const getChapters = createAsyncThunk("getChapters", async ({ id, limit }) => {
+    if (limit === undefined) {
+        limit = 5
+    }
     try {
         const response = await axios.get(
-            `http://localhost:8000/api/chapters?comic_id=${id}&page=${pages}`
+            `http://localhost:8000/api/chapters?comic_id=${id}&limit=${limit}`
         )
         return {
             response: { chapter: response.data },
+            limit: limit,
             message: "Chapter obtained",
         }
     } catch (error) {

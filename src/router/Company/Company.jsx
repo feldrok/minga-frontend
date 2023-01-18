@@ -1,26 +1,22 @@
 import ComicCards from "../../components/ComicCards/ComicCards"
-import ComicsHeader from "../../components/ComicsHeader/ComicsHeader"
+import CompanyHeader from "../../components/CompanyHeader/CompanyHeader"
 import ListComics from "../../components/ListComics/ListComics"
 import ListContainer from "../../components/ListContainer/ListContainer"
 import Nav from "../../layouts/Nav/Nav"
 import React from "react"
-import SearchInput from "../../components/SearchInput/SearchInput"
-import styles from "./Comics.module.css"
 
-function Comics() {
+const Company = () => {
     return (
-        <div className={styles.container}>
+        <>
             <Nav />
-            <ComicsHeader>
-                <SearchInput />
-            </ComicsHeader>
+            <CompanyHeader />
             <ListContainer>
                 <ListComics>
                     <ComicCards />
                 </ListComics>
             </ListContainer>
-        </div>
+        </>
     )
 }
 
-export default Comics
+export default Company
