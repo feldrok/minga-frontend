@@ -124,15 +124,20 @@ function Nav() {
             <div className={`mobile-nav ${navigation ? "show-menu" : ""} `}>
                 <div className="profile-menu">
                     <div className="profile-container">
-                        <img
-                            className="profile-picture-mobile-nav"
-                            src={userStore.user?.response.user.photo}
-                            alt="logo"
-                        />
+                        {userStore.user.length === 0 ? null : (
+                            <img
+                                className="profile-picture-mobile-nav"
+                                src={userStore.user?.response.user.photo}
+                                alt="logo"
+                            />
+                        )}
+
                         <div>
                             <p className="profile-name">User name</p>
                             <p className="profile-email">
-                                {userStore.user?.response.user.mail}
+                                {userStore.user.length === 0
+                                    ? null
+                                    : userStore.user?.response.user.mail}
                             </p>
                         </div>
                     </div>
