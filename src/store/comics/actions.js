@@ -13,10 +13,7 @@ let config = {
 
 const createNewComic = createAsyncThunk("createNewComic", async (comic) => {
     try {
-        let response = await axios.post(
-            `${API_URL}/comics`,
-            comic
-        )
+        let response = await axios.post(`${API_URL}/comics`, comic)
         console.log(response)
         return {
             response: { comic: response.data },
@@ -31,32 +28,30 @@ const createNewComic = createAsyncThunk("createNewComic", async (comic) => {
     }
 })
 
-const getComic = createAsyncThunk(
-    "getComic",
-    async (comic) => {
-        try {
-            let response = await axios.get(`${API_URL}/comics/${comic}`)
-            return {
-                response: { comic: response.data },
-                message: "comic obtained"
-            }
-        } catch (error) {
-            return {
-                response: { comic: error.response.data },
-                message: "error obtained comic"
-            }
+const getComic = createAsyncThunk("getComic", async (comic) => {
+    try {
+        let response = await axios.get(`${API_URL}/comics/${comic}`)
+        return {
+            response: { comic: response.data },
+            message: "comic obtained",
+        }
+    } catch (error) {
+        return {
+            response: { comic: error.response.data },
+            message: "error obtained comic",
         }
     }
-)
+})
 
 const getComics = createAsyncThunk("getComics", async (limit) => {
     if (limit === undefined) {
         limit = 10
     }
-    
+
     try {
         let response = await axios.get(
-            `${API_URL}/comics?limit=${limit}`, config
+            `${API_URL}/comics?limit=${limit}`,
+            config
         )
         return {
             response: { comics: response.data },
@@ -74,7 +69,8 @@ const getComics = createAsyncThunk("getComics", async (limit) => {
 const getComicsByTitle = createAsyncThunk("getComicsByTitle", async (title) => {
     try {
         let response = await axios.get(
-            `${API_URL}/comics/?title=${title}`, config
+            `${API_URL}/comics/?title=${title}`,
+            config
         )
         return {
             response: { comics: response.data },
@@ -94,7 +90,8 @@ const getComicsByCategory = createAsyncThunk(
     async (category) => {
         try {
             let response = await axios.get(
-                `${API_URL}/comics/?category_id=${category}`, config
+                `${API_URL}/comics/?category_id=${category}`,
+                config
             )
             return {
                 response: { comics: response.data },
@@ -115,7 +112,8 @@ const getComicsByTitleAndCategory = createAsyncThunk(
     async (object) => {
         try {
             let response = await axios.get(
-                `${API_URL}/comics/?title=${object.title}&category_id=${object.category_id}`, config
+                `${API_URL}/comics/?title=${object.title}&category_id=${object.category_id}`,
+                config
             )
             return {
                 response: { comics: response.data },
@@ -131,6 +129,48 @@ const getComicsByTitleAndCategory = createAsyncThunk(
     }
 )
 
+const get_comics_company = createAsyncThunk(
+    "get_comics_company",
+    async ({ company_id }) => {
+        try {
+            let response = await axios.get(
+                `http://localhost:8000/api/comics/profile/company?company_id=${company_id}`
+            )
+            return {
+                response: { comic: response.data },
+                message: "Comic/s Found",
+            }
+        } catch (error) {
+            console.log(error)
+            return {
+                response: { comic: error.response.data },
+                message: "Comic not found",
+            }
+        }
+    }
+)
+
+const get_comics_from_cia = createAsyncThunk(
+    "get_comics_from_cia",
+    async ({ company_id, limit, category_id }) => {
+        try {
+            let response = await axios.get(
+                `http://localhost:8000/api/comics/profile/company?company_id=${company_id}&limit=${limit}&category_id=${category_id}`
+            )
+            return {
+                response: { comic: response.data },
+                message: "Comic/s Found",
+            }
+        } catch (error) {
+            console.log(error)
+            return {
+                response: { comic: error.response.data },
+                message: "Comic not found",
+            }
+        }
+    }
+)
+
 const comicActions = {
     createNewComic,
     getComic,
@@ -138,5 +178,8 @@ const comicActions = {
     getComicsByTitle,
     getComicsByCategory,
     getComicsByTitleAndCategory,
+    get_comics_company,
+    get_comics_from_cia,
 }
+
 export default comicActions

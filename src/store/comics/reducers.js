@@ -8,6 +8,8 @@ const {
     getComicsByTitle,
     getComicsByCategory,
     getComicsByTitleAndCategory,
+    get_comics_from_cia,
+    get_comics_company,
 } = comicActions
 
 const initialState = {
@@ -73,6 +75,20 @@ const comicReducer = createReducer(initialState, (builder) => {
             let newState = {
                 comics: state.comics,
                 comic: action.payload.response.comic,
+                message: action.payload.message,
+            }
+            return newState
+        })
+        .addCase(get_comics_from_cia.fulfilled, (state, action) => {
+            let newState = {
+                comics: action.payload.response.comic,
+                message: action.payload.message,
+            }
+            return newState
+        })
+        .addCase(get_comics_company.fulfilled, (state, action) => {
+            let newState = {
+                comics: action.payload.response.comic,
                 message: action.payload.message,
             }
             return newState

@@ -3,6 +3,7 @@ import AccountType from "../components/AccountType/AccountType"
 import Chapters from "../components/Chapters/Chapters"
 import Comic from "./Comic/Comic"
 import Comics from "../router/Comics/Comics"
+import Company from "../components/Company/Company"
 import Home from "../router/Home/Home"
 import Layout from "../layouts/Layout/Layout"
 import ListComments from "../components/ListComments/ListComments"
@@ -108,6 +109,10 @@ const indexRouter = createBrowserRouter([
                 // element: <NewReader />,
             },
         ],
+    },
+    {
+        path: "/company/:id",
+        element: <Company/>
     },
     {
         path: "/comics",
