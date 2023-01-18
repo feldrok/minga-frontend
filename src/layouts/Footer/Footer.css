@@ -101,7 +101,7 @@ footer {
 }
 
 .footer-link:hover {
-	transform: scale(1.05);  
+  transform: scale(1.05);
 }
 
 .social-media {
@@ -136,4 +136,10 @@ footer {
 .terms-link {
   text-decoration: none;
   color: #0A142F;
+}
+
+@media only screen and (max-width: 768px) {
+  footer {
+    margin: 0;
+  }
 }

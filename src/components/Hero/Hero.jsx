@@ -4,7 +4,7 @@ import React from "react"
 
 function Hero({ children }) {
   return (
-    <header>
+    <header className="headerHero">
       <div className="bg-dark-film">
         <div className="hero-container">
           <div className="hero-content">

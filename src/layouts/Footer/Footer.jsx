@@ -56,7 +56,7 @@ function Footer() {
               <Link to="/" className="social-logo">
                 <img
                   className="logo"
-                  src="./Facebook.png"
+                  src="../Facebook.png"
                   alt="Facebook"
                   width="24"
                 />
@@ -64,7 +64,7 @@ function Footer() {
               <Link to="/" className="social-logo">
                 <img
                   className="logo"
-                  src="./Twitter.png"
+                  src="../Twitter.png"
                   alt="Twitter"
                   width="24"
                 />
@@ -72,7 +72,7 @@ function Footer() {
               <Link to="/" className="social-logo">
                 <img
                   className="logo"
-                  src="./Vimeo.png"
+                  src="../Vimeo.png"
                   alt="Vimeo"
                   width="24"
                 />
@@ -80,7 +80,7 @@ function Footer() {
               <Link to="/" className="social-logo">
                 <img
                   className="logo"
-                  src="./Youtube.png"
+                  src="../Youtube.png"
                   alt="Youtube"
                   width="24"
                 />

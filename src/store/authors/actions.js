@@ -16,6 +16,24 @@ const addAuthor = createAsyncThunk("addAuthor", async (author) => {
   }
 });
 
-const authorActions = {addAuthor};
+const get_author = createAsyncThunk(
+  "get_author", async (_id) => {
+    try{
+      const response = await axios.get(`http://localhost:8000/api/authors/${_id}`)
+      return{
+        response: {author: response.data },
+        message: "Author found"
+      }
+      
+    }catch (error) {
+      return {
+        response: { author: error.response.data },
+        message: "Author not found",
+      }
+  }
+}
+)
+
+const authorActions = {addAuthor, get_author};
 
 export default authorActions

@@ -1,0 +1,38 @@
+.container {
+    display: flex;
+    padding: 1em;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.allButton {
+    display: flex;
+    padding: 1em 1em;
+    margin: .5em;
+    font-weight: 600;
+    border-radius: 20em;
+    border: none;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    min-width: 100px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+.allButton:hover {
+    background-color: #e0e0e0;
+}
+
+.allButton.active {
+    background-color: #c0c0c0;
+    scale: 1.1;
+    box-shadow: none;
+}
+
+.checkbox {
+    display: none;
+}

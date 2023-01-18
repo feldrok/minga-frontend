@@ -1,5 +1,9 @@
-import AccountSetup from "../router/AccountSetup/AccountSetup"
+import AccountSetup from "./AccountSetup/AccountSetup"
 import AccountType from "../components/AccountType/AccountType"
+import Author from "../router/Author/Author"
+import Comic from "./Comic/Comic"
+import Comics from "../router/Comics/Comics"
+import Company from "../components/Company/Company"
 import Home from "../router/Home/Home"
 import Layout from "../layouts/Layout/Layout"
 import ListComments from "../components/ListComments/ListComments"
@@ -8,6 +12,7 @@ import NewAuthor from "../components/NewAuthor/NewAuthor"
 import NewChapter from "./NewChapter/NewChapter"
 import NewComic from "./NewComic/NewComic"
 import NewCompany from "../components/NewCompany/NewCompany"
+import Pages from "./Pages/Pages"
 import React from "react"
 import SigninForm from "../components/SigninForm/SigninForm"
 import Signup from "../router/Signup/Signup"
@@ -50,6 +55,22 @@ const indexRouter = createBrowserRouter([
         element: <NewChapter />,
     },
     {
+        path: "/pages/:_id",
+        element: <Pages />,
+        children: [
+            {
+                path: "/pages/:_id/newcomment",
+                element: <ListComments />,
+                children: [
+                    {
+                        path: "/pages/:_id/newcomment/:comment_id",
+                        element: <ListComments />,
+                    },
+                ],
+            },
+        ],
+    },
+    {
         path: "/signup",
         element: <Signup />,
         children: [
@@ -62,6 +83,10 @@ const indexRouter = createBrowserRouter([
     {
         path: "/signin",
         element: <SigninForm />,
+    },
+    {
+        path: "/comic/:id",
+        element: <Comic />, 
     },
     {
         path: "/accountsetup",
@@ -85,6 +110,18 @@ const indexRouter = createBrowserRouter([
             },
         ],
     },
+    {
+        path: "/company/:id",
+        element: <Company/>
+    },
+    {
+        path: "/comics",
+        element: <Comics />,
+    },
+    {
+        path: "authors/:id",
+        element: <Author/>
+    }
 ])
 
 export default indexRouter

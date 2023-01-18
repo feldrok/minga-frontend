@@ -1,27 +1,29 @@
 import "./AccountSetup.css"
 import 'react-toastify/dist/ReactToastify.css';
+
 import React, { useEffect } from "react";
 import { Slide, ToastContainer, toast } from "react-toastify"
+
 import { Outlet } from "react-router-dom"
 import { useSelector } from "react-redux";
 
 function AccountSetup() {
-  const companyStore = useSelector(state => state.company)
-  const createdCompanyNotif = () => toast.success(companyStore.message, {autoClose: 3000, theme: "colored"} )
-  const errorCompanyNotif = () => {
-    companyStore.company.response.map((i) => {
+  const authorStore = useSelector(state => state.author)
+  const createdAuthorNotif = () => toast.success(authorStore.message, {autoClose: 3000, theme: "colored"} )
+  const errorAuthorNotif = () => {
+    authorStore.author.response.map((i) => {
       return toast.error(i.message, {autoClose: 3000, theme: "colored"})
     })
     }
   useEffect(() => {
-    if (companyStore.company?.success === true) {
-      createdCompanyNotif()
+    if (authorStore.author?.success === true) {
+      createdAuthorNotif()
     }
-    if (companyStore.company?.success === false) {
-      errorCompanyNotif()
+    if (authorStore.author?.success === false) {
+      errorAuthorNotif()
     }
-    console.log(companyStore);
-  }, [companyStore])
+    console.log(authorStore);
+  }, [authorStore])
   return (
     <>
       <ToastContainer transition={Slide} />
