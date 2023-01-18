@@ -1,17 +1,15 @@
+import "./comicsCards.css"
+
+import { Link } from "react-router-dom"
 import React from "react"
 import { useSelector } from "react-redux"
-import "./comicsCards.css"
-import { Link } from "react-router-dom"
-
 
 const ComicsCardsCompany = ({ title, image, comicCategory, link }) => {
-
-    const comicStore = useSelector(store => store?.comics)
-    const storeCategory = useSelector(store => store.categories)
+    const comicStore = useSelector((store) => store?.comics)
+    const storeCategory = useSelector((store) => store.categories)
     const catStored = storeCategory.categories?.response
 
-
-    let categoryCard;
+    let categoryCard
 
     const renderCategoryInCard = () => {
         if (comicStore?.comics.length === 0) {
@@ -29,8 +27,8 @@ const ComicsCardsCompany = ({ title, image, comicCategory, link }) => {
 
     renderCategoryInCard()
 
-    let colorCategory;
-    let cardsCompany;
+    let colorCategory
+    let cardsCompany
 
     const classCategory = (cat) => {
         if (cat === "marvel") {

@@ -3,8 +3,8 @@ import "./listCategories.css"
 import React, { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 
-import categoryActions from "../../../store/categories/actions"
-import comicActions from "../../../store/comics/actions"
+import categoryActions from "../../store/categories/actions"
+import comicActions from "../../store/comics/actions"
 import { useParams } from "react-router"
 
 const { getCategories } = categoryActions
