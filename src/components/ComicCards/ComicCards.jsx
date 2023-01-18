@@ -73,7 +73,6 @@ function ComicCards() {
             }
         }
     }, [searchParams])
-    console.log(comicsStore)
 
     const setCategoryColor = (id) => {
         if (categoryStore.categories.response?.length === 0) {

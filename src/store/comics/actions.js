@@ -157,12 +157,16 @@ const get_comics_company = createAsyncThunk(
 const get_comics_from_cia = createAsyncThunk(
     "get_comics_from_cia",
     async ({ company_id, limit, category_id }) => {
+        if (limit === undefined) {
+            limit = 5
+        }
         try {
             let response = await axios.get(
                 `${API_URL}/comics/profile/company?company_id=${company_id}&limit=${limit}&category_id=${category_id}`
             )
             return {
                 response: { comics: response.data },
+                limit: limit,
                 message: "Comic/s Found",
             }
         } catch (error) {

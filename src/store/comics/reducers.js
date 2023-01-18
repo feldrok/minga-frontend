@@ -86,6 +86,8 @@ const comicReducer = createReducer(initialState, (builder) => {
             let newState = {
                 comic: state.comic,
                 comics: action.payload.response.comics,
+                limit: action.payload.limit,
+                storedComics: "companyComics",
                 message: action.payload.message,
             }
             return newState
@@ -102,6 +104,7 @@ const comicReducer = createReducer(initialState, (builder) => {
         })
         .addCase(get_comics_from_author.fulfilled, (state, action) => {
             let newState = {
+                comic: state.comic,
                 comics: action.payload.response.comics,
                 message: action.payload.message
             }
