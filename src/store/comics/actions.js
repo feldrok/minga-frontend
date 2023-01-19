@@ -17,7 +17,11 @@ const handleToken = () => {
 
 const createNewComic = createAsyncThunk("createNewComic", async (comic) => {
     try {
-        let response = await axios.post(`${API_URL}/comics`, comic, handleToken())
+        let response = await axios.post(
+            `${API_URL}/comics`,
+            comic,
+            handleToken()
+        )
         console.log(response)
         return {
             response: { comic: response.data },
@@ -34,7 +38,10 @@ const createNewComic = createAsyncThunk("createNewComic", async (comic) => {
 
 const getComic = createAsyncThunk("getComic", async (comic) => {
     try {
-        let response = await axios.get(`${API_URL}/comics/${comic}`, handleToken())
+        let response = await axios.get(
+            `${API_URL}/comics/${comic}`,
+            handleToken()
+        )
         return {
             response: { comic: response.data },
             message: "comic obtained",
@@ -208,6 +215,35 @@ const get_comics_from_author = createAsyncThunk(
     }
 )
 
+const getFavouriteComics = createAsyncThunk(
+    "getFavouriteComics",
+    async ({ user_id, limit, category_id }) => {
+        if (limit === undefined) {
+            limit = 5
+        }
+        if (category_id === undefined) {
+            category_id = ""
+        }
+        try {
+            let response = await axios.get(
+                `${API_URL}/reactions/favourites/${user_id}?limit=${limit}&category_id=${category_id}`,
+                handleToken()
+            )
+            return {
+                response: { comics: response.data },
+                limit: limit,
+                message: "Comics obtained",
+            }
+        } catch (error) {
+            return {
+                response: { comics: error.response.data },
+                limit: limit,
+                message: "Error obtaining comics",
+            }
+        }
+    }
+)
+
 const comicActions = {
     createNewComic,
     getComic,
@@ -218,6 +254,7 @@ const comicActions = {
     get_comics_company,
     get_comics_from_cia,
     get_comics_from_author,
+    getFavouriteComics,
 }
 
 export default comicActions

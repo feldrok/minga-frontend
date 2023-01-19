@@ -1,15 +1,14 @@
 import React, { useEffect } from "react"
-
-import ComicCards from "../../components/ComicCards/ComicCards"
-import ComicsHeader from "../../components/ComicsHeader/ComicsHeader"
-import ListComics from "../../components/ListComics/ListComics"
-import ListContainer from "../../components/ListContainer/ListContainer"
-import Nav from "../../layouts/Nav/Nav"
-import SearchInput from "../../components/SearchInput/SearchInput"
-import styles from "./Comics.module.css"
+import styles from "./Favourites.module.css"
 import { useNavigate } from "react-router"
+import Nav from "../../layouts/Nav/Nav"
+import ComicsHeader from "../../components/ComicsHeader/ComicsHeader"
+import SearchInput from "../../components/SearchInput/SearchInput"
+import ListContainer from "../../components/ListContainer/ListContainer"
+import ListComics from "../../components/ListComics/ListComics"
+import ComicCards from "../../components/ComicCards/ComicCards"
 
-function Comics() {
+function Favourites() {
     const navigate = useNavigate()
     useEffect(() => {
         let token = localStorage.getItem("token")
@@ -20,7 +19,7 @@ function Comics() {
     return (
         <div className={styles.container}>
             <Nav />
-            <ComicsHeader header={"Comics"}>
+            <ComicsHeader header={"Favourites"}>
                 <SearchInput />
             </ComicsHeader>
             <ListContainer>
@@ -32,4 +31,4 @@ function Comics() {
     )
 }
 
-export default Comics
+export default Favourites

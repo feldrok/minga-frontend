@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 
 import userActions from "../../store/user/actions"
+import { decodeToken } from "react-jwt"
 
 const { signInToken } = userActions
 const routes = [
@@ -23,6 +24,10 @@ const routes = [
     {
         path: "/mycomics",
         name: "My Comics",
+    },
+    {
+        path: `/favourites/${decodeToken(localStorage.getItem("token"))?.id}`,
+        name: "Favourites",
     },
 ]
 

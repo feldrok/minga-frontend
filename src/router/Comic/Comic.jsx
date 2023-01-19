@@ -9,11 +9,17 @@ import Reactions from "../../components/Reactions/Reactions"
 import chapterActions from "../../store/chapters/actions"
 import comicActions from "../../store/comics/actions"
 import styles from "./Comic.module.css"
+import FavouriteReaction from "../../components/FavouriteReaction/FavouriteReaction"
+import reactionActions from "../../store/reactions/actions"
+import { decodeToken } from "react-jwt"
 
 const { getChapters } = chapterActions
 const { getComic } = comicActions
+const { getReactions } = reactionActions
 
 export default function Comic() {
+    const [chapter, setChapter] = useState(false)
+    const storeReactions = useSelector((store) => store.reactions)
     const chapterStore = useSelector((store) => store.chapters)
     const comicStore = useSelector((store) => store.comics)
     const dispatch = useDispatch()
@@ -29,9 +35,14 @@ export default function Comic() {
         if (id !== comicStore?.comic?.response?._id) {
             dispatch(getComic(id))
         }
+        dispatch(
+            getReactions({
+                comic_id: id,
+                user_id: decodeToken(localStorage.getItem("token"))?.id,
+            })
+        )
     }, [])
 
-    const [chapter, setChapter] = useState(false)
     const showChapter = () => {
         setChapter(true)
         const limit = chapterStore.chapters?.response?.length
@@ -56,9 +67,12 @@ export default function Comic() {
                             alt={comicStore.comic?.response?.photo}
                         />
                     </div>
-                    <p className={styles.author}>
-                        By: {comicStore.comic?.response?.author_id.name}
-                    </p>
+                    <div className={styles.imageFooter}>
+                        <p className={styles.author}>
+                            By: {comicStore.comic?.response?.author_id.name}
+                        </p>
+                        <FavouriteReaction />
+                    </div>
                 </div>
                 <div className={styles.infoContainer}>
                     <div className={styles.infoContainerTop}>

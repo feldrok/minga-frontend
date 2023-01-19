@@ -7,7 +7,12 @@ import ExploreCard from "../ExploreCard/ExploreCard"
 import comicActions from "../../store/comics/actions"
 import styles from "./ListComics.module.css"
 
-const { getComics, get_comics_company, get_comics_from_cia } = comicActions
+const {
+    getComics,
+    get_comics_company,
+    get_comics_from_cia,
+    getFavouriteComics,
+} = comicActions
 
 const exploreCategories = [
     {
@@ -43,6 +48,13 @@ function ListComics({ children }) {
         } else if (location.pathname.includes("/company")) {
             dispatch(
                 get_comics_company({ company_id: params.id, limit: limit + 3 })
+            )
+        } else if (location.pathname.includes("/favourites")) {
+            dispatch(
+                getFavouriteComics({
+                    user_id: params.user_id,
+                    limit: limit + 3,
+                })
             )
         }
     }
@@ -105,7 +117,6 @@ function ListComics({ children }) {
         }
     }
 
-    console.log(comicsStore)
     return (
         <div className={styles.container}>
             <div className={styles.topContainer}>

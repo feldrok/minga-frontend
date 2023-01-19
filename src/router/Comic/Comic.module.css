@@ -23,6 +23,12 @@
     width: 100%;
 }
 
+.imageFooter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .infoContainer {
     display: flex;
     flex-direction: column;

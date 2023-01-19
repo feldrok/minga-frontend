@@ -13,7 +13,7 @@ import comicActions from "../../store/comics/actions"
 import styles from "./CategoryFilters.module.css"
 
 const { getCategories, setActiveCategory } = categoryActions
-const { getComics, get_comics_company } = comicActions
+const { getComics, get_comics_company, getFavouriteComics } = comicActions
 
 function CategoryFilters() {
     const [active, setActive] = useState("")
@@ -32,7 +32,8 @@ function CategoryFilters() {
     useEffect(() => {
         if (
             (location.pathname.includes("/comics") ||
-                location.pathname.includes("/company")) &&
+                location.pathname.includes("/company") ||
+                location.pathname.includes("/favourites")) &&
             categoryStore.activeCategory === "all"
         ) {
             setActive(styles.active)
@@ -49,6 +50,8 @@ function CategoryFilters() {
             dispatch(getComics())
         } else if (location.pathname.includes("/company")) {
             dispatch(get_comics_company({ company_id: params.id }))
+        } else if (location.pathname.includes("/favourites")) {
+            dispatch(getFavouriteComics({ user_id: params.user_id }))
         }
     }
 
