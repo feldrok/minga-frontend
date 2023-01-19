@@ -5,6 +5,7 @@ import { useNavigate, useParams } from "react-router-dom"
 import Chapters from "../../components/Chapters/Chapters"
 import Nav from "../../layouts/Nav/Nav"
 import React from "react"
+import Reactions from "../../components/Reactions/Reactions"
 import chapterActions from "../../store/chapters/actions"
 import comicActions from "../../store/comics/actions"
 import styles from "./Comic.module.css"
@@ -72,12 +73,7 @@ export default function Comic() {
                         <p className={styles.company}>Company Name</p>
                     </div>
                 </div>
-                <div className={styles.container_emojis}>
-                    <p className={styles.emojis}>&#128077;</p>
-                    <p className={styles.emojis}> &#128078;</p>
-                    <p className={styles.emojis}>&#128558;</p>
-                    <p className={styles.emojis}>&#128525;</p>
-                </div>
+                <Reactions />
                 <div className={styles.buttons}>
                     <div className={styles.container_button}>
                         <button
