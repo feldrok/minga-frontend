@@ -1,14 +1,16 @@
+import { Link, useLocation } from "react-router-dom"
 import React, { useState } from "react"
 
-import { Link } from "react-router-dom"
+import EditDelete from "../EditDelete/EditDelete"
 import styles from "./ComicCard.module.css"
 import { useSelector } from "react-redux"
 
 function ComicCard({ title, image, link, comicCategory, color }) {
     const categoryStore = useSelector((state) => state.categories)
     const comicStore = useSelector((state) => state.comics)
-    const [isActive, setIsActive] = useState('')
-    const [currentImage, setCurrentImage] = useState('')
+    const [isActive, setIsActive] = useState("")
+    const [currentImage, setCurrentImage] = useState("")
+    const location = useLocation()
 
     const renderCategoryType = () => {
         if (comicStore.comics.response?.length === 0) {
@@ -44,7 +46,7 @@ function ComicCard({ title, image, link, comicCategory, color }) {
 
     let timer = 0
     const TIMEOUT = 1000
-    
+
     const handleMouseEnter = (e) => {
         timer = setTimeout(() => {
             setCurrentImage(image)
@@ -53,7 +55,7 @@ function ComicCard({ title, image, link, comicCategory, color }) {
     }
 
     const handleMouseLeave = (e) => {
-        setIsActive('')
+        setIsActive("")
         clearTimeout(timer)
     }
 
@@ -63,9 +65,20 @@ function ComicCard({ title, image, link, comicCategory, color }) {
                 <div className={`${styles.textContainer} ${color} `}>
                     <h3>{title}</h3>
                     {renderCategoryType()}
+                    {location.pathname.includes("/company") ? (
+                        <EditDelete />
+                    ) : null}
                 </div>
-                <div className={styles.imageContainer} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-                    <img className={styles.imageImg} src={image} alt="Comic cover" />
+                <div
+                    className={styles.imageContainer}
+                    onMouseEnter={handleMouseEnter}
+                    onMouseLeave={handleMouseLeave}
+                >
+                    <img
+                        className={styles.imageImg}
+                        src={image}
+                        alt="Comic cover"
+                    />
                     <div className={`${styles.hoverImage} ${isActive}`}>
                         <img src={currentImage} alt="" />
                     </div>

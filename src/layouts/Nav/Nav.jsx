@@ -1,8 +1,12 @@
 import "./Nav.css"
 
-import { Link, NavLink } from "react-router-dom"
-import React, { useState } from "react"
+import { Link, NavLink, useNavigate } from "react-router-dom"
+import React, { useEffect, useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
 
+import userActions from "../../store/user/actions"
+
+const { signInToken } = userActions
 const routes = [
     {
         path: "/",
@@ -23,11 +27,32 @@ const routes = [
 ]
 
 function Nav() {
+    const userStore = useSelector((state) => state.user)
     const [navigation, setNavigation] = useState(false)
     const [navBar, setNavBar] = useState(false)
+    const [isLogged, setIsLogged] = useState(false)
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        let token = localStorage.getItem("token")
+        if (token || token === undefined) {
+            setIsLogged(true)
+        } else {
+            setIsLogged(false)
+        }
+        if (userStore.user?.length === 0) {
+            dispatch(signInToken())
+        }
+    }, [])
 
     const toggleNav = () => {
         setNavigation(!navigation)
+    }
+
+    const handleLogout = () => {
+        localStorage.removeItem("token")
+        navigate(0)
     }
 
     const changeBackground = () => {
@@ -57,14 +82,23 @@ function Nav() {
                         </NavLink>
                     ))}
                 </div>
-                <div className="nav-item log-button">
-                    <Link className="login-btn" to={"/signin"}>
-                        Log in
-                    </Link>
-                    <Link className="login-btn" to={"/signup"}>
-                        Sign up
-                    </Link>
-                </div>
+                {isLogged ? (
+                    <div className="nav-item logout-button">
+                        <button className="login-btn" onClick={handleLogout}>
+                            Log out
+                        </button>
+                    </div>
+                ) : (
+                    <div className="nav-item log-button">
+                        <Link className="login-btn" to={"/signin"}>
+                            Log in
+                        </Link>
+                        <Link className="login-btn" to={"/signup"}>
+                            Sign up
+                        </Link>
+                    </div>
+                )}
+
                 <div onClick={toggleNav} className="nav-item menu-button">
                     <svg
                         className={"menu-icon"}
@@ -96,14 +130,21 @@ function Nav() {
             <div className={`mobile-nav ${navigation ? "show-menu" : ""} `}>
                 <div className="profile-menu">
                     <div className="profile-container">
-                        <img
-                            className="profile-picture-mobile-nav"
-                            src="/userpic.png"
-                            alt="logo"
-                        />
+                        {userStore.user.length === 0 ? null : (
+                            <img
+                                className="profile-picture-mobile-nav"
+                                src={userStore.user?.response?.user?.photo}
+                                alt="logo"
+                            />
+                        )}
+
                         <div>
                             <p className="profile-name">User name</p>
-                            <p className="profile-email">random@email.com</p>
+                            <p className="profile-email">
+                                {userStore?.user?.length === 0
+                                    ? null
+                                    : userStore.user?.response?.user?.mail}
+                            </p>
                         </div>
                     </div>
 
@@ -139,6 +180,35 @@ function Nav() {
                                 </NavLink>
                             </li>
                         ))}
+                    </ul>
+                </div>
+                <div className="mobile-nav-items">
+                    <ul className="mobile-nav-links">
+                        {isLogged ? (
+                            <li>
+                                <button
+                                    className="mobile-nav-link"
+                                    onClick={handleLogout}
+                                >
+                                    Log out
+                                </button>
+                            </li>
+                        ) : (
+                            <>
+                                <Link
+                                    className="mobile-nav-link"
+                                    to={"/signin"}
+                                >
+                                    Log in
+                                </Link>
+                                <Link
+                                    className="mobile-nav-link"
+                                    to={"/signup"}
+                                >
+                                    Sign up
+                                </Link>
+                            </>
+                        )}
                     </ul>
                 </div>
             </div>

@@ -1,11 +1,26 @@
 import axios from "axios"
 import { createAsyncThunk } from "@reduxjs/toolkit"
 
+const API_URL = process.env.REACT_APP_API_URL
+
+const handleToken = () => {
+    const BEARER_TOKEN = localStorage.getItem("token")
+
+    let config = {
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${BEARER_TOKEN}`,
+        },
+    }
+    return config
+}
+
 const newChapter = createAsyncThunk("newChapter", async (chapter) => {
     try {
         const response = await axios.post(
-            "http://localhost:8000/api/chapters",
-            chapter
+            `${API_URL}/chapters`,
+            chapter,
+            handleToken()
         )
         return {
             response: { chapter: response.data },
@@ -19,13 +34,18 @@ const newChapter = createAsyncThunk("newChapter", async (chapter) => {
     }
 })
 
-const getChapters = createAsyncThunk("getChapters", async ({ id, pages }) => {
+const getChapters = createAsyncThunk("getChapters", async ({ id, limit }) => {
+    if (limit === undefined) {
+        limit = 5
+    }
     try {
         const response = await axios.get(
-            `http://localhost:8000/api/chapters?comic_id=${id}&page=${pages}`
+            `${API_URL}/chapters?comic_id=${id}&limit=${limit}`,
+            handleToken()
         )
         return {
             response: { chapter: response.data },
+            limit: limit,
             message: "Chapter obtained",
         }
     } catch (error) {
@@ -38,9 +58,7 @@ const getChapters = createAsyncThunk("getChapters", async ({ id, pages }) => {
 
 const getChapterDetails = createAsyncThunk("getChapterDetails", async (_id) => {
     try {
-        const response = await axios.get(
-            `http://localhost:8000/api/chapters/${_id}`
-        )
+        const response = await axios.get(`${API_URL}/chapters/${_id}`, handleToken())
         return {
             response: { chapter: response.data },
             message: "Chapter successfully obtained!",

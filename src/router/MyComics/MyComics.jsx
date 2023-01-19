@@ -1,9 +1,18 @@
 import "./MyComics.css"
-import { Link } from "react-router-dom"
-import Nav from "../../layouts/Nav/Nav"
-import React from "react"
 
-function Comics() {
+import { Link, useNavigate } from "react-router-dom"
+import React, { useEffect } from "react"
+
+import Nav from "../../layouts/Nav/Nav"
+
+function MyComics() {
+    const navigate = useNavigate()
+    useEffect(() => {
+        let token = localStorage.getItem("token")
+        if (!token || token === undefined) {
+            navigate("/")
+        }
+    })
     return (
         <>
             <Nav />
@@ -23,4 +32,4 @@ function Comics() {
     )
 }
 
-export default Comics
+export default MyComics

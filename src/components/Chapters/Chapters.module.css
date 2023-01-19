@@ -1,36 +1,36 @@
 .next {
-    padding: 0.9em 2.5em;
+    padding: 1em 2.5em;
     margin: 1rem;
-    border-radius: 1rem;
+    border-radius: 2rem;
     color: white;
-    background-color: #4338ca; 
+    background-color: #4338ca;
     letter-spacing: 0.1rem;
     border: none;
     cursor: pointer;
 }
 
 .prev {
-    padding: 0.9em 2.5em;
-    margin: 1rem;
-    border-radius: 1rem;
+    padding: 1em 2.5em;
+    margin: 2rem;
+    border-radius: 2rem;
     color: white;
-    background-color: #4338ca; 
+    background-color: #4338ca;
     letter-spacing: 0.1rem;
     border: none;
     cursor: pointer;
 }
 
-.prev:hover{
-    background-color: #12039a;
+.prev:hover {
+    background-color: #847ce2;
     transition: all 0.3s;
 }
 
-.next:hover{
-    background-color: #12039a;
+.next:hover {
+    background-color: #847ce2;
     transition: all 0.3s;
-} 
+}
 
-.button_next{
+.button_next {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -38,6 +38,9 @@
 
 .mensaje {
     text-align: center;
-    height: 20vh;
+    padding: 2em;
 }
 
+.noChapters {
+    padding: 2em;
+}

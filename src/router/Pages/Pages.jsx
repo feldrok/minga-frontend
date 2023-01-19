@@ -18,21 +18,25 @@ function Pages() {
     const location = useLocation()
     const navigate = useNavigate()
     const { _id } = useParams()
-    console.log(_id)
+
     useEffect(() => {
+        let token = localStorage.getItem("token")
+        if (!token || token === undefined) {
+            navigate("/")
+        }
         const currentPage = localStorage.getItem("currentPage")
         if (currentPage !== null) {
             setCurrent(parseInt(currentPage))
         }
-    }, [])
-    useEffect(() => {
         dispatch(getChapterDetails(_id))
     }, [])
+
     useEffect(() => {
         const url = location.pathname.split("/")
         const id = url[url.length - 1]
         dispatch(getChapterDetails(_id))
     }, [location])
+
     console.log(chapterStore)
     const getPagesImages = () => {
         if (chapterStore.chapter?.length === 0) {
