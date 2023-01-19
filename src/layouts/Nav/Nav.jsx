@@ -46,7 +46,6 @@ function Nav() {
         }
     }, [])
 
-    console.log(userStore)
     const toggleNav = () => {
         setNavigation(!navigation)
     }
