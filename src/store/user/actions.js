@@ -31,8 +31,25 @@ const signIn = createAsyncThunk("signIn", async (user) => {
     }
 })
 
+const signInToken = createAsyncThunk("signInToken", async (user) => {
+    try {
+        let response = await axios.post(`${API_URL}/auth/token`, user, handleToken())
+        return {
+            response: { user: response.data },
+            message: "User is authenticated",
+        }
+    } catch (error) {
+        console.log(error)
+        return {
+            response: { user: error.response.data },
+            message: "User is not authenticated",
+        }
+    }
+})
+
 const userActions = {
-    signIn
+    signIn,
+    signInToken
 }
 
 export default userActions
