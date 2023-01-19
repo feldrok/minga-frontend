@@ -28,16 +28,16 @@ const addReaction = createAsyncThunk("addReaction", async (reaction) => {
         }
     } catch (error) {
         return {
-            response: { comic: error.response.data },
+            response: { reaction: error.response.data },
             message: "Error creating comic",
         }
     }
 })
 
-const getReactions = createAsyncThunk("getReactions", async (comic) => {
+const getReactions = createAsyncThunk("getReactions", async ({ comic_id, user_id}) => {
     try {
         const response = await axios.get(
-            `${API_URL}/reactions/${comic}`,
+            `${API_URL}/reactions/?comic_id=${comic_id}&user_id=${user_id}`,
             handleToken()
         )
         return {
@@ -47,7 +47,7 @@ const getReactions = createAsyncThunk("getReactions", async (comic) => {
     } catch (error) {
         return {
             response: { reactions: error.response.data },
-            message: "Error obtained reactions",
+            message: "Error obtaining reactions",
         }
     }
 })

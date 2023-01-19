@@ -6,8 +6,6 @@ import { useSelector } from "react-redux"
 const ChapterCard = ({ title, chapterId, order }) => {
     const comicStore = useSelector((store) => store.comics)
 
-    console.log(comicStore)
-
     return (
         <div className={styles.container}>
             <div className={styles.container_card}>

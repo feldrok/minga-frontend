@@ -5,6 +5,7 @@ const { addReaction, getReactions } = reactionActions
 
 const initialState = {
     reactions: [],
+    reaction: [],
     message: "",
 }
 
@@ -12,7 +13,8 @@ const reactionReducer = createReducer(initialState, (builder) => {
     builder
         .addCase(addReaction.fulfilled, (state, action) => {
             let newState = {
-                reactions: action.payload.response.reaction,
+                reactions: state.reactions,
+                reaction: action.payload.response.reaction,
                 message: action.payload.message,
             }
             return newState
@@ -26,6 +28,7 @@ const reactionReducer = createReducer(initialState, (builder) => {
         .addCase(getReactions.fulfilled, (state, action) => {
             let newState = {
                 reactions: action.payload.response.reactions,
+                reaction: state.reaction,
                 message: action.payload.message,
             }
             return newState
