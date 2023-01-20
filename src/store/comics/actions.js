@@ -217,16 +217,19 @@ const get_comics_from_author = createAsyncThunk(
 
 const getFavouriteComics = createAsyncThunk(
     "getFavouriteComics",
-    async ({ user_id, limit, category_id }) => {
+    async ({ user_id, limit, category_id, order }) => {
         if (limit === undefined) {
             limit = 5
         }
         if (category_id === undefined) {
             category_id = ""
         }
+        if (order === undefined) {
+            order = ""
+        }
         try {
             let response = await axios.get(
-                `${API_URL}/reactions/favourites/${user_id}?limit=${limit}&category_id=${category_id}`,
+                `${API_URL}/reactions/favourites/${user_id}?category_id=${category_id}&limit=${limit}&order=${order}`,
                 handleToken()
             )
             return {

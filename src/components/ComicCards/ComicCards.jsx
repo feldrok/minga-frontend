@@ -113,7 +113,6 @@ function ComicCards() {
             dispatch(
                 getFavouriteComics({
                     user_id: params.user_id,
-                    limit: "",
                 })
             )
         }

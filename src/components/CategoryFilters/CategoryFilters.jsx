@@ -11,6 +11,7 @@ import CategoryFilter from "../CategoryFilter/CategoryFilter"
 import categoryActions from "../../store/categories/actions"
 import comicActions from "../../store/comics/actions"
 import styles from "./CategoryFilters.module.css"
+import SortButton from "../SortButton/SortButton"
 
 const { getCategories, setActiveCategory } = categoryActions
 const { getComics, get_comics_company, getFavouriteComics } = comicActions
@@ -78,6 +79,11 @@ function CategoryFilters() {
                     value={category._id}
                 />
             ))}
+            {location.pathname.includes("/favourites") ? (
+                <div className={styles.topContainer}>
+                    <SortButton />
+                </div>
+            ) : null}
         </div>
     )
 }

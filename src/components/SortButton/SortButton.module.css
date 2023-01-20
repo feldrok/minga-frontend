@@ -1,0 +1,26 @@
+.button {
+    background-color: transparent;
+    border: none;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    padding: 0.5em;
+    transition: all 0.2s ease;
+}
+
+.button:hover {
+    transform: scale(1.2);
+}
+
+.button:focus {
+    outline: none;
+}
+
+.icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    stroke: #4338ca;
+}

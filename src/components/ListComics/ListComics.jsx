@@ -119,19 +119,21 @@ function ListComics({ children }) {
 
     return (
         <div className={styles.container}>
-            <div className={styles.topContainer}>
-                <h2>Explore</h2>
-            </div>
             {location.pathname.includes("/comics") ? (
-                <div className={styles.exploreCardsContainer}>
-                    {exploreCategories.map((category) => (
-                        <ExploreCard
-                            key={category.id}
-                            title={category.title}
-                            image={category.image}
-                        />
-                    ))}
-                </div>
+                <>
+                    <div className={styles.topContainer}>
+                        <h2>Explore</h2>
+                    </div>
+                    <div className={styles.exploreCardsContainer}>
+                        {exploreCategories.map((category) => (
+                            <ExploreCard
+                                key={category.id}
+                                title={category.title}
+                                image={category.image}
+                            />
+                        ))}
+                    </div>
+                </>
             ) : null}
 
             <div className={styles.filtersContainer}>
