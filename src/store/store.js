@@ -7,6 +7,7 @@ import companyReducer from "./companies/reducers"
 import { configureStore } from "@reduxjs/toolkit"
 import reactionReducer from "./reactions/reducers"
 import userReducer from "./user/reducers"
+import lastReadReducer from "./lastreads/reducers"
 
 const store = configureStore({
     reducer: {
@@ -18,6 +19,7 @@ const store = configureStore({
         categories: categoryReducer,
         user: userReducer,
         reactions: reactionReducer,
+        lastRead: lastReadReducer,
     },
 })
 

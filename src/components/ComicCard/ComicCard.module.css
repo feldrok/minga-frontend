@@ -24,6 +24,32 @@
     width: 100%;
 }
 
+.buttonsWrapper {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.readButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.8em 0.8em;
+    border: none;
+    border-radius: 20rem;
+    font-weight: 600;
+    background-color: #d1fbf0;
+    color: #00ba88;
+    cursor: pointer;
+    transition: 0.2s;
+    font-size: 0.8rem;
+    text-decoration: none;
+}
+
+.readButton:hover {
+    background-color: #00ba88;
+    color: white;
+}
+
 .favourite {
     display: flex;
     justify-content: center;

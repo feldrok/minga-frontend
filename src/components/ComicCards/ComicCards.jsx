@@ -42,10 +42,10 @@ function ComicCards() {
                 )
             } else if (location.pathname.includes("/favourite")) {
                 dispatch(
-                    getComicsByTitleAndCategory({
+                    getFavouriteComics({
                         title: currentParams.title,
                         category_id: currentParams.category_id,
-                        user_id: params.user_id,
+                        limit: "",
                     })
                 )
             }
@@ -55,7 +55,6 @@ function ComicCards() {
             } else if (location.pathname.includes("/company")) {
                 let obj = {
                     company_id: params.id,
-                    limit: 5,
                     category_id: currentParams.category_id,
                 }
                 dispatch(get_comics_from_cia(obj))
@@ -64,6 +63,7 @@ function ComicCards() {
                     getFavouriteComics({
                         user_id: params.user_id,
                         category_id: currentParams.category_id,
+                        limit: "",
                     })
                 )
             }
@@ -79,6 +79,7 @@ function ComicCards() {
                     dispatch(
                         getFavouriteComics({
                             user_id: params.user_id,
+                            limit: 4,
                         })
                     )
                 }
@@ -100,7 +101,7 @@ function ComicCards() {
                     dispatch(
                         getFavouriteComics({
                             user_id: params.user_id,
-                            limit: 5,
+                            limit: 4,
                         })
                     )
                 }

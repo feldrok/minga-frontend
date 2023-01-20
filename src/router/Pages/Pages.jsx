@@ -6,17 +6,20 @@ import { useLocation, useNavigate, useParams } from "react-router"
 import Nav from "../../layouts/Nav/Nav"
 import chapterActions from "../../store/chapters/actions"
 import styles from "./Pages.module.css"
+import lastReadActions from "../../store/lastreads/actions"
+import { decodeToken } from "react-jwt"
 
-const { getChapterDetails, getChapters } = chapterActions
-
-const isMobile = () => window.innerWidth < 767
+const { getLastRead, getLastReads, createLastRead, updateLastRead } =
+    lastReadActions
+const { getChapterDetails } = chapterActions
 
 function Pages() {
     const [current, setCurrent] = useState(0)
     const chapterStore = useSelector((state) => state.chapters)
+    const lastReadStore = useSelector((state) => state.lastRead)
     const dispatch = useDispatch()
-    const location = useLocation()
     const navigate = useNavigate()
+    const location = useLocation()
     const { _id } = useParams()
 
     useEffect(() => {
@@ -24,20 +27,42 @@ function Pages() {
         if (!token || token === undefined) {
             navigate("/")
         }
-        const currentPage = localStorage.getItem("currentPage")
-        if (currentPage !== null) {
-            setCurrent(parseInt(currentPage))
+
+        try {
+            if (
+                chapterStore.chapter?.length === 0 ||
+                chapterStore.chapter.response._id !== _id
+            ) {
+                dispatch(getChapterDetails(_id))
+            }
+            if (lastReadStore.lastReads?.length === 0) {
+                dispatch(getLastReads())
+            }
+            if (lastReadStore.lastRead?.length !== 0) {
+                setCurrent(lastReadStore.lastRead?.page)
+            }
+
+            console.log(lastReadStore)
+
+            if (lastReadStore.lastRead.response?.length === 0) {
+                dispatch(
+                    createLastRead({
+                        user_id: decodeToken(token).id,
+                        chapter_id: _id,
+                        comic_id: chapterStore.chapter.response?.comic_id,
+                        page: 0,
+                    })
+                )
+            }
+        } catch (error) {
+            console.log(error)
         }
-        dispatch(getChapterDetails(_id))
-    }, [])
+    }, [lastReadStore, _id, location])
 
     useEffect(() => {
-        const url = location.pathname.split("/")
-        const id = url[url.length - 1]
-        dispatch(getChapterDetails(_id))
-    }, [location])
+        dispatch(getLastRead(_id))
+    }, [current])
 
-    console.log(chapterStore)
     const getPagesImages = () => {
         if (chapterStore.chapter?.length === 0) {
             return <p>Loading...</p>
@@ -52,19 +77,32 @@ function Pages() {
             )
         }
     }
+
     const next = () => {
-        const nextChapter = chapterStore.chapters.response.find(
+        const nextChapter = chapterStore.chapters?.response?.find(
             (chapter) =>
                 chapterStore.chapter.response.order + 1 === chapter.order
         )
         if (current !== chapterStore.chapter.response.pages?.length - 1) {
             setCurrent(current + 1)
-            localStorage.setItem("currentPage", current + 1)
+            dispatch(
+                updateLastRead({
+                    chapter_id: _id,
+                    comic_id: chapterStore.chapter.response?.comic_id,
+                    user_id: decodeToken(localStorage.getItem("token")).id,
+                    page: current + 1,
+                })
+            )
         } else {
-            console.log(nextChapter)
             navigate(`/pages/${nextChapter._id}`, { replace: true })
-            setCurrent(0)
-            localStorage.setItem("currentPage", 0)
+            dispatch(
+                updateLastRead({
+                    chapter_id: nextChapter._id,
+                    comic_id: chapterStore.chapter.response?.comic_id,
+                    user_id: decodeToken(localStorage.getItem("token")).id,
+                    page: current + 1,
+                })
+            )
         }
     }
     const prev = () => {
@@ -73,17 +111,29 @@ function Pages() {
                 chapterStore.chapter?.response?.order - 1 === chapter.order
         )
         if (current > 0) {
-            setCurrent(current - 1)
-            localStorage.setItem("currentPage", current - 1)
+            dispatch(
+                updateLastRead({
+                    chapter_id: _id,
+                    comic_id: chapterStore.chapter.response?.comic_id,
+                    user_id: decodeToken(localStorage.getItem("token")).id,
+                    page: current - 1,
+                })
+            )
         } else if (chapterStore.chapter?.response?.order === 1) {
             navigate(`/comic/${chapterStore.chapter?.response?.comic_id}`, {
                 replace: true,
             })
         } else if (current === 0) {
-            console.log(prevChapter)
             navigate(`/pages/${prevChapter._id}`, { replace: true })
             setCurrent(prevChapter.pages.length - 1)
-            localStorage.setItem("currentPage", prevChapter.pages.length - 1)
+            dispatch(
+                updateLastRead({
+                    chapter_id: _id,
+                    comic_id: chapterStore.chapter.response?.comic_id,
+                    user_id: decodeToken(localStorage.getItem("token")).id,
+                    page: prevChapter.pages.length - 1,
+                })
+            )
         }
     }
     const getChapterTitle = () => {
@@ -94,6 +144,7 @@ function Pages() {
                 <div>
                     <h3>{`Chapter - ${chapterStore.chapter?.response?.order}`}</h3>
                     <h2>{chapterStore.chapter?.response?.title}</h2>
+                    <p>{`Page - ${current + 1}`}</p>
                 </div>
             )
         }

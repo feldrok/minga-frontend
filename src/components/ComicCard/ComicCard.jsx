@@ -12,6 +12,7 @@ const { addReaction } = reactionActions
 function ComicCard({ title, image, link, comicCategory, color }) {
     const categoryStore = useSelector((state) => state.categories)
     const comicStore = useSelector((state) => state.comics)
+    const lastReadStore = useSelector((state) => state.lastRead)
     const [isActive, setIsActive] = useState("")
     const [currentImage, setCurrentImage] = useState("")
     const location = useLocation()
@@ -74,6 +75,28 @@ function ComicCard({ title, image, link, comicCategory, color }) {
         clearTimeout(timer)
     }
 
+    const renderLastReadButton = () => {
+        if (lastReadStore.lastReads.response?.length === 0) {
+            return null
+        } else {
+            let lastRead = lastReadStore.lastReads.response?.findLast(
+                (lastRead) => lastRead.comic_id === link
+            )
+            if (lastRead) {
+                return (
+                    <Link
+                        to={`/pages/${lastRead.chapter_id}`}
+                        className={styles.readButton}
+                    >
+                        Read
+                    </Link>
+                )
+            } else {
+                return null
+            }
+        }
+    }
+
     return (
         <>
             <div className={styles.container}>
@@ -85,13 +108,16 @@ function ComicCard({ title, image, link, comicCategory, color }) {
                             <EditDelete />
                         ) : null}
                         {location.pathname.includes("/favourites") ? (
-                            <button
-                                onClick={handleClick}
-                                value={"favourite"}
-                                className={`${styles.favourite} ${styles.active}`}
-                            >
-                                Remove
-                            </button>
+                            <div className={styles.buttonsWrapper}>
+                                {renderLastReadButton()}
+                                <button
+                                    onClick={handleClick}
+                                    value={"favourite"}
+                                    className={`${styles.favourite} ${styles.active}`}
+                                >
+                                    Remove
+                                </button>
+                            </div>
                         ) : null}
                     </div>
                 </div>

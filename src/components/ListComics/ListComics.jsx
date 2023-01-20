@@ -53,7 +53,7 @@ function ListComics({ children }) {
             dispatch(
                 getFavouriteComics({
                     user_id: params.user_id,
-                    limit: limit + 3,
+                    limit: limit + 2,
                 })
             )
         }
@@ -71,6 +71,14 @@ function ListComics({ children }) {
                 category_id: currentParams.category_id,
             }
             dispatch(get_comics_from_cia(obj))
+        } else if (location.pathname.includes("/favourites")) {
+            dispatch(
+                getFavouriteComics({
+                    user_id: params.user_id,
+                    limit: limit + 2,
+                    category_id: currentParams.category_id,
+                })
+            )
         }
     }
 

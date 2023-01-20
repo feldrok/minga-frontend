@@ -219,7 +219,7 @@ const getFavouriteComics = createAsyncThunk(
     "getFavouriteComics",
     async ({ user_id, limit, category_id, order }) => {
         if (limit === undefined) {
-            limit = 5
+            limit = 4
         }
         if (category_id === undefined) {
             category_id = ""
