@@ -59,11 +59,11 @@ const indexRouter = createBrowserRouter([
         element: <Pages />,
         children: [
             {
-                path: "/pages/:_id/newcomment",
+                path: "/pages/:_id/comments",
                 element: <ListComments />,
                 children: [
                     {
-                        path: "/pages/:_id/newcomment/:comment_id",
+                        path: "/pages/:_id/comments/:commentable_id",
                         element: <ListComments />,
                     },
                 ],

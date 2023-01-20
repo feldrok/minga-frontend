@@ -5,6 +5,7 @@ const { addComment } = commentActions
 
 const initialState = {
   comments: [],
+  comment: [],
   message: "",
 }
 
@@ -12,7 +13,8 @@ const commentReducer = createReducer(initialState, (builder) => {
   builder
     .addCase(addComment.fulfilled, (state, action) => {
       let newState = {
-        comments: action.payload.response.comment,
+        comment: action.payload.response.comment,
+        comments: state.comments,
         message: action.payload.message
       }
       return newState

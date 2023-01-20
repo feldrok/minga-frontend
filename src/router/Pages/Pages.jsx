@@ -120,7 +120,7 @@ function Pages() {
                     <Link
                         className={styles.commentButton}
                         text={"New comment"}
-                        to={`/pages/${chapterStore.chapter.response?._id}/newcomment`}
+                        to={`/pages/${chapterStore.chapter.response?._id}/comments`}
                     >
                         <div className={styles.newCommentBox}>
                             <img
