@@ -15,6 +15,7 @@ const { getComic } = comicActions
 export default function Comic() {
     const chapterStore = useSelector((store) => store.chapters)
     const comicStore = useSelector((store) => store.comics)
+    console.log(comicStore)
     const dispatch = useDispatch()
     const navigate = useNavigate()
 

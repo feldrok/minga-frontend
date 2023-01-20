@@ -51,7 +51,7 @@ function NewComicForm() {
           className={value === "" ? "inpForm-select" : "inpForm-select selected"}
           id="categories"
           onChange={(e) => setValue(e.target)}
-        >.value
+        >
           <option className="default-select" value="">Insert category</option>
           <option value="Shonen">Comic Shonen</option>
           <option value="Sheinen">Comic Seinen</option>
