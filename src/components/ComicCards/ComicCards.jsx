@@ -119,6 +119,8 @@ function ComicCards() {
         }
     }, [reactionStore])
 
+    console.log(comicsStore)
+
     const setCategoryColor = (id) => {
         if (categoryStore.categories.response?.length === 0) {
             return <h4>No category found</h4>

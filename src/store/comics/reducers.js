@@ -20,6 +20,7 @@ const initialState = {
     storedComics: "",
     message: "",
     limit: 10,
+    order: "desc",
     search: "",
 }
 
@@ -117,6 +118,7 @@ const comicReducer = createReducer(initialState, (builder) => {
                 comics: action.payload.response.comics,
                 storedComics: "favouritesComics",
                 limit: action.payload.limit,
+                order: action.payload.order,
                 message: action.payload.message,
             }
             return newState

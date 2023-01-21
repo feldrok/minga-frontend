@@ -53,6 +53,7 @@ function ListComics({ children }) {
             dispatch(
                 getFavouriteComics({
                     user_id: params.user_id,
+                    order: comicsStore.order,
                     limit: limit + 2,
                 })
             )

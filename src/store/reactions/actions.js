@@ -34,10 +34,10 @@ const addReaction = createAsyncThunk("addReaction", async (reaction) => {
     }
 })
 
-const getReactions = createAsyncThunk("getReactions", async ({ comic_id, user_id}) => {
+const getReactions = createAsyncThunk("getReactions", async ({ comic_id, user_id, limit}) => {
     try {
         const response = await axios.get(
-            `${API_URL}/reactions/?comic_id=${comic_id}&user_id=${user_id}`,
+            `${API_URL}/reactions/?comic_id=${comic_id}&user_id=${user_id}&limit=${limit}`,
             handleToken()
         )
         return {

@@ -225,7 +225,7 @@ const getFavouriteComics = createAsyncThunk(
             category_id = ""
         }
         if (order === undefined) {
-            order = ""
+            order = "asc"
         }
         try {
             let response = await axios.get(
@@ -235,6 +235,7 @@ const getFavouriteComics = createAsyncThunk(
             return {
                 response: { comics: response.data },
                 limit: limit,
+                order: order,
                 message: "Comics obtained",
             }
         } catch (error) {

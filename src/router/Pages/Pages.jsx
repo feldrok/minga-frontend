@@ -42,8 +42,6 @@ function Pages() {
                 setCurrent(lastReadStore.lastRead?.page)
             }
 
-            console.log(lastReadStore)
-
             if (lastReadStore.lastRead.response?.length === 0) {
                 dispatch(
                     createLastRead({
@@ -84,7 +82,6 @@ function Pages() {
                 chapterStore.chapter.response.order + 1 === chapter.order
         )
         if (current !== chapterStore.chapter.response.pages?.length - 1) {
-            setCurrent(current + 1)
             dispatch(
                 updateLastRead({
                     chapter_id: _id,
