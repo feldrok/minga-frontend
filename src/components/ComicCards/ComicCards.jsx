@@ -6,14 +6,7 @@ import ComicCard from "../ComicCard/ComicCard"
 import comicActions from "../../store/comics/actions"
 import styles from "./ComicCards.module.css"
 
-const {
-    getComics,
-    getComicsByTitle,
-    getComicsByCategory,
-    getComicsByTitleAndCategory,
-    get_comics_company,
-    get_comics_from_cia,
-} = comicActions
+const { getComics, get_comics_company, get_comics_from_cia } = comicActions
 
 function ComicCards() {
     const comicsStore = useSelector((state) => state.comics)
@@ -32,14 +25,14 @@ function ComicCards() {
             location.search.includes("category_id")
         ) {
             dispatch(
-                getComicsByTitleAndCategory({
+                getComics({
                     title: currentParams.title,
                     category_id: currentParams.category_id,
                 })
             )
         } else if (location.search.includes("category_id")) {
             if (location.pathname.includes("/comics")) {
-                dispatch(getComicsByCategory(currentParams.category_id))
+                dispatch(getComics({ category_id: currentParams.category_id }))
             } else if (location.pathname.includes("/company")) {
                 let obj = {
                     company_id: params.id,
@@ -49,11 +42,11 @@ function ComicCards() {
                 dispatch(get_comics_from_cia(obj))
             }
         } else if (location.search.includes("title")) {
-            dispatch(getComicsByTitle(currentParams.title))
+            dispatch(getComics({ title: currentParams.title }))
         } else {
             if (comicsStore.comics?.length === 0) {
                 if (location.pathname.includes("/comics")) {
-                    dispatch(getComics())
+                    dispatch(getComics({ limit: 10 }))
                 } else if (location.pathname.includes("/company")) {
                     dispatch(get_comics_company({ company_id: params.id }))
                 }

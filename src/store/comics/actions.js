@@ -47,14 +47,19 @@ const getComic = createAsyncThunk("getComic", async (comic) => {
     }
 })
 
-const getComics = createAsyncThunk("getComics", async (limit) => {
+const getComics = createAsyncThunk("getComics", async ({ limit, title, category_id}) => {
     if (limit === undefined) {
         limit = 10
     }
-
+    if (title === undefined) {
+        title = ""
+    }
+    if (category_id === undefined) {
+        category_id = ""
+    }
     try {
         let response = await axios.get(
-            `${API_URL}/comics?limit=${limit}`,
+            `${API_URL}/comics?title=${title}&category_id=${category_id}&limit=${limit}`,
             handleToken()
         )
         return {
@@ -69,69 +74,6 @@ const getComics = createAsyncThunk("getComics", async (limit) => {
         }
     }
 })
-
-const getComicsByTitle = createAsyncThunk("getComicsByTitle", async (title) => {
-    try {
-        let response = await axios.get(
-            `${API_URL}/comics/?title=${title}`,
-            handleToken()
-        )
-        return {
-            response: { comics: response.data },
-            search: title,
-            message: "Comics obtained",
-        }
-    } catch (error) {
-        return {
-            response: { comics: error.response.data },
-            message: "Error obtaining comics",
-        }
-    }
-})
-
-const getComicsByCategory = createAsyncThunk(
-    "getComicsByCategory",
-    async (category) => {
-        try {
-            let response = await axios.get(
-                `${API_URL}/comics/?category_id=${category}`,
-                handleToken()
-            )
-            return {
-                response: { comics: response.data },
-                search: category,
-                message: "Comics obtained",
-            }
-        } catch (error) {
-            return {
-                response: { comics: error.response.data },
-                message: "Error obtaining comics",
-            }
-        }
-    }
-)
-
-const getComicsByTitleAndCategory = createAsyncThunk(
-    "getComicsByTitleAndCategory",
-    async (object) => {
-        try {
-            let response = await axios.get(
-                `${API_URL}/comics/?title=${object.title}&category_id=${object.category_id}`,
-                handleToken()
-            )
-            return {
-                response: { comics: response.data },
-                message: "Comics obtained",
-            }
-        } catch (error) {
-            console.log(error)
-            return {
-                response: { comics: error.response.data },
-                message: "Error obtaining comics",
-            }
-        }
-    }
-)
 
 const get_comics_company = createAsyncThunk(
     "get_comics_company",
@@ -212,9 +154,6 @@ const comicActions = {
     createNewComic,
     getComic,
     getComics,
-    getComicsByTitle,
-    getComicsByCategory,
-    getComicsByTitleAndCategory,
     get_comics_company,
     get_comics_from_cia,
     get_comics_from_author,

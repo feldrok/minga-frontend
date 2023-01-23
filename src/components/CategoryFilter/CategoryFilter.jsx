@@ -11,11 +11,7 @@ import categoryActions from "../../store/categories/actions"
 import comicActions from "../../store/comics/actions"
 import styles from "./CategoryFilter.module.css"
 
-const {
-    getComicsByCategory,
-    getComicsByTitleAndCategory,
-    get_comics_from_cia,
-} = comicActions
+const { getComics, get_comics_from_cia } = comicActions
 const { setActiveCategory } = categoryActions
 
 function CategoryFilter({ title, color, value }) {
@@ -50,7 +46,7 @@ function CategoryFilter({ title, color, value }) {
                 category_id: e.target.getAttribute("value"),
             })
             dispatch(
-                getComicsByTitleAndCategory({
+                getComics({
                     title: currentParams.title,
                     category_id: e.target.getAttribute("value"),
                 })
@@ -65,7 +61,9 @@ function CategoryFilter({ title, color, value }) {
                 }
                 dispatch(get_comics_from_cia(obj))
             } else if (location.pathname === `/comics`) {
-                dispatch(getComicsByCategory(e.target.getAttribute("value")))
+                dispatch(
+                    getComics({ category_id: e.target.getAttribute("value") })
+                )
             }
         }
     }
