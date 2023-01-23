@@ -56,6 +56,9 @@ const getChapters = createAsyncThunk("getChapters", async ({ id, limit }) => {
     }
 })
 
+
+
+
 const getChapterDetails = createAsyncThunk("getChapterDetails", async (_id) => {
     try {
         const response = await axios.get(`${API_URL}/chapters/${_id}`, handleToken())
@@ -70,6 +73,28 @@ const getChapterDetails = createAsyncThunk("getChapterDetails", async (_id) => {
         }
     }
 })
+
+//action para actualizar datos de un chapter
+
+/* 
+const editChapter = createAsyncThunk("getChapters", async ({ id }) => {
+    try {
+        const response = await axios.put(
+            `${API_URL}/chapters?${id}`, 
+            handleToken()
+        )
+        return {
+            response: { chapter: response.data },
+            message: "Chapter editado",
+        }
+    } catch (error) {
+        return {
+            response: { chapter: error.response.data },
+            message: "Error edit chapter",
+        }
+    }
+}) 
+ */
 
 const chapterActions = {
     newChapter,

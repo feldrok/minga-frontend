@@ -30,8 +30,9 @@ export default function Comic() {
             dispatch(getComic(id))
         }
     }, [])
-
+    
     const [chapter, setChapter] = useState(false)
+    
     const showChapter = () => {
         setChapter(true)
         const limit = chapterStore.chapters?.response?.length
@@ -90,9 +91,7 @@ export default function Comic() {
                             Description
                         </button>
                         <button
-                            className={`${styles.button_category} ${
-                                chapter ? styles.active : ""
-                            }  `}
+                            className={`${styles.button_category} ${chapter ? styles.active : ""}  `}
                             onClick={showChapter}
                         >
                             Chapter

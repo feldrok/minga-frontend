@@ -11,11 +11,11 @@ const { getChapters } = chapterActions
 export default function Chapters() {
     const chapterStore = useSelector((store) => store.chapters)
     const dispatch = useDispatch()
-    const { id } = useParams()
+    const { id } = useParams() 
 
     const handleLoad = () => {
         const limit = chapterStore.chapters?.response?.length
-        dispatch(getChapters({ id: id, limit: limit + 2 }))
+        dispatch(getChapters({ id: id, limit: limit + 2 })) 
     }
 
     console.log(chapterStore)

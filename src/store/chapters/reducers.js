@@ -32,7 +32,7 @@ const chapterReducer = createReducer(initialState, (builder) =>  {
             message: action.payload.message
         }
         return newState
-    })
+    }) 
     .addCase(getChapterDetails.rejected, (state, action) => {
         let newState = {
             message: "Error Loading Chapter"

@@ -70,6 +70,8 @@ const getComics = createAsyncThunk("getComics", async (limit) => {
     }
 })
 
+
+
 const getComicsByTitle = createAsyncThunk("getComicsByTitle", async (title) => {
     try {
         let response = await axios.get(
@@ -208,6 +210,8 @@ const get_comics_from_author = createAsyncThunk(
     }
 )
 
+
+
 const comicActions = {
     createNewComic,
     getComic,
@@ -218,6 +222,7 @@ const comicActions = {
     get_comics_company,
     get_comics_from_cia,
     get_comics_from_author,
+    
 }
 
 export default comicActions

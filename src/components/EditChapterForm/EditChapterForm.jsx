@@ -1,29 +1,45 @@
+import InputChapter from "../InputChapter/InputChapter";
 import InputComic from "../InputComic/InputComic";
+import InputData from "../InputData/InputData";
 import React from "react";
+import RenderInfoChapter from "../RenderInfoChapter/RenderInfoChapter";
+import styles from "./EditChapterForm.module.css";
+import { useRef } from "react";
+
+const editChapter = (e) => {
+  e.preventDefault();
+
+/*   const chapter = {
+    comic_id: ,
+    title: ,
+    order: ,
+  }
+ */
+  
+ // dispatch(createNewComic(comic));
+}
 
 const EditChapterForm = () => {
-
   return (
-    <div className="divContainerForm">
-      <p>New Comic</p>
-      <form action="" className="formNewComic" /* onSubmit={createComic} */>
-        <InputComic />
-        <select name="categories" id="categories">
-          <option className="default-select" value="">
-            Select chapter
-          </option>
-          <option value="Shonen">Comic Shonen</option>
-        </select>
-        <select name="categories" id="categories">
-          <option className="default-select" value="">
-            Select data
-          </option>
-          <option value="Shonen">Comic Shonen</option>
-        </select>
-        <input type="text" placeholder="data to edit" className="inpForm" />
-        <input type="submit" value="Edit" className="button_create" />
-        <input type="submit" value="Delete" className="button_create" />
-      </form>
+    <div className={styles.container}>
+      <div className={styles.divContainerForm}>
+        <p>Edit Chapter</p>
+        <form action="" className={styles.formNewComic}  onSubmit={editChapter} > 
+          <InputComic />
+          <InputChapter />
+          <InputData />
+
+          <input type="submit" value="Edit" className={styles.button_edit} />
+          <input
+            type="submit"
+            value="Delete"
+            className={styles.button_delete}
+          />
+        </form>
+      </div>
+      <div className={styles.chapter}>
+        <RenderInfoChapter />
+      </div>
     </div>
   );
 };
