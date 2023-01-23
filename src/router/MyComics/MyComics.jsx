@@ -1,11 +1,13 @@
-import "./MyComics.css"
-
-import { Link, useNavigate } from "react-router-dom"
 import React, { useEffect } from "react"
 
+import ComicCards from "../../components/ComicCards/ComicCards"
+import CompanyHeader from "../../components/CompanyHeader/CompanyHeader"
+import ListComics from "../../components/ListComics/ListComics"
+import ListContainer from "../../components/ListContainer/ListContainer"
 import Nav from "../../layouts/Nav/Nav"
+import { useNavigate } from "react-router-dom"
 
-function MyComics() {
+const MyComics = () => {
     const navigate = useNavigate()
     useEffect(() => {
         let token = localStorage.getItem("token")
@@ -16,18 +18,12 @@ function MyComics() {
     return (
         <>
             <Nav />
-            <div className="container-my-comics">
-                <div className="container_header">
-                    <h1 className="my-comics-title">My comics</h1>
-                </div>
-                <div className="container-body">
-                    <div className="container-modal-my-comics">
-                        <Link to={"/newcomics"} className="link_new_comic">
-                            Add comic
-                        </Link>
-                    </div>
-                </div>
-            </div>
+            <CompanyHeader />
+            <ListContainer>
+                <ListComics>
+                    <ComicCards/>
+                </ListComics>
+            </ListContainer>
         </>
     )
 }

@@ -66,7 +66,12 @@ function ComicCard({ title, image, link, comicCategory, color }) {
                     <h3>{title}</h3>
                     {renderCategoryType()}
                     {location.pathname.includes("/company") ? (
-                        <EditDelete />
+                        <EditDelete
+                        link={link} />
+                    ) : null}
+                    {location.pathname.includes("/mycomics") ? (
+                        <EditDelete 
+                        link={link} />
                     ) : null}
                 </div>
                 <div
