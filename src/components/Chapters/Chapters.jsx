@@ -18,7 +18,6 @@ export default function Chapters() {
         dispatch(getChapters({ id: id, limit: limit + 2 }))
     }
 
-    console.log(chapterStore)
     return (
         <>
             {chapterStore.chapters.response?.length === 0 ? (
