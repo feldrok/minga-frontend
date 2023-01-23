@@ -16,7 +16,7 @@ const InputChapter = () => {
   const chaptersStore = useSelector((state) => state?.chapters);
   console.log(chaptersStore) 
 
-  const [idChapter, setIdChapter] = useState("")
+  const [idChapter, setIdChapter] = useState(null)
   console.log(idChapter) 
 
   const dispatch = useDispatch();
@@ -31,7 +31,7 @@ const InputChapter = () => {
     if (idComicStore) {
       dispatch(getChapters({ id: idComicStore }));
     }
-  }, [idComicStore]);
+  }, [idComicStore]); 
   
   useEffect(() => {
     dispatch(getIdChapter(idChapter));  
@@ -40,18 +40,17 @@ const InputChapter = () => {
   
   return (
     <>
-    
       <div className="">
         <select name="categories" onChange={getValueChapter} className= {styles.inpFormSelect}> 
-          <option>Select chapter</option>
-          {chaptersStore.chapters?.response?.map((chapter) => {
+          { <option>Select chapter</option> }
+          {  chaptersStore?.chapters?.response?.map((chapter) => {
             return (
               <option
                 className="default-select"
-                key={chapter.title}
-                value={chapter._id}
+                key={chapter?.title}
+                value={chapter?._id}
               >
-                {chapter.title}
+                {chapter?.title}
               </option>
             );
           })}

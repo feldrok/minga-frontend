@@ -76,11 +76,15 @@ const getChapterDetails = createAsyncThunk("getChapterDetails", async (_id) => {
 
 //action para actualizar datos de un chapter
 
-/* 
-const editChapter = createAsyncThunk("getChapters", async ({ id }) => {
+
+const editChapter = createAsyncThunk("getChapters", async (chapter) => {
+    console.log(chapter)
     try {
+        const body = {
+            [chapter.category] : chapter.data
+        } 
         const response = await axios.put(
-            `${API_URL}/chapters?${id}`, 
+            `${API_URL}/chapters/${chapter.id}`,  body, //ruta , / segundo es el body lo que mando... 
             handleToken()
         )
         return {
@@ -93,13 +97,13 @@ const editChapter = createAsyncThunk("getChapters", async ({ id }) => {
             message: "Error edit chapter",
         }
     }
-}) 
- */
+})
 
 const chapterActions = {
     newChapter,
     getChapterDetails,
     getChapters,
+    editChapter
 }
 
 export default chapterActions

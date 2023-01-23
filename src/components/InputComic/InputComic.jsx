@@ -36,7 +36,9 @@ const InputComic = () => {
   return (
     <>
       <div className="">
-        <select name="categories" onChange={getValueComic} className= {styles.inpFormSelect}>
+        <select name="categories" 
+        onChange={getValueComic} 
+        className= {styles.inpFormSelect}>
           <option>Select comic</option>
           {comicsStore.comics?.response?.map((comic) => {
             return (

@@ -12,7 +12,6 @@ const RenderInfoChapter = () => {
   console.log(chapterStore);
 
   const chaptersStore = useSelector((state) => state?.chapters?.chapter.response); 
-  console.log(chaptersStore)
 
   const dispatch = useDispatch();
   
@@ -29,8 +28,9 @@ const RenderInfoChapter = () => {
     <>
       <div className={styles.container_card} >
         <div className={styles.container_title}>
+          <p className=""> { chaptersStore?.title === undefined ? null : `Title: "${chaptersStore?.title}" `  }  </p>
           <p> { chaptersStore?.order === undefined ? `"Choose a chapter to see the details"` : `Order: ${chaptersStore?.order}`  }  </p>
-          <p className=""> { chaptersStore?.title === undefined ? null : `Title: ${chaptersStore?.title}`  }  </p>
+          <p> { chaptersStore?.pages === undefined ? null : `Pages: ${chaptersStore?.pages.length}`  }  </p>
         </div>
       </div>
     </>
