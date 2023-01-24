@@ -20,6 +20,12 @@
   margin: 0 0 0 1em;
 }
 
+.comment-user-data img {
+  width: 60px;
+  height: 60px;
+  border-radius: 5rem;
+}
+
 .comment-text {
   padding: 0 1em 1em 1em;
   font-size: 1.2rem;
@@ -63,12 +69,12 @@
 .comment-reply-button {
   display: flex;
   align-items: center;
+  text-align: center;
   font-size: 1.2rem;
   background-color: transparent;
   border: none;
   cursor: pointer;
   color: #0079FF;
-  padding-right: .5em;
   text-decoration: none;
 }
 
@@ -85,4 +91,9 @@
 .comment-counter-text {
   font-size: 1.2rem;
   font-weight: 600;
+}
+
+.reply-button {
+  width: 5em;
+  height: 2em;
 }

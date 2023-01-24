@@ -2,12 +2,14 @@ import "./NewComment.css"
 
 import React, { useRef, useState } from "react"
 
-import { addComment } from "../../store/comments/actions"
+import commentActions from "../../store/comments/actions"
 import { decodeToken } from "react-jwt"
 import { useDispatch } from "react-redux"
 import { useParams } from "react-router"
 
-function NewComment({ onAddComment }) {
+const {addComment, getComments} = commentActions
+
+function NewComment() {
   const [textLength, setTextLength] = useState(0)
   const comment = useRef(null)
   const dispatch = useDispatch()
@@ -24,8 +26,18 @@ function NewComment({ onAddComment }) {
       user_id: decodeToken(localStorage.getItem("token"))?.id,
       chapter_id: params._id,
     }
-    await dispatch(addComment(data))
-    onAddComment()
+    let data2 = {
+      text: comment.current.value,
+      user_id: decodeToken(localStorage.getItem("token"))?.id,
+      commentable_id: params.commentable_id
+    }
+    if (params.commentable_id !== undefined) {
+      dispatch(addComment(data2))
+
+    } else {
+      dispatch(addComment(data))
+
+    }
     comment.current.value = ""
     handleComment({ target: { value: "" } })
   }

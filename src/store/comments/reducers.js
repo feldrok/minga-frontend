@@ -1,6 +1,7 @@
-import {addComment, getComments} from "./actions"
-
+import commentActions from "./actions"
 import { createReducer } from "@reduxjs/toolkit"
+
+const { getComments, addComment } = commentActions
 
 const initialState = {
   comments: [],

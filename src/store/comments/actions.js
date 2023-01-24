@@ -31,12 +31,18 @@ const addComment = createAsyncThunk("comments/addComment", async (comment) => {
   }
 })
 
-const getComments = createAsyncThunk("getComments", async (chapter_id) => {
+const getComments = createAsyncThunk("getComments", async ({chapter_id, commentable_id, limit}) => {
+  if (commentable_id === undefined) {
+    commentable_id = ""
+  }
+  if (chapter_id === undefined) {
+    chapter_id = ""
+  }
+  if (limit === undefined) {
+    limit = ""
+  }
   try {
-    const response = await axios.get(`${API_URL}/comments`, {
-      params: {chapter_id}, 
-      ...handleToken()
-    })
+    const response = await axios.get(`${API_URL}/comments/?chapter_id=${chapter_id}&commentable_id=${commentable_id}&limit=${limit}`, handleToken())
     console.log("GET COMMENTS RESPONSE", response.data)
     return {
       response: {comments: response.data},
@@ -52,7 +58,9 @@ const getComments = createAsyncThunk("getComments", async (chapter_id) => {
 })
 
 
-export {
+const commentActions = {
   addComment,
-  getComments,
+  getComments
 }
+
+export default commentActions

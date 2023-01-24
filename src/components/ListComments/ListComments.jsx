@@ -1,49 +1,64 @@
 import "./ListComments.css"
 
 import { useDispatch, useSelector } from "react-redux"
-import { useNavigate, useParams } from "react-router"
+import { useLocation, useNavigate, useParams } from "react-router"
 
 import Comment from "../Comment/Comment"
 import NewComment from "../NewComment/NewComment"
 import React from "react"
-import { getComments } from "../../store/comments/actions"
+import commentActions from "../../store/comments/actions"
 import { getUsers } from "../../store/users/actions"
 import { useEffect } from "react"
 
+const {getComments} = commentActions
+
 function ListComments() {
     const dispatch = useDispatch()
-    const { _id } = useParams()
+    const { _id, commentable_id } = useParams()
+    const commentsStore = useSelector((state) => state.comments)
+    console.log(commentsStore);
     const commentsList = useSelector((state) => state.comments.comments.response)
-    console.log(commentsList);
-    console.log(_id);
+    const location = useLocation()
     useEffect(() => {
-        dispatch(getComments(_id))
+        if (commentable_id !== undefined) {
+            dispatch(getComments({commentable_id: commentable_id}))
+        } else {
+            dispatch(getComments({chapter_id: _id}))
+        }
         dispatch(getUsers())
-    }, [])
+    }, [commentsStore.comment, location.pathname])
     const navigate = useNavigate()
     const previousPage = () => {
         navigate(-1)
     }
-    function onAddComment() {
-        dispatch(getComments(_id))
-    }
-    let sortedList;
-    if (commentsList) {
-        sortedList = [...commentsList]
-        sortedList.sort((a, b) => Date.parse(a.createdAt) - Date.parse(b.createdAt))
+    const handleLoadMore = () => {
+        const limit = commentsList?.length
+        if (commentable_id !== undefined) {
+            dispatch(getComments({commentable_id: commentable_id, limit: limit + 2}))
+        } else {
+            dispatch(getComments({chapter_id: _id, limit: limit + 2}))
+        }
     }
     return (
         <div className={"modal-overlay"}>
             <div className="close-modal" onClick={previousPage}></div>
             <div className="comments-container">
-                {sortedList && sortedList.map(comment => {
+                <div className="scroll-container">
+                {commentsList && commentsList.map(comment => {
                     return <Comment
                     text={comment.text}
                     user_id={comment.user_id}
                     timestamp={comment.createdAt}
+                    id={comment._id}
                     />
                 })}
-                <NewComment onAddComment={onAddComment} />
+                                <div className="loadContainer">
+                    <button onClick={handleLoadMore}>Load More</button>
+                </div>
+                </div>
+                <div className="new-comment-container">
+                    <NewComment />
+                </div>
             </div>
         </div>
     )

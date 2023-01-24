@@ -1,15 +1,27 @@
 import "./Comment.css"
 
-import { Link } from "react-router-dom"
-import React from "react"
-import { useParams } from "react-router-dom"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 
-function Comment( {text, user_id, timestamp} ) {
+import Button from "../Button/Button"
+import { Link } from "react-router-dom"
+import NewComment from "../NewComment/NewComment"
+import React from "react"
+import commentActions from "../../store/comments/actions"
+import { useParams } from "react-router-dom"
+import { useState } from "react"
+
+const { getComments } = commentActions
+
+function Comment( {text, user_id, timestamp, id} ) {
   const user = useSelector((state) => state.users.users.find((u) => u._id === user_id) )
+  const [showNewReply, setNewReply] = useState(false)
   const commentsStore = useSelector((state) => state.comments)
   const params = useParams()
+  const dispatch = useDispatch()
   const date = new Date(timestamp)
+  const handleClick = () => {
+    dispatch(getComments({commentable_id: id}))
+  }
   const renderComment = () => {
     if (commentsStore.comments.success === true) {
       return (
@@ -29,8 +41,15 @@ function Comment( {text, user_id, timestamp} ) {
               </div>
               <div className="comment-buttons">
                 <div className="comment-reply">
-                  <Link  className="comment-reply-button" to={`/pages/${params._id}/comments/${commentsStore.comments.response._id}`}>Reply</Link>
-                  <img src="./replyIcon.png" alt="" />
+                    <Link
+                    to={`/pages/${params._id}/comments/${id}`}
+                    text={"Reply"}
+                    type={"reply-button"}
+                    onClick={handleClick}
+                    >
+                      Reply
+                    <img src="/replyIcon.png" alt="reply icon" />
+                    </Link>
                 </div>
               </div>
             </div>

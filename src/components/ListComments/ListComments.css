@@ -5,13 +5,60 @@
   bottom: 0;
   right: 0;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 100;
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow-y: scroll;
+}
+
+.comments-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #ccc;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  max-width: 600px;
+  border-radius: 1em;
+  background-color: #EBEBEB;
+}
+
+.loadContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.loadContainer button {
+  background-color: #4338CA;
+  border: none;
+  border-radius: 20rem;
+  padding: 1em;
+  font-size: 1.2em;
+  font-weight: 600;
+  color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+.loadContainer button:hover {
+  background-color: #5B4BD8;
+}
+
+.scroll-container {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.new-comment-container {
+  width: 100%;
+  height: 20%;
+  max-width: 600px;
+  background-color: #EBEBEB;
 }
 
 .close-modal {
@@ -20,21 +67,6 @@
   height: 100%;
   z-index: 99;
   width: 100%;
-}
-
-.comments-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: center;
-  border: 1px solid #ccc;
-  width: 100%;
-  max-width: 600px;
-  min-height: 100vh;
-  z-index: 100;
-  max-width: 600px;
-  border-radius: 1em;
-  background-color: #EBEBEB;
 }
 
 .comment-form {
