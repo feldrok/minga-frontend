@@ -244,7 +244,6 @@ const edit_comic = createAsyncThunk(
     async ({link, values}) => {
         try{
             let response = await axios.put(`${API_URL}/comics/${link}`, values, handleToken())
-            console.log(response)
             return{
                 response: {comics: response.data},
                 message: "Comic found"

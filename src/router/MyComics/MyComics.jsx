@@ -8,6 +8,7 @@ import Nav from "../../layouts/Nav/Nav"
 import { useNavigate } from "react-router-dom"
 
 const MyComics = () => {
+
     const navigate = useNavigate()
     useEffect(() => {
         let token = localStorage.getItem("token")

@@ -23,13 +23,13 @@ const EditComic = () => {
     const sendEdit = async (e) => {
         e.preventDefault()
         let values = {}
-        if(inpTitle.current.value){
+        if (inpTitle.current.value) {
             values.title = inpTitle.current.value
         }
-        if(inpPhoto.current.value){
+        if (inpPhoto.current.value) {
             values.photo = inpPhoto.current.value
         }
-        if(inpDesc.current.value){
+        if (inpDesc.current.value) {
             values.description = inpDesc.current.value
         }
         let link = params.id

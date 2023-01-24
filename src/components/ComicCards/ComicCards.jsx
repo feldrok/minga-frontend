@@ -72,13 +72,11 @@ function ComicCards() {
                     location.pathname.includes("/company") &&
                     comicsStore.storedComics !== "companyComics"
                 ) {
-                    console.log(comicsStore)
                     dispatch(get_comics_company({ company_id: params.id }))
                 } else if (
                     location.pathname.includes("/mycomics") &&
                     comicsStore.storedComics !== "mycomics"
                 ) {
-                    console.log(comicsStore)
                     dispatch(get_comics_from_company_author({}))
                 }
             }
