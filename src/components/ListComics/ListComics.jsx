@@ -7,7 +7,7 @@ import ExploreCard from "../ExploreCard/ExploreCard"
 import comicActions from "../../store/comics/actions"
 import styles from "./ListComics.module.css"
 
-const { getComics, get_comics_company, get_comics_from_cia } = comicActions
+const { getComics, get_comics_company, get_comics_from_cia, get_comics_from_company_author } = comicActions
 
 const exploreCategories = [
     {
@@ -44,6 +44,10 @@ function ListComics({ children }) {
             dispatch(
                 get_comics_company({ company_id: params.id, limit: limit + 3 })
             )
+        } else if (location.pathname.includes("/mycomics")) {
+            dispatch(
+                get_comics_from_company_author({limit: limit + 3 })
+            )
         }
     }
 
@@ -59,6 +63,12 @@ function ListComics({ children }) {
                 category_id: currentParams.category_id,
             }
             dispatch(get_comics_from_cia(obj))
+        } else if (location.pathname.includes("/mycomics")) {
+            let obj = {
+                category_id: currentParams.category_id,
+                limit: limit + 2,
+            }
+            dispatch(get_comics_from_company_author(obj))
         }
     }
 
@@ -105,7 +115,7 @@ function ListComics({ children }) {
         }
     }
 
-    console.log(comicsStore)
+    
     return (
         <div className={styles.container}>
             <div className={styles.topContainer}>

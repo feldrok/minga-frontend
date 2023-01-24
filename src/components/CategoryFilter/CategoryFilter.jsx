@@ -15,6 +15,7 @@ const {
     getComicsByCategory,
     getComicsByTitleAndCategory,
     get_comics_from_cia,
+    get_comics_from_company_author
 } = comicActions
 const { setActiveCategory } = categoryActions
 
@@ -66,6 +67,8 @@ function CategoryFilter({ title, color, value }) {
                 dispatch(get_comics_from_cia(obj))
             } else if (location.pathname === `/comics`) {
                 dispatch(getComicsByCategory(e.target.getAttribute("value")))
+            } else if(location.pathname === `/mycomics`){
+                dispatch(get_comics_from_company_author({category_id: e.target.getAttribute("value")}))
             }
         }
     }

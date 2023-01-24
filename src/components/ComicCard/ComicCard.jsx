@@ -4,6 +4,7 @@ import React, { useState } from "react"
 import EditDelete from "../EditDelete/EditDelete"
 import styles from "./ComicCard.module.css"
 import { useSelector } from "react-redux"
+import EditComic from "../EditComic/EditComic"
 
 function ComicCard({ title, image, link, comicCategory, color }) {
     const categoryStore = useSelector((state) => state.categories)
@@ -66,7 +67,11 @@ function ComicCard({ title, image, link, comicCategory, color }) {
                     <h3>{title}</h3>
                     {renderCategoryType()}
                     {location.pathname.includes("/company") ? (
-                        <EditDelete />
+                        <EditDelete
+                        link={link} />
+                    ) : null}
+                    {location.pathname.includes("/mycomics") ? (
+                        <EditDelete link={link} />
                     ) : null}
                 </div>
                 <div

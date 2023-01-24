@@ -1,7 +1,7 @@
 import companyActions from "./actions";
 import { createReducer } from "@reduxjs/toolkit";
 
-const { addCompany, get_company } = companyActions;
+const { addCompany, get_company, get_company_from_user } = companyActions;
 
 const initialState = { companies: [], message: "" };
 
@@ -21,6 +21,13 @@ const companyReducer = createReducer(initialState, (builder) =>  {
         return newState
     })
     .addCase(get_company.fulfilled, (state, action) => {
+        let newState = {
+            companies: action.payload.response.companies.response,
+            message: action.payload.message
+        }
+        return newState
+    })
+    .addCase(get_company_from_user.fulfilled, (state, action) => {
         let newState = {
             companies: action.payload.response.companies.response,
             message: action.payload.message

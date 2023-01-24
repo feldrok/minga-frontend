@@ -13,6 +13,7 @@ const {
     getComicsByTitleAndCategory,
     get_comics_company,
     get_comics_from_cia,
+    get_comics_from_company_author
 } = comicActions
 
 function ComicCards() {
@@ -47,6 +48,8 @@ function ComicCards() {
                     category_id: currentParams.category_id,
                 }
                 dispatch(get_comics_from_cia(obj))
+            } else if(location.pathname.includes("/mycomics")){
+                dispatch(get_comics_from_company_author({category_id: currentParams.category_id}))
             }
         } else if (location.search.includes("title")) {
             dispatch(getComicsByTitle(currentParams.title))
@@ -56,6 +59,8 @@ function ComicCards() {
                     dispatch(getComics())
                 } else if (location.pathname.includes("/company")) {
                     dispatch(get_comics_company({ company_id: params.id }))
+                } else if(location.pathname.includes("/mycomics")){
+                    dispatch(get_comics_from_company_author({}))
                 }
             } else if (comicsStore.comics?.response?.length !== 0) {
                 if (
@@ -67,8 +72,12 @@ function ComicCards() {
                     location.pathname.includes("/company") &&
                     comicsStore.storedComics !== "companyComics"
                 ) {
-                    console.log(comicsStore)
                     dispatch(get_comics_company({ company_id: params.id }))
+                } else if (
+                    location.pathname.includes("/mycomics") &&
+                    comicsStore.storedComics !== "mycomics"
+                ) {
+                    dispatch(get_comics_from_company_author({}))
                 }
             }
         }
@@ -90,7 +99,7 @@ function ComicCards() {
         if (comicsStore.comics.success === false) {
             return <p>{comicsStore.comics?.message}</p>
         } else {
-            return comicsStore.comics.response?.map((comic) => (
+            return comicsStore.comics?.response?.map((comic) => (
                 <div className={styles.container} key={comic.title}>
                     <ComicCard
                         link={comic._id}
