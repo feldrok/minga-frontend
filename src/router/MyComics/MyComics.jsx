@@ -1,7 +1,7 @@
 import React, { useEffect } from "react"
 
 import ComicCards from "../../components/ComicCards/ComicCards"
-import CompanyHeader from "../../components/CompanyHeader/CompanyHeader"
+import MyComicsHeader from "../../components/MyComicsHeader/MyComicsHeader"
 import ListComics from "../../components/ListComics/ListComics"
 import ListContainer from "../../components/ListContainer/ListContainer"
 import Nav from "../../layouts/Nav/Nav"
@@ -18,7 +18,7 @@ const MyComics = () => {
     return (
         <>
             <Nav />
-            <CompanyHeader />
+            <MyComicsHeader />
             <ListContainer>
                 <ListComics>
                     <ComicCards/>

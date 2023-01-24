@@ -11,7 +11,9 @@ const {
     get_comics_from_cia,
     get_comics_company,
     get_comics_from_author,
-    get_comics_from_company_author
+    get_comics_from_company_author,
+    edit_comic,
+    delete_comic
 } = comicActions
 
 const initialState = {
@@ -117,6 +119,22 @@ const comicReducer = createReducer(initialState, (builder) => {
                 comics: action.payload.response.comics,
                 limit: action.payload.limit,
                 storedComics: "myComics",
+                message: action.payload.message,
+            }
+            return newState
+        })
+        .addCase(edit_comic.fulfilled, (state, action) => {
+            let newState = {
+                comic: state.comic,
+                comics: action.payload.response.comics,
+                message: action.payload.message,
+            }
+            return newState
+        })
+        .addCase(delete_comic.fulfilled, (state, action) => {
+            let newState = {
+                comic: state.comic,
+                comics: action.payload.response.comics,
                 message: action.payload.message,
             }
             return newState

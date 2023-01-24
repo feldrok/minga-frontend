@@ -97,13 +97,11 @@ function ComicCards() {
         }
     }
 
-    console.log(comicsStore);
-
     const renderComics = () => {
         if (comicsStore.comics.success === false) {
             return <p>{comicsStore.comics?.message}</p>
         } else {
-            return comicsStore.comics.response?.map((comic) => (
+            return comicsStore.comics?.response?.map((comic) => (
                 <div className={styles.container} key={comic.title}>
                     <ComicCard
                         link={comic._id}

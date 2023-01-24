@@ -12,12 +12,14 @@
     border-radius: 50px;
     border: none;
     font-weight: 500;
+    z-index: 1000;
 }
 
 .button.delete {
     background-color: #fbdddc;
     color: #ee8380;
     cursor: pointer;
+    z-index: 1000;
 }
 
 .button.delete:hover {
@@ -29,6 +31,7 @@
     color: #8883f0;
     background-color: #e0dbff;
     cursor: pointer;
+    z-index: 1000;
 }
 
 .button.edit:hover {

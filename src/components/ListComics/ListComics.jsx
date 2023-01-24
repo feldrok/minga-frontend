@@ -115,7 +115,7 @@ function ListComics({ children }) {
         }
     }
 
-    console.log(comicsStore)
+    
     return (
         <div className={styles.container}>
             <div className={styles.topContainer}>

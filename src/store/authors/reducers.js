@@ -1,7 +1,7 @@
 import { createReducer } from "@reduxjs/toolkit";
 import authorActions from "./actions";
 
-const { addAuthor, get_author } = authorActions;
+const { addAuthor, get_author, get_author_from_user } = authorActions;
 
 const initialState = { 
     authors: [], 
@@ -24,6 +24,13 @@ const authorReducer = createReducer(initialState, (builder) =>  {
         return newState
     })
     .addCase(get_author.fulfilled, (state, action) => {
+        let newState = {
+            authors: action.payload.response.author.response,
+            message: action.payload.message
+        }
+        return newState
+    })
+    .addCase(get_author_from_user.fulfilled, (state, action) => {
         let newState = {
             authors: action.payload.response.author.response,
             message: action.payload.message

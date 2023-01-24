@@ -1,5 +1,6 @@
 import axios from "axios"
 import { createAsyncThunk } from "@reduxjs/toolkit"
+import { async } from "q"
 
 const API_URL = process.env.REACT_APP_API_URL
 
@@ -238,6 +239,43 @@ const get_comics_from_company_author = createAsyncThunk(
     }
 )
 
+const edit_comic = createAsyncThunk(
+    "edit_comic",
+    async ({link, values}) => {
+        try{
+            let response = await axios.put(`${API_URL}/comics/${link}`, values, handleToken())
+            console.log(response)
+            return{
+                response: {comics: response.data},
+                message: "Comic found"
+            }
+        }catch(error){
+            console.log(error)
+            return{
+                response: {comics: error.response.data},
+                message: "Comic not found"
+            }
+        }
+    }
+)
+const delete_comic = createAsyncThunk(
+    "delete_comic",
+    async ({link}) => {
+        try{
+            let response = await axios.delete(`${API_URL}/comics/${link}`, handleToken())
+            return{
+                response: {comics: response.data},
+                message: "Comic found"
+            }
+        }catch(error){
+            return{
+                response: {comics: error.response.data},
+                message: "Comic not found"
+            }
+        }
+    }
+)
+
 const comicActions = {
     createNewComic,
     getComic,
@@ -249,6 +287,8 @@ const comicActions = {
     get_comics_from_cia,
     get_comics_from_author,
     get_comics_from_company_author,
+    edit_comic,
+    delete_comic
 }
 
 export default comicActions

@@ -44,10 +44,25 @@ const get_company = createAsyncThunk("get_company", async (id) => {
         }
     }
 })
+const get_company_from_user = createAsyncThunk("get_company_from_user", async (id) => {
+    try {
+        const response = await axios.get(`${API_URL}/company/${id}`, handleToken())
+        return {
+            response: { companies: response.data },
+            message: "Company found",
+        }
+    } catch (error) {
+        return {
+            response: { company: error.response.data },
+            message: "Company not found",
+        }
+    }
+})
 
 const companyActions = {
     addCompany,
     get_company,
+    get_company_from_user
 }
 
 export default companyActions

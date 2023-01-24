@@ -1,8 +1,7 @@
 import { Link, useNavigate } from "react-router-dom"
 import React, { useRef } from "react"
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
 
-import axios from "axios"
 import userActions from "../../store/user/actions"
 
 const { signIn } = userActions
