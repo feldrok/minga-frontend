@@ -1,6 +1,3 @@
-/* import "react-toastify/dist/ReactToastify.css"; */
-
-import { Slide, ToastContainer, toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 
@@ -24,26 +21,6 @@ const InputChapter = () => {
 
   const dispatch = useDispatch();
 
-/*   const createComicNotify = () =>
-    toast.success(chaptersStore?.message, {
-      autoClose: 3000,
-      theme: "colored",
-    });
-  const errorComicNotify = () => {
-    toast.error("Error edit chapter", { autoClose: 3000, theme: "colored" });
-  }; */
-
-/*   useEffect(() => {
-    if (chaptersStore?.message === true) {
-      createComicNotify();
-    }
-    if (chaptersStore?.message === false) {
-      errorComicNotify() 
-    }
-  }, [chaptersStore]);
-  console.log(chaptersStore)  */
-
-
   // funcion obtener el valor del input del chapter
   const getValueChapter = (e) => {
     setIdChapter(e.target.value);
@@ -62,7 +39,6 @@ const InputChapter = () => {
 
   return (
     <>
-      <ToastContainer transition={Slide} />
       <div className="">
         <select
           name="categories"

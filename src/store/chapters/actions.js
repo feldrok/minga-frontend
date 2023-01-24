@@ -65,7 +65,7 @@ const getChapterDetails = createAsyncThunk("getChapterDetails", async (_id) => {
         const response = await axios.get(`${API_URL}/chapters/${_id}`, handleToken())
         return {
             response: { chapter: response.data },
-            message: "Chapter successfully obtained!",
+          /*   message: "Chapter successfully obtained!", */
         }
     } catch (error) {
         return {
@@ -73,7 +73,7 @@ const getChapterDetails = createAsyncThunk("getChapterDetails", async (_id) => {
             message: "Error: Chapter cannot be obtained.",
         }
     }
-})
+}) 
 
 const editChapter = createAsyncThunk("editChapters", async (chapter) => {
     console.log(chapter)
@@ -93,7 +93,7 @@ const editChapter = createAsyncThunk("editChapters", async (chapter) => {
     } catch (error) {
         return {
             response: { chapter: error.response.data },
-            message: "Error edited chapter",
+            message: "Error edited chapter you must be the author to edit",
         }
     }
 })
@@ -113,10 +113,11 @@ const deleteChapter = createAsyncThunk("deleteChapters", async (chapter) => {
     } catch (error) {
         return {
             response: { chapter: error.response.data },
-            message: "Error deleted chapter",
+            message: "Error deleted chapter, you must be the author to delete",
         }
     } 
 })
+
 
 const chapterActions = {
     newChapter,

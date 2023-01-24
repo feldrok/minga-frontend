@@ -20,9 +20,10 @@ const RenderInfoChapter = () => {
   );
   console.log(chaptersStore);
 
-  //este busca el valor que esta guardado en el store de chapters en
-  const reloadStore = useSelector((state) => state?.chapters?.updateChapter);
-  console.log(reloadStore?.response?.title); 
+  //este busca el valor que esta guardado en el store de chapters
+  const reloadStore = useSelector((state) => state?.chapters.updateChapter);
+  console.log(reloadStore);  
+
 
   const dispatch = useDispatch();
 
@@ -33,6 +34,7 @@ const RenderInfoChapter = () => {
     }
   }, [chapterStore]);
 
+  
   //este despacha el chapter actualizado....
   useEffect(() => {
     if (chapterStore) {
@@ -60,19 +62,6 @@ const RenderInfoChapter = () => {
               ? null
               : `Pages: ${chaptersStore?.pages.length}`}
           </p>
-          {/*           <p>
-            {chaptersStore?.pages === undefined
-              ? null
-              :  ` ESO SI FUNCIONA ${reloadChapter?.response?.title} ` }
-          </p> */}
-{/* 
-          <p className="">
-            {chaptersStore?.title === undefined
-              ? null
-              : `Title: "${reloadChapter?.response?.title}" `}
-          </p>
-
-           */}
 
         </div>
       </div>

@@ -11,7 +11,7 @@ import { useSelector } from "react-redux";
 
 function NewComic() {
   const comicStore = useSelector((state) => state.comics);
-  console.log(comicStore);
+  console.log(comicStore); 
 
   const navigate = useNavigate();
 
