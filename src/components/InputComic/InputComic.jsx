@@ -6,7 +6,7 @@ import comicActions from "../../store/comics/actions";
 import getIdComicActions from "../../store/getId/getIdAction";
 import styles from "./InputComic.module.css"
 
-const { getIdComic, getComicsById  } = getIdComicActions;
+const { getIdComic } = getIdComicActions;
 const { getComics} = comicActions;
 
 const InputComic = () => {
@@ -20,18 +20,15 @@ const InputComic = () => {
   const getValueComic = (e) => {
     setIdComic(e.target.value);
     dispatch(getIdComic(idComic));
-  };
+  }; 
   
   useEffect(() => {
-    dispatch(getComics());
+    dispatch(getComics(40));
   }, []);
 
   useEffect(() => {
     dispatch(getIdComic(idComic));  
-  }, [idComic]);
-
-  
-
+  }, [idComic]); 
   
   return (
     <>
@@ -45,7 +42,7 @@ const InputComic = () => {
               <option
                 className="default-select"
                 key={comic.title}
-                value={comic._id}
+                value={comic._id} 
               >
                 {comic.title}
               </option>

@@ -15,6 +15,7 @@ const handleToken = () => {
     return config
 }
 
+
 const newChapter = createAsyncThunk("newChapter", async (chapter) => {
     try {
         const response = await axios.post(
@@ -74,36 +75,55 @@ const getChapterDetails = createAsyncThunk("getChapterDetails", async (_id) => {
     }
 })
 
-//action para actualizar datos de un chapter
-
-
-const editChapter = createAsyncThunk("getChapters", async (chapter) => {
+const editChapter = createAsyncThunk("editChapters", async (chapter) => {
     console.log(chapter)
     try {
         const body = {
-            [chapter.category] : chapter.data
+            [chapter.category] : chapter.data  ////propiedad computada.. primero resuelve lo que esta dentro del array.. 
         } 
         const response = await axios.put(
             `${API_URL}/chapters/${chapter.id}`,  body, //ruta , / segundo es el body lo que mando... 
             handleToken()
         )
+        console.log(response) 
         return {
             response: { chapter: response.data },
-            message: "Chapter editado",
+            message: "Edited chapter",
         }
     } catch (error) {
         return {
             response: { chapter: error.response.data },
-            message: "Error edit chapter",
+            message: "Error edited chapter",
         }
     }
+})
+
+const deleteChapter = createAsyncThunk("deleteChapters", async (chapter) => {
+    console.log(chapter)
+    try {
+        const response = await axios.delete(
+            `${API_URL}/chapters/${chapter.id}`, 
+            handleToken()
+        )
+        console.log(response) 
+        return {
+            response: { chapter: response.data },
+            message: "deleted chapter",
+        }
+    } catch (error) {
+        return {
+            response: { chapter: error.response.data },
+            message: "Error deleted chapter",
+        }
+    } 
 })
 
 const chapterActions = {
     newChapter,
     getChapterDetails,
     getChapters,
-    editChapter
+    editChapter,
+    deleteChapter 
 }
 
 export default chapterActions

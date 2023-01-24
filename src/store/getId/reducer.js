@@ -1,11 +1,12 @@
 import { createReducer } from "@reduxjs/toolkit"
 import getIdActions from "./getIdAction"
 
-const { getIdComic, getIdChapter, getComicsById } = getIdActions
+const { getIdComic, getIdChapter, reloadChapter } = getIdActions
 
 const initialState = {
     idComic: [],
-    idChapter: []
+    idChapter: [],
+    reloadChapter: []
 }
 const getIdReducer = createReducer(initialState, (builder) => {
     builder
@@ -23,13 +24,13 @@ const getIdReducer = createReducer(initialState, (builder) => {
             console.log(newState)
             return newState
         })
-/*         .addCase(getComicsById.fulfilled, (state, action) => {
+/*         .addCase(reloadChapter.fulfilled, (state, action) => {
             let newState = {
-                comics: action.payload.response.comics,
-                message: action.payload.message
+                reloadChapter: action.payload,
             }
+            console.log(newState)
             return newState
-        }) */
+        })  */
 })
 
 export default getIdReducer 

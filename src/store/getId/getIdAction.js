@@ -6,8 +6,7 @@ const getIdComic = createAsyncThunk(
     async (data) => {
         return {payload: data} 
     }
-)
-
+) 
 
 const getIdChapter = createAsyncThunk( 
     "getIdChapter",
@@ -15,27 +14,16 @@ const getIdChapter = createAsyncThunk(
         console.log(data)
         return {payload: data} 
     }
-)
+) 
 
-/* const getComicsById = createAsyncThunk("getComics", async (comic) => {
-    try {
-        let response = await axios.get(
-            `${API_URL}/comics?/${comic}`,  
-            handleToken() 
-        ) 
-        return {
-            response: { comics: response.data },
-            message: "Comics obtained",
-        }
-    } catch (error) {
-        return {
-            response: { comics: error.response.data },
-            message: "Error obtaining comics",
-        }
+const reloadChapter = createAsyncThunk( 
+    "reloadChapter",
+    async (data) => {
+        console.log(data)
+        return {payload: data} 
     }
-})
- */
+)  
 
-const getIdActions = {getIdComic, getIdChapter} 
+const getIdActions = {getIdComic, getIdChapter, reloadChapter}   
 
 export default getIdActions
