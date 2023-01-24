@@ -1,7 +1,6 @@
-import commentActions from "./actions"
-import { createReducer } from "@reduxjs/toolkit"
+import {addComment, getComments} from "./actions"
 
-const { addComment } = commentActions
+import { createReducer } from "@reduxjs/toolkit"
 
 const initialState = {
   comments: [],
@@ -22,6 +21,20 @@ const commentReducer = createReducer(initialState, (builder) => {
     .addCase(addComment.rejected, (state, action) => {
       let newState = {
         message: "error"
+      }
+      return newState
+    })
+    .addCase(getComments.fulfilled, (state, action) => {
+      let newState = {
+        comments: action.payload.response.comments,
+        comment: state.comment,
+        message: action.payload.message,
+      }
+      return newState
+    })
+    .addCase(getComments.rejected, (state, action) => {
+      let newState = {
+        message: "Error"
       }
       return newState
     })

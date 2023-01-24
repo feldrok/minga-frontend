@@ -5,19 +5,21 @@ import React from "react"
 import { useParams } from "react-router-dom"
 import { useSelector } from "react-redux"
 
-function Comment() {
+function Comment( {text, user_id, timestamp} ) {
+  const user = useSelector((state) => state.users.users.find((u) => u._id === user_id) )
   const commentsStore = useSelector((state) => state.comments)
   const params = useParams()
+  const date = new Date(timestamp)
   const renderComment = () => {
     if (commentsStore.comments.success === true) {
       return (
         <div className="comment-container">
           <div className="comment-user-data">
-            <img src="/userpic.png" alt="" />
-            <h3>Ignacio Borraz</h3>
+            <img src={user?.photo} alt="user avatar" />
+            <h3>{user?.mail}</h3>
           </div>
           <div className="comment-text">
-            <p>{commentsStore.comments.response?.text}</p>
+            <p>{text}</p>
           </div>
           <div className="comment-footer">
             <div className="comment-footer-left">
@@ -33,7 +35,7 @@ function Comment() {
               </div>
             </div>
             <div className="comment-footer-right">
-              <p>1 sec ago</p>
+              <p>{date.toUTCString()}</p>
             </div>
           </div>
         </div>
