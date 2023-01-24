@@ -66,6 +66,14 @@ function CategoryFilter({ title, color, value }) {
                 dispatch(get_comics_from_cia(obj))
             } else if (location.pathname === `/comics`) {
                 dispatch(getComicsByCategory(e.target.getAttribute("value")))
+            } else if (location.pathname === `/favourite/${params.user_id}`) {
+                dispatch(
+                    getComicsByTitleAndCategory({
+                        user_id: params.user_id,
+                        category_id: e.target.getAttribute("value"),
+                        limit: "",
+                    })
+                )
             }
         }
     }

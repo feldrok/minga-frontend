@@ -2,9 +2,12 @@ import "./Nav.css"
 
 import { Link, NavLink, useNavigate } from "react-router-dom"
 import React, { useEffect, useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
 
-import { useSelector } from "react-redux"
+import userActions from "../../store/user/actions"
+import { decodeToken } from "react-jwt"
 
+const { signInToken } = userActions
 const routes = [
     {
         path: "/",
@@ -22,6 +25,10 @@ const routes = [
         path: "/mycomics",
         name: "My Comics",
     },
+    {
+        path: `/favourites/${decodeToken(localStorage.getItem("token"))?.id}`,
+        name: "Favourites",
+    },
 ]
 
 function Nav() {
@@ -30,6 +37,7 @@ function Nav() {
     const [navBar, setNavBar] = useState(false)
     const [isLogged, setIsLogged] = useState(false)
     const navigate = useNavigate()
+    const dispatch = useDispatch()
 
     useEffect(() => {
         let token = localStorage.getItem("token")
@@ -37,6 +45,9 @@ function Nav() {
             setIsLogged(true)
         } else {
             setIsLogged(false)
+        }
+        if (userStore.user?.length === 0) {
+            dispatch(signInToken())
         }
     }, [])
 
@@ -127,7 +138,7 @@ function Nav() {
                         {userStore.user.length === 0 ? null : (
                             <img
                                 className="profile-picture-mobile-nav"
-                                src={userStore.user?.response.user.photo}
+                                src={userStore.user?.response?.user?.photo}
                                 alt="logo"
                             />
                         )}
@@ -135,9 +146,9 @@ function Nav() {
                         <div>
                             <p className="profile-name">User name</p>
                             <p className="profile-email">
-                                {userStore.user.length === 0
+                                {userStore?.user?.length === 0
                                     ? null
-                                    : userStore.user?.response.user.mail}
+                                    : userStore.user?.response?.user?.mail}
                             </p>
                         </div>
                     </div>

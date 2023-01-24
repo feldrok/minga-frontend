@@ -24,7 +24,6 @@ function SigninForm() {
             "token",
             response.payload?.response.user.response.token
         )
-        console.log(response)
         navigate("/")
     }
 

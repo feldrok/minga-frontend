@@ -18,6 +18,7 @@ import SigninForm from "../components/SigninForm/SigninForm"
 import Signup from "../router/Signup/Signup"
 import SignupForm from "../components/SignupForm/SignupForm"
 import { createBrowserRouter } from "react-router-dom"
+import Favourites from "./Favourites/Favourites"
 
 const indexRouter = createBrowserRouter([
     {
@@ -45,6 +46,10 @@ const indexRouter = createBrowserRouter([
     {
         path: "/mycomics",
         element: <MyComics />,
+    },
+    {
+        path: "/favourites/:user_id",
+        element: <Favourites />
     },
     {
         path: "/newcomics",
@@ -121,7 +126,7 @@ const indexRouter = createBrowserRouter([
     {
         path: "/authors/:id",
         element: <Author/>
-    }
+    },
 ])
 
 export default indexRouter

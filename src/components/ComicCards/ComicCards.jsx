@@ -13,10 +13,12 @@ const {
     getComicsByTitleAndCategory,
     get_comics_company,
     get_comics_from_cia,
+    getFavouriteComics,
 } = comicActions
 
 function ComicCards() {
     const comicsStore = useSelector((state) => state.comics)
+    const reactionStore = useSelector((state) => state.reactions)
     const categoryStore = useSelector((state) => state.categories)
     const dispatch = useDispatch()
     const location = useLocation()
@@ -31,22 +33,39 @@ function ComicCards() {
             location.search.includes("title") &&
             location.search.includes("category_id")
         ) {
-            dispatch(
-                getComicsByTitleAndCategory({
-                    title: currentParams.title,
-                    category_id: currentParams.category_id,
-                })
-            )
+            if (location.pathname.includes("/comics")) {
+                dispatch(
+                    getComicsByTitleAndCategory({
+                        title: currentParams.title,
+                        category_id: currentParams.category_id,
+                    })
+                )
+            } else if (location.pathname.includes("/favourite")) {
+                dispatch(
+                    getFavouriteComics({
+                        title: currentParams.title,
+                        category_id: currentParams.category_id,
+                        limit: "",
+                    })
+                )
+            }
         } else if (location.search.includes("category_id")) {
             if (location.pathname.includes("/comics")) {
                 dispatch(getComicsByCategory(currentParams.category_id))
             } else if (location.pathname.includes("/company")) {
                 let obj = {
                     company_id: params.id,
-                    limit: 5,
                     category_id: currentParams.category_id,
                 }
                 dispatch(get_comics_from_cia(obj))
+            } else if (location.pathname.includes("/favourites")) {
+                dispatch(
+                    getFavouriteComics({
+                        user_id: params.user_id,
+                        category_id: currentParams.category_id,
+                        limit: "",
+                    })
+                )
             }
         } else if (location.search.includes("title")) {
             dispatch(getComicsByTitle(currentParams.title))
@@ -56,6 +75,13 @@ function ComicCards() {
                     dispatch(getComics())
                 } else if (location.pathname.includes("/company")) {
                     dispatch(get_comics_company({ company_id: params.id }))
+                } else if (location.pathname.includes("/favourites")) {
+                    dispatch(
+                        getFavouriteComics({
+                            user_id: params.user_id,
+                            limit: 4,
+                        })
+                    )
                 }
             } else if (comicsStore.comics?.response?.length !== 0) {
                 if (
@@ -67,12 +93,31 @@ function ComicCards() {
                     location.pathname.includes("/company") &&
                     comicsStore.storedComics !== "companyComics"
                 ) {
-                    console.log(comicsStore)
                     dispatch(get_comics_company({ company_id: params.id }))
+                } else if (
+                    location.pathname.includes("/favourites") &&
+                    comicsStore?.storedComics !== "favouritesComics"
+                ) {
+                    dispatch(
+                        getFavouriteComics({
+                            user_id: params.user_id,
+                            limit: 4,
+                        })
+                    )
                 }
             }
         }
     }, [searchParams])
+
+    useEffect(() => {
+        if (location.pathname.includes("/favourites")) {
+            dispatch(
+                getFavouriteComics({
+                    user_id: params.user_id,
+                })
+            )
+        }
+    }, [reactionStore])
 
     const setCategoryColor = (id) => {
         if (categoryStore.categories.response?.length === 0) {
@@ -87,17 +132,17 @@ function ComicCards() {
     }
 
     const renderComics = () => {
-        if (comicsStore.comics.success === false) {
+        if (comicsStore.comics?.success === false) {
             return <p>{comicsStore.comics?.message}</p>
         } else {
             return comicsStore.comics.response?.map((comic) => (
-                <div className={styles.container} key={comic.title}>
+                <div className={styles.container} key={comic?.title}>
                     <ComicCard
-                        link={comic._id}
-                        comicCategory={comic.category_id}
-                        title={comic.title}
-                        color={setCategoryColor(comic.category_id)}
-                        image={comic.photo}
+                        link={comic?._id}
+                        comicCategory={comic?.category_id}
+                        title={comic?.title}
+                        color={setCategoryColor(comic?.category_id)}
+                        image={comic?.photo}
                     />
                 </div>
             ))

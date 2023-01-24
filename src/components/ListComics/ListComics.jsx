@@ -7,7 +7,12 @@ import ExploreCard from "../ExploreCard/ExploreCard"
 import comicActions from "../../store/comics/actions"
 import styles from "./ListComics.module.css"
 
-const { getComics, get_comics_company, get_comics_from_cia } = comicActions
+const {
+    getComics,
+    get_comics_company,
+    get_comics_from_cia,
+    getFavouriteComics,
+} = comicActions
 
 const exploreCategories = [
     {
@@ -44,6 +49,14 @@ function ListComics({ children }) {
             dispatch(
                 get_comics_company({ company_id: params.id, limit: limit + 3 })
             )
+        } else if (location.pathname.includes("/favourites")) {
+            dispatch(
+                getFavouriteComics({
+                    user_id: params.user_id,
+                    order: comicsStore.order,
+                    limit: limit + 2,
+                })
+            )
         }
     }
 
@@ -59,6 +72,14 @@ function ListComics({ children }) {
                 category_id: currentParams.category_id,
             }
             dispatch(get_comics_from_cia(obj))
+        } else if (location.pathname.includes("/favourites")) {
+            dispatch(
+                getFavouriteComics({
+                    user_id: params.user_id,
+                    limit: limit + 2,
+                    category_id: currentParams.category_id,
+                })
+            )
         }
     }
 
@@ -105,22 +126,23 @@ function ListComics({ children }) {
         }
     }
 
-    console.log(comicsStore)
     return (
         <div className={styles.container}>
-            <div className={styles.topContainer}>
-                <h2>Explore</h2>
-            </div>
             {location.pathname.includes("/comics") ? (
-                <div className={styles.exploreCardsContainer}>
-                    {exploreCategories.map((category) => (
-                        <ExploreCard
-                            key={category.id}
-                            title={category.title}
-                            image={category.image}
-                        />
-                    ))}
-                </div>
+                <>
+                    <div className={styles.topContainer}>
+                        <h2>Explore</h2>
+                    </div>
+                    <div className={styles.exploreCardsContainer}>
+                        {exploreCategories.map((category) => (
+                            <ExploreCard
+                                key={category.id}
+                                title={category.title}
+                                image={category.image}
+                            />
+                        ))}
+                    </div>
+                </>
             ) : null}
 
             <div className={styles.filtersContainer}>

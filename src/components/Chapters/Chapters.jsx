@@ -18,7 +18,6 @@ export default function Chapters() {
         dispatch(getChapters({ id: id, limit: limit + 2 }))
     }
 
-    console.log(chapterStore)
     return (
         <>
             {chapterStore.chapters.response?.length === 0 ? (
@@ -30,6 +29,7 @@ export default function Chapters() {
                 <>
                     {chapterStore.chapters?.response?.map((chapter) => (
                         <ChapterCard
+                            key={chapter._id}
                             title={chapter.title}
                             chapterId={chapter._id}
                             order={chapter.order}
