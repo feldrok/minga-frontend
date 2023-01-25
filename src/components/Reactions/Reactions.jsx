@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 
-import { decodeToken } from "react-jwt"
 import reactionActions from "../../store/reactions/actions"
 import styles from "./Reactions.module.css"
 import { useParams } from "react-router"
@@ -37,7 +36,6 @@ function Reactions() {
         await dispatch(
             addReaction({
                 comic_id: params.id,
-                user_id: decodeToken(localStorage.getItem("token"))?.id,
                 name: e.target.value,
             })
         )
