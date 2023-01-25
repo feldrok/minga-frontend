@@ -124,7 +124,7 @@ const indexRouter = createBrowserRouter([
         element: <Author/>
     },
     {
-        path: "/editChapter",
+        path: "/edit-chapter",
         element: <EditChapter />
     }
 ])

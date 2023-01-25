@@ -35,6 +35,9 @@ const EditChapterForm = () => {
     setCategory(e.target.value);
   };
 
+
+
+  //
   const editChapterNotify = () =>
     toast.success(chapterStore?.chapters?.message, {
       autoClose: 3000,
@@ -49,7 +52,6 @@ const EditChapterForm = () => {
 
 
   useEffect(() => {
-    console.log("ALGOOOOOOO");
     if (chapterStore?.chapters?.updateChapter?.success === true) {
       editChapterNotify();
     }
@@ -111,6 +113,7 @@ const EditChapterForm = () => {
       id: chaptersStore._id,
     };
     await dispatch(deleteChapter(chapter));
+    await dispatch(getChapterDetails(chapter.id)); 
   };
 
   return (
