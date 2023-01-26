@@ -58,11 +58,13 @@ function Comment( {text, user_id, timestamp, id} ) {
                       Reply
                     <img src="/replyIcon.png" alt="reply icon" />
                     </Link>
+                    </div>
+                    <div className="edit-and-delete">
                     {
                       editMode ? (
                         <Button
                         text={"Save"}
-                        type={"reply-button"}
+                        type={"reply-button2"}
                         action={() => {
                           setEdit(false)
                           dispatch(editComment({comment_id: id, text: editText}))
@@ -71,18 +73,18 @@ function Comment( {text, user_id, timestamp, id} ) {
                       ) : (
                         <Button
                         text={"Edit"}
-                        type={"reply-button"}
+                        type={"reply-button2"}
                         action={() => setEdit(true)}
                         ></Button>
                       )
                     }
                       <Button
                         text={"Delete"}
-                        type={"reply-button"}
+                        type={"reply-button2"}
                         action={() => {dispatch(deleteComment({comment_id: id}))
                         }}
                         ></Button>
-                </div>
+                        </div>
               </div>
             </div>
             <div className="comment-footer-right">
