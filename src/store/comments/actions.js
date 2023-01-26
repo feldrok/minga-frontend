@@ -43,13 +43,11 @@ const getComments = createAsyncThunk("getComments", async ({chapter_id, commenta
   }
   try {
     const response = await axios.get(`${API_URL}/comments/?chapter_id=${chapter_id}&commentable_id=${commentable_id}&limit=${limit}`, handleToken())
-    console.log("GET COMMENTS RESPONSE", response.data)
     return {
       response: {comments: response.data},
       message: "Loading comments...",
     }
   } catch (error) {
-    console.log(" ERROR", error)
     return {
       response: {comments: error.response.data},
       message: "Failed to load comments!",
@@ -57,10 +55,42 @@ const getComments = createAsyncThunk("getComments", async ({chapter_id, commenta
   }
 })
 
+const editComment = createAsyncThunk("editComment", async ({comment_id, text}) => {
+  try {
+    const response = await axios.put(`${API_URL}/comments/${comment_id}`, {text}, handleToken())
+    return {
+      response: {comment: response.data},
+      message: "Comment Successfully Edited!!",
+    }
+  } catch (error){
+    return {
+      response: {comment: error.response.data},
+      message: "Failed to edit comment!"
+    }
+  }
+})
+
+const deleteComment = createAsyncThunk("deleteComment", async ({comment_id}) => {
+  try {
+    const response = await axios.delete(`${API_URL}/comments/${comment_id}`, handleToken())
+    return {
+      response: {comment: response.data},
+      message: "Comment Successfully Deleted!!",
+    }
+  } catch (error){
+    return {
+      response: {comment: error.response.data},
+      message: "Failed to delete comment!"
+    }
+  }
+})
+
 
 const commentActions = {
   addComment,
-  getComments
+  getComments,
+  editComment,
+  deleteComment
 }
 
 export default commentActions

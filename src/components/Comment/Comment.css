@@ -66,6 +66,11 @@
   cursor: pointer;
 }
 
+.comment-reply img {
+  width: 1rem;
+  margin-left: 2px;
+}
+
 .comment-reply-button {
   display: flex;
   align-items: center;

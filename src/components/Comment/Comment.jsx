@@ -10,11 +10,13 @@ import commentActions from "../../store/comments/actions"
 import { useParams } from "react-router-dom"
 import { useState } from "react"
 
-const { getComments } = commentActions
+const { getComments, editComment, deleteComment } = commentActions
 
 function Comment( {text, user_id, timestamp, id} ) {
   const user = useSelector((state) => state.users.users.find((u) => u._id === user_id) )
   const [showNewReply, setNewReply] = useState(false)
+  const [editMode, setEdit] = useState(false)
+  const [editText, setEditText] = useState(text)
   const commentsStore = useSelector((state) => state.comments)
   const params = useParams()
   const dispatch = useDispatch()
@@ -23,7 +25,6 @@ function Comment( {text, user_id, timestamp, id} ) {
     dispatch(getComments({commentable_id: id}))
   }
   const renderComment = () => {
-    if (commentsStore.comments.success === true) {
       return (
         <div className="comment-container">
           <div className="comment-user-data">
@@ -31,7 +32,14 @@ function Comment( {text, user_id, timestamp, id} ) {
             <h3>{user?.mail}</h3>
           </div>
           <div className="comment-text">
-            <p>{text}</p>
+            {editMode ? (
+                <input placeholder="Edit your comment..."
+                onChange={(e) => setEditText(e.target.value)}
+                value={editText}
+                />
+            ):( 
+              <p>{text}</p>
+            )}
           </div>
           <div className="comment-footer">
             <div className="comment-footer-left">
@@ -50,6 +58,30 @@ function Comment( {text, user_id, timestamp, id} ) {
                       Reply
                     <img src="/replyIcon.png" alt="reply icon" />
                     </Link>
+                    {
+                      editMode ? (
+                        <Button
+                        text={"Save"}
+                        type={"reply-button"}
+                        action={() => {
+                          setEdit(false)
+                          dispatch(editComment({comment_id: id, text: editText}))
+                        }}
+                        ></Button>
+                      ) : (
+                        <Button
+                        text={"Edit"}
+                        type={"reply-button"}
+                        action={() => setEdit(true)}
+                        ></Button>
+                      )
+                    }
+                      <Button
+                        text={"Delete"}
+                        type={"reply-button"}
+                        action={() => {dispatch(deleteComment({comment_id: id}))
+                        }}
+                        ></Button>
                 </div>
               </div>
             </div>
@@ -59,9 +91,6 @@ function Comment( {text, user_id, timestamp, id} ) {
           </div>
         </div>
       )
-    } else {
-      return <p>There are no comments</p>
-    }
   }
 
   return (

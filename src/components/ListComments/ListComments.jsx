@@ -17,7 +17,7 @@ function ListComments() {
     const { _id, commentable_id } = useParams()
     const commentsStore = useSelector((state) => state.comments)
     console.log(commentsStore);
-    const commentsList = useSelector((state) => state.comments.comments.response)
+    const commentsList = useSelector((state) => state.comments.comments)
     const location = useLocation()
     useEffect(() => {
         if (commentable_id !== undefined) {
@@ -50,8 +50,11 @@ function ListComments() {
                     user_id={comment.user_id}
                     timestamp={comment.createdAt}
                     id={comment._id}
+                    key={comment._id}
                     />
                 })}
+                {/** en la linea 47, JS va a chequear si existe una lista de comentarios, y luego los renderiza si los hay.
+                 * El motivo por el cual usé esta sintaxis es para ahorrarle trabajo al codigo; si no hay comentarios, JS no se va a molestar en hacer el mapeo */}
                                 <div className="loadContainer">
                     <button onClick={handleLoadMore}>Load More</button>
                 </div>

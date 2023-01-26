@@ -127,7 +127,7 @@ function Pages() {
                             />
                         </div>
                     </Link>
-                    <p className={styles.commentNumber}>42</p>
+                    <p className={styles.commentNumber}>3</p>
                 </div>
             </div>
             <Outlet />
