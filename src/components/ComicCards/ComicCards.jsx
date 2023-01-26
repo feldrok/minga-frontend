@@ -62,7 +62,7 @@ function ComicCards() {
                 } else if(location.pathname.includes("/mycomics")){
                     dispatch(get_comics_from_company_author({}))
                 }
-            } else if (comicsStore.comics?.response?.length !== 0) {
+            } else if (comicsStore.comics?.response?.length === 0) {
                 if (
                     location.pathname.includes("/comics") &&
                     comicsStore.storedComics !== "allComics"
