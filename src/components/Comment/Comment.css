@@ -130,6 +130,11 @@
   background-color: #f2f2f2;
 }
 
+.reply-button2:hover:last-child {
+  background-color: rgba(234, 9, 9, 0.816);
+  color: black;
+}
+
 .comment-buttons {
   display: flex;
   flex-direction: row;
