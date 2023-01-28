@@ -1,0 +1,14 @@
+.inpFormSelect {
+    background-color: transparent;
+    border: none;
+    font-size: 1rem;
+    border-bottom: 1px solid gray;
+    padding: 0.5em;
+    color: gray;
+    outline: none; 
+    width: 300px;
+}
+
+option {
+    background-color: rgb(215, 207, 207);
+} 

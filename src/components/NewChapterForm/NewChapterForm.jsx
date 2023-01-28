@@ -62,7 +62,6 @@ const NewChapter = () => {
             </form>
         </div>
     )
-
 }
 
 export default NewChapter

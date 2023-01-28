@@ -16,7 +16,7 @@ const {
 } = comicActions
 
 function ComicCards() {
-    const comicsStore = useSelector((state) => state.comics)
+    const comicsStore = useSelector((state) => state.comics) 
     const categoryStore = useSelector((state) => state.categories)
     const dispatch = useDispatch()
     const location = useLocation()
