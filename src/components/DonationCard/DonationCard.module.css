@@ -1,0 +1,100 @@
+.containerCard {
+    background-image: url(../../../public/bkg.png);
+   /*  background-color: #4338ca; */
+    background-size: cover;
+    color: white ;
+    width: 80%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    margin: 2rem;
+    border-radius: 0.5em;
+} 
+
+
+.text {
+    background-color: #4338ca;
+    color: white;
+    width: 100%;
+    height: 30%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+.description {
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.x {    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    color: #4338ca;
+    width: 1.5em;
+    margin: 0.5em;
+    border-radius: 0.5em;
+}
+
+.modalContenedor {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2rem;
+    width: 60vw;
+    height: 80vh;
+    margin: auto;
+    background-color: #fff;
+    box-shadow: 1px 7px 25px rgba(0, 0, 0, 0.6);
+}
+
+
+.modal {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0; 
+    background-color:rgba(0, 0, 0, 0.5) ;
+    transition: all ease 500ms;
+}
+
+.containerPrice {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.price {
+    background-color: white;
+    border-radius: 1rem;
+    color: black;
+    margin-top: 0.8em;
+    width: 60%;
+    padding: 0.4em 1.5em;
+}
+
+.price:hover {
+    background-color: #4338ca;
+    color: #fff;
+}
+
+@media (min-width: 1200px) {
+    .modalContenedor {
+        width: 30vw;
+        height: 80vh;
+    }
+    
+}
+
+
+
