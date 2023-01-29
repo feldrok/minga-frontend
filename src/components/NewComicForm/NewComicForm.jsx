@@ -48,7 +48,7 @@ function NewComicForm() {
         />
         <select
           name="categories"
-          className={value === "" ? "inpForm-select" : "inpForm-select selected"}
+          className={value === "" ? "inpForm-select" : "inpForm-select selected"} 
           id="categories"
           onChange={(e) => setValue(e.target)}
         >.value

@@ -34,11 +34,18 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 2rem;
+    border: none;
+    background-color: #4338ca;
+    color: white;
+    font-size: 1rem;
+}
+
+.x:hover {
     background-color: #fff;
-    color: #4338ca;
-    width: 1.5em;
-    margin: 0.5em;
-    border-radius: 0.5em;
+    color: #1b0bcf;
+    font-size: 1.5rem;
+    padding: 0 1.5em;
 }
 
 .modalContenedor {

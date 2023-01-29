@@ -137,6 +137,28 @@ footer {
   text-decoration: none;
   color: #0A142F;
 }
+.containerDonation {
+margin-top: 1rem;
+}
+
+.buttonDonations {
+  background-color: #4338ca;
+  color: white;
+  font-weight: 400;
+  font-size: 1.1em;
+  width: 221px;
+  padding: 0.5em 2em;
+  height: 43px;
+  border-radius: 30px;
+  border: none;
+  letter-spacing: 1px;
+  text-decoration: none;
+}
+
+.buttonDonations:hover{
+  background-color: #2413de;
+}
+
 
 @media only screen and (max-width: 768px) {
   footer {

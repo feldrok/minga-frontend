@@ -4,6 +4,7 @@ import Author from "../router/Author/Author"
 import Comic from "./Comic/Comic"
 import Comics from "../router/Comics/Comics"
 import Company from "../router/Company/Company"
+import DonationCard from "../components/DonationCard/DonationCard"
 import Home from "../router/Home/Home"
 import Layout from "../layouts/Layout/Layout"
 import ListComments from "../components/ListComments/ListComments"
@@ -39,9 +40,15 @@ const indexRouter = createBrowserRouter([
                         ],
                     },
                 ],
+                children: [
+                    {
+                        path: "/donations",
+                        element: <DonationCard />,
+                    }],
             },
         ],
     },
+
     {
         path: "/mycomics",
         element: <MyComics />,
@@ -86,7 +93,7 @@ const indexRouter = createBrowserRouter([
     },
     {
         path: "/comic/:id",
-        element: <Comic />, 
+        element: <Comic />,
     },
     {
         path: "/accountsetup",
@@ -112,7 +119,7 @@ const indexRouter = createBrowserRouter([
     },
     {
         path: "/company/:id",
-        element: <Company/>
+        element: <Company />
     },
     {
         path: "/comics",
@@ -120,8 +127,12 @@ const indexRouter = createBrowserRouter([
     },
     {
         path: "/authors/:id",
-        element: <Author/>
-    }
+        element: <Author />
+    },
+    {
+        path: "/donate",
+        name: <DonationCard />,
+    },
 ])
 
 export default indexRouter

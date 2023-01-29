@@ -15,13 +15,13 @@ const handleToken = () => {
     return config
 }
 
-const donation = createAsyncThunk("donation", async ({data}) => {
+const donation = createAsyncThunk("donation", async (data) => {
     try {
-        const response = await axios.post(`${API_URL}/donations/crear-orden`, data , handleToken())
+        const response = await axios.post(`${API_URL}/donations/${data}`, handleToken())
         console.log(response)
         return {
             success: true,
-            response: { ticket : response.data },
+            response: { ticket : response.data.response.body.init_point},
             message: "Ticket successfully created",
         }
     } catch (error) {
@@ -31,6 +31,8 @@ const donation = createAsyncThunk("donation", async ({data}) => {
         }
     }
 })
+
+
 
 const donateAction = {donation}
 export default donateAction

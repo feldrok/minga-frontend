@@ -1,7 +1,9 @@
-import "./Footer.css"
+import "./Footer.css";
 
-import { Link } from "react-router-dom"
-import React from "react"
+import DonationCard from "../../components/DonationCard/DonationCard";
+import { Link } from "react-router-dom";
+import React from "react";
+import { useState } from "react";
 
 const routes = [
   {
@@ -16,9 +18,19 @@ const routes = [
     path: "/Comics",
     name: "Comics",
   },
-]
+  {
+    path: "/donate",
+    name: "Donate",
+  },
+];
 
 function Footer() {
+  const [isOpen, setOpen] = useState(false);
+
+  const showModal = () => {
+    setOpen(true);
+  };
+
   return (
     <footer>
       <div className="subscribe-container">
@@ -45,7 +57,7 @@ function Footer() {
                   <Link className="footer-link" to={route.path} key={index}>
                     {route.name}
                   </Link>
-                )
+                );
               })}
             </div>
           </div>
@@ -86,6 +98,20 @@ function Footer() {
                 />
               </Link>
             </div>
+
+            {/* button donations */}
+
+            <div className="containerDonation">
+              {isOpen ? (
+                <DonationCard />
+              ) : (
+                <Link to="/donations" className="buttonDonations">
+                  {" "}
+                  Donate &#9825;{" "}
+                </Link>
+              )}
+              
+            </div>
           </div>
         </div>
       </div>
@@ -98,12 +124,16 @@ function Footer() {
           <img src="./inga.png" alt="" />
         </div>
         <div className="terms-wrapper">
-          <Link className="terms-link" to={"/"}>Terms and Conditions</Link>
-          <Link className="terms-link" to={"/"}>Privacy Policy</Link>
+          <Link className="terms-link" to={"/"}>
+            Terms and Conditions
+          </Link>
+          <Link className="terms-link" to={"/"}>
+            Privacy Policy
+          </Link>
         </div>
       </div>
     </footer>
-  )
+  );
 }
 
-export default Footer
+export default Footer;
