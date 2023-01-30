@@ -33,9 +33,10 @@ function Comment( {text, user_id, timestamp, id} ) {
           </div>
           <div className="comment-text">
             {editMode ? (
-                <input placeholder="Edit your comment..."
-                onChange={(e) => setEditText(e.target.value)}
-                value={editText}
+                <input 
+                  placeholder="Edit your comment..."
+                  onChange={(e) => setEditText(e.target.value)}
+                  value={editText}
                 />
             ):( 
               <p>{text}</p>
