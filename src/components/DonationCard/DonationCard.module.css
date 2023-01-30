@@ -88,6 +88,7 @@
     margin-top: 0.8em;
     width: 60%;
     padding: 0.4em 1.5em;
+    border: none;
 }
 
 .price:hover {

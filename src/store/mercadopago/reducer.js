@@ -12,7 +12,7 @@ const donationReducer = createReducer(initialState, (builder) =>  {
     builder
     .addCase(donation.fulfilled, (state, action) => {
         let newState = {
-            mercadopago: action.payload.response.order,
+            mercadopago: action.payload.response,
             message: action.payload.message,
         }
         return newState

@@ -2,32 +2,48 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useRef, useState } from "react";
 
 import React from "react";
-import axios from "axios";
 import donateAction from "../../store/mercadopago/actions";
 import styles from "./DonationCard.module.css";
 import { useNavigate } from "react-router";
+import userActions from "../../store/user/actions"
 
-const { donation } = donateAction
+const { donation } = donateAction;
+const { signInToken } = userActions
+
 
 function DonationCard() {
+  const mercadopagoStore = useSelector((state) => state?.mercadopago);
+  const Store = useSelector((state) => console.log(state));
+  
 
-const mercadopagoStore = useSelector((state) => console.log(state)) 
-console.log(mercadopagoStore) 
 
-const dispatch= useDispatch()
-const inputPrice = useRef("");
+  const dispatch = useDispatch();
 
-  const [value, setValue] = useState("")
-  console.log(value)
+  let donation1 = 1000;
+  let donation2 = 5000;
+  let donation3 = 10000;
 
-const Order = {
-    unit_price : inputPrice.current.value 
-  }
-console.log(Order)
+  const getPrice1 = () => {
+    const order = {
+      unit_price: donation1,
+    };
+    dispatch(donation(order));
+  };
 
-  useEffect(() => {
-    dispatch(donation(Order))  
-  }, []) 
+  const getPrice2 = () => {
+    const order = {
+      unit_price: donation2,
+    };
+    dispatch(donation(order));
+  };
+
+  const getPrice3 = () => {
+    const order = {
+      unit_price: donation3,
+    };
+    dispatch(donation(order));
+    
+  };
 
   const navigate = useNavigate();
 
@@ -35,41 +51,43 @@ console.log(Order)
     <>
       <div className={styles.modal}>
         <div className={styles.modalContenedor}>
-
           <div className={styles.text}>
-          <button className={styles.x} onClick={()=> navigate("/") } > ← </button>
-          <p className={styles.description}> How much do you want to donate? </p>
+            <button className={styles.x} onClick={() => navigate("/")}>
+              {" "}
+              ←{" "}
+            </button>
+            <p className={styles.description}>
+              {" "}
+              How much do you want to donate?{" "}
+            </p>
           </div>
 
           <div className={styles.containerCard}>
             <p className={styles.donate}>Donate &#9825;</p>
             <div className={styles.containerPrice}>
-            <option value="1000"  onClick={(e) => setValue(e.target.value)} className={styles.price} > $1000 </option> 
-
-{/*           <input type="text"
-          placeholder="coloca algo"
-          ref={inputPrice} 
-          />  */}
-
+              <button className={styles.price} onClick={getPrice1}>
+                $1000
+              </button>
             </div>
           </div>
 
           <div className={styles.containerCard}>
             <p className={styles.donate}>Donate &#9825;</p>
             <div className={styles.containerPrice}>
-            <option value="5000"
-            className={styles.price} 
-            onClick={(e) => setValue(e.target.value)} > $5000 </option>
+              <button className={styles.price} onClick={getPrice2}>
+                $5000
+              </button>
             </div>
           </div>
 
           <div className={styles.containerCard}>
             <p className={styles.donate}>Donate &#9825;</p>
             <div className={styles.containerPrice}>
-            <option value="10000" onClick={(e) => setValue(e.target.value)} className={styles.price} > $10000 </option>
+              <button className={styles.price} onClick={getPrice3}>
+                $10000
+              </button>
             </div>
           </div>
-
         </div>
       </div>
     </>

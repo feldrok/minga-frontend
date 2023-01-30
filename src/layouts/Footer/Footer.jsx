@@ -1,9 +1,14 @@
 import "./Footer.css";
 
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+
 import DonationCard from "../../components/DonationCard/DonationCard";
 import { Link } from "react-router-dom";
 import React from "react";
-import { useState } from "react";
+import userActions from "../../store/user/actions";
+
+const { signInToken } = userActions;
 
 const routes = [
   {
@@ -26,10 +31,27 @@ const routes = [
 
 function Footer() {
   const [isOpen, setOpen] = useState(false);
+  const [isLogged, setIsLogged] = useState(false)
+  console.log(isLogged)
+
+ /*  const dispatch = useDispatch(); */
+  const userStore = useSelector((state) => state.user);
+  console.log(userStore.user.success);
+
+  //Unauthorized
 
   const showModal = () => {
-    setOpen(true);
-  };
+    setOpen(true)} ;
+
+    useEffect(() => {
+      if (userStore.user.success === undefined ) {
+        setIsLogged(isLogged)
+      } else {
+        setIsLogged(true)
+      }
+    }) 
+
+  
 
   return (
     <footer>
@@ -101,17 +123,22 @@ function Footer() {
 
             {/* button donations */}
 
-            <div className="containerDonation">
-              {isOpen ? (
-                <DonationCard />
-              ) : (
-                <Link to="/donations" className="buttonDonations">
-                  {" "}
-                  Donate &#9825;{" "}
-                </Link>
-              )}
-              
-            </div>
+            {isLogged ? (
+              <div className="containerDonation">
+                {isOpen ? (
+                  <DonationCard />
+                ) : (
+                  <Link to="/donations" className="buttonDonations">
+                    {" "}
+                    Donate &#9825;{" "}
+                  </Link>
+                )}
+              </div>
+            ) : 
+            ( null )
+            }
+
+            
           </div>
         </div>
       </div>
