@@ -26,6 +26,13 @@ const routes = [
     },
 ]
 
+const loggedOutRoutes = [
+    {
+        path: "/",
+        name: "Home",
+    },
+]
+
 function Nav() {
     const userStore = useSelector((state) => state.user)
     const [navigation, setNavigation] = useState(false)
@@ -71,7 +78,7 @@ function Nav() {
                 <div className="nav-item">
                     <img className="nav-logo" src="/logo.png" alt="logo" />
                 </div>
-                <div className="nav-item nav-items">
+                {isLogged ? (                <div className="nav-item nav-items">
                     {routes.map((route, index) => (
                         <NavLink
                             className="nav-link"
@@ -81,7 +88,18 @@ function Nav() {
                             {route.name}
                         </NavLink>
                     ))}
-                </div>
+                </div>) : (<div className="nav-item nav-items">
+                    {loggedOutRoutes.map((route, index) => (
+                        <NavLink
+                            className="nav-link"
+                            to={route.path}
+                            key={index}
+                        >
+                            {route.name}
+                        </NavLink>
+                    ))}
+                </div>) }
+
                 {isLogged ? (
                     <div className="nav-item logout-button">
                         <button className="login-btn" onClick={handleLogout}>

@@ -1,7 +1,13 @@
-import { Link } from "react-router-dom"
-import React from "react"
+import Button from "../Button/Button";
+import { Link } from "react-router-dom";
+import React from "react";
+import { useState } from "react";
 
 function SignupUser() {
+  const [verify, setVerify] = useState(false);
+  const handleSubmit = () => {
+    setVerify(true);
+  };
   return (
     <>
       <div className="title-container">
@@ -15,7 +21,9 @@ function SignupUser() {
       <div className="form-container">
         <form className="sign-form">
           <div className="form-signup-row">
-            <label className="label-sign" htmlFor="username">Username</label>
+            <label className="label-sign" htmlFor="username">
+              Username
+            </label>
             <input
               autoComplete="false"
               type="text"
@@ -24,7 +32,9 @@ function SignupUser() {
             />
           </div>
           <div className="form-signup-row">
-            <label className="label-sign" htmlFor="email">Email</label>
+            <label className="label-sign" htmlFor="email">
+              Email
+            </label>
             <input
               autoComplete="false"
               type="email"
@@ -33,7 +43,9 @@ function SignupUser() {
             />
           </div>
           <div className="form-signup-row">
-            <label className="label-sign" htmlFor="password">Password</label>
+            <label className="label-sign" htmlFor="password">
+              Password
+            </label>
             <input
               autoComplete="false"
               type="password"
@@ -42,7 +54,9 @@ function SignupUser() {
             />
           </div>
           <div className="form-signup-row">
-            <label className="label-sign" htmlFor="confirmPassword">Confirm password</label>
+            <label className="label-sign" htmlFor="confirmPassword">
+              Confirm password
+            </label>
             <input
               autoComplete="false"
               type="password"
@@ -51,13 +65,36 @@ function SignupUser() {
             />
           </div>
           <div className="form-row">
-            <Link className="submitButton" to={"/accountsetup"}>Sign up</Link>
+            <Button />
+            <Link
+              className="submitButton"
+              onClick={handleSubmit}
+            >
+              Sign up
+            </Link>
+            {verify ? (
+              <div>
+              <input className="verify-input" placeholder="Enter your verify code...">
+                
+              </input>
+              <Link to={"/"}>Submit</Link>
+              </div>
+            ) : (
+              null
+            )}
           </div>
         </form>
-        <button className="signup-google"><img className="signup-google-img" alt="google icon" src="./Google.png" /> Sign up with Google</button>
+        <button className="signup-google">
+          <img
+            className="signup-google-img"
+            alt="google icon"
+            src="./Google.png"
+          />{" "}
+          Sign up with Google
+        </button>
       </div>
     </>
-  )
+  );
 }
 
-export default SignupUser
+export default SignupUser;
