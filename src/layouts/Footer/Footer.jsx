@@ -6,9 +6,6 @@ import { useEffect, useState } from "react";
 import DonationCard from "../../components/DonationCard/DonationCard";
 import { Link } from "react-router-dom";
 import React from "react";
-import userActions from "../../store/user/actions";
-
-const { signInToken } = userActions;
 
 const routes = [
   {
@@ -41,7 +38,8 @@ function Footer() {
   //Unauthorized
 
   const showModal = () => {
-    setOpen(true)} ;
+    setOpen(true)
+  } ;
 
     useEffect(() => {
       if (userStore.user.success === undefined ) {

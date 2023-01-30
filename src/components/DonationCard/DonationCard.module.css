@@ -1,27 +1,45 @@
 .containerCard {
+    background-color: #4338ca;
     background-image: url(../../../public/bkg.png);
-   /*  background-color: #4338ca; */
     background-size: cover;
-    color: white ;
-    width: 80%;
-    height: 100%;
+    border: solid 1px black;
+    color: white;
+    width: 90%;
+    height: 20%;
     display: flex;
     justify-content: center;
     text-align: center;
     flex-direction: column;
-    margin: 2rem;
     border-radius: 0.5em;
+    margin: 0.5rem;
 } 
-
-
-.text {
-    background-color: #4338ca;
+.containerOther {
+    background-image: url(../../../public/bkg.png);
+    background-size: cover;
+    border: solid 1px black;
     color: white;
-    width: 100%;
-    height: 30%;
+    width: 90%;
+    height: 15%;
     display: flex;
     justify-content: center;
     text-align: center;
+    flex-direction: column;
+    border-radius: 0.5em;
+    margin: 0.5rem;
+} 
+
+.donate {
+    font-size: 1.2rem;
+}
+
+.text {
+    color: black;
+    width: 100%;
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    height: 5vh;
 }
 .description {
     width: 90%;
@@ -30,37 +48,47 @@
     align-items: center;
 }
 
-.x {    
+.containerButton {
+    height: 10%;
+}
+
+.x {
     display: flex;
-    align-items: center;
     justify-content: center;
-    width: 2rem;
+    align-items: center;
+    background-color: #fff;
     border: none;
-    background-color: #4338ca;
-    color: white;
-    font-size: 1rem;
+    border: solid 0.8px black;
+    border-radius: 0.5rem;
+    padding: 0.2em 2em;
 }
 
 .x:hover {
-    background-color: #fff;
-    color: #1b0bcf;
-    font-size: 1.5rem;
-    padding: 0 1.5em;
+    background-color: #4338ca;
+    color: white;
 }
 
 .modalContenedor {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     border-radius: 2rem;
-    width: 60vw;
+    flex-direction: column;
+    width: 90vw;
     height: 80vh;
     margin: auto;
     background-color: #fff;
     box-shadow: 1px 7px 25px rgba(0, 0, 0, 0.6);
 }
 
+.cards {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 80%;
+}
 
 .modal {
     width: 100%;
@@ -77,18 +105,41 @@
 
 .containerPrice {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
 }
 
 .price {
-    background-color: white;
-    border-radius: 1rem;
+    background-color: #fff;
     color: black;
-    margin-top: 0.8em;
-    width: 60%;
-    padding: 0.4em 1.5em;
+    margin: 0.5rem;
+    width: 50%;
+    padding: 0.4em 0.5em;
     border: none;
+    border-radius: 0.5rem;
+}
+
+.input {
+    width: 30%;
+    padding: 0.4em 1.5em;
+    outline: none;
+    border: none;
+    border-radius: 0.5rem;
+    text-align: center;
+}
+
+
+.donate2 {
+    width: 30%;
+    padding: 0.4em 1.5em;
+    outline: none;
+    border-radius: 0.5rem;
+    border: none;
+}
+
+.donate2:hover {
+    background-color: #4338ca;
+    color: #fff;
 }
 
 .price:hover {
@@ -96,13 +147,52 @@
     color: #fff;
 }
 
-@media (min-width: 1200px) {
-    .modalContenedor {
-        width: 30vw;
-        height: 80vh;
-    }
-    
+.containerImagen{
+    width: 100%;
+    height: 15%;
+    color: white;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.imagen {
+    width: 90%;
+    height: 80%;
+    border-radius: 1rem;
+}
+
+.pago {
+    display: flex;
+    background-color: red;
 }
 
 
+
+
+@media (min-width: 1024px) {
+    .containerImagen{
+        display: flex;
+        height: 20%;
+    }
+    .modalContenedor {
+        width: 50vw;
+        height: 80vh;
+    }
+    .cards {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        flex-direction: row;
+        width: 100%;
+        height: 60%;
+    }
+    .containerCard{
+        height: 60%;
+        width: 30%;
+    }
+    .containerOther{
+        height: 20%;
+    }
+}
 
