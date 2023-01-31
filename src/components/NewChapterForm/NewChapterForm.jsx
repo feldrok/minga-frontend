@@ -3,7 +3,8 @@ import "./NewChapterForm.css"
 import React, { useRef } from "react"
 
 import chapterActions from "../../store/chapters/actions"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
+import { useParams } from "react-router"
 
 const { newChapter } = chapterActions
 
@@ -14,11 +15,15 @@ const NewChapter = () => {
     const inpOrder = useRef(null)
     const inpPages = useRef("")
     const dispatch = useDispatch()
+    const params = useParams()
+    const chapterStore = useSelector((store) => store.chapters)
+    const { id } = params
+    console.log(id)
 
     let handleSubmit = async (e) => {
         e.preventDefault()
         let values = {
-            comic_id: "63b33ec6314eea2b2acb8e8a",
+            comic_id: id,
             title: inpTitle?.current?.value,
             pages: inpPages?.current?.value.split(","),
         }
@@ -26,7 +31,10 @@ const NewChapter = () => {
             values.order = inpOrder.current.value
         }
         await dispatch(newChapter(values))
+
     }
+
+    console.log(chapterStore);
 
     return (
         <div className="divContainerForm">

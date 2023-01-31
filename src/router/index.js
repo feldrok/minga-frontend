@@ -20,6 +20,7 @@ import SignupForm from "../components/SignupForm/SignupForm"
 import EditComic from "../components/EditComic/EditComic"
 import { createBrowserRouter } from "react-router-dom"
 import DeleteComic from "../components/DeleteComic/DeleteComic"
+import NewRole from "../components/NewRole/NewRole"
 
 const indexRouter = createBrowserRouter([
     {
@@ -53,7 +54,7 @@ const indexRouter = createBrowserRouter([
         element: <NewComic />,
     },
     {
-        path: "/newchapter",
+        path: "/newchapter/:id",
         element: <NewChapter />,
     },
     {
@@ -131,6 +132,10 @@ const indexRouter = createBrowserRouter([
     {
         path: "/delete-comic/:id",
         element: <DeleteComic />
+    },
+    {
+        path: "/new-role",
+        element: <NewRole />
     }
 ])
 

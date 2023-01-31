@@ -1,0 +1,119 @@
+.allContainer{
+    display: flex;
+    width: 100%;
+    height: 100vh;
+}
+.joinContainer{
+    width: 55%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem
+}
+.title{
+    text-align: center;
+    margin-bottom: 7rem;
+}
+.title p{
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+.title h3{
+    font-size: 4em;
+}
+.bgContainer{
+    width: 45%;
+    background-image: url("../../../public/accountsetupbg.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+.textContent{
+    width: 70%;
+    padding-top: 10rem;
+
+}
+.p1{
+    font-size: 2rem;
+    font-weight: 600;
+}
+.p2{
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    margin-top: 3rem;
+}
+.p2 img{
+    width: 30px;
+    height: 2px;
+}
+.p3{
+    color: #E5E5E5;
+}
+.joinAs{
+    display: flex;
+    gap: 1rem;
+    border: 1px solid #E5E5E5;
+    border-radius: 15px;
+    width: 60%;
+    min-width: 530px;
+    min-height: 80px;
+    justify-content: space-between;
+    align-items: center;
+    text-decoration: none;
+    color: #000;
+}
+.joinAs:hover{
+    border: 1px solid #000;
+    border-radius: 15px;
+    box-shadow: 0px 0px 3px black;
+}
+.joinContent{
+    display: flex;
+    padding-left: 1.5rem;
+    flex-wrap: wrap;
+    padding: 1rem;
+    gap: 1rem;
+}
+.imgMid{
+    margin: 0 -10px;
+    position: relative;
+}
+@media only screen and (max-width: 1080px){
+    .bgContainer{
+        display: none;
+    }
+    .joinContainer{
+        width: 100%;
+    }
+}
+@media only screen and (max-width: 540px){
+    .joinAs{
+        min-width: 80%;
+        justify-content: center;
+    }
+    .joinContent{
+        justify-content: center;
+    }
+    .textJoinAs{
+        text-align: center;
+    }
+}
+@media only screen and (max-width: 360px){
+    .title h3{
+        font-size: 3em;
+    }
+}
+.goHome{
+    margin-top: 2rem;
+    font-weight: 600;
+}
+.goHome a{
+    text-decoration: none;
+    color: #1B6FA8;
+}

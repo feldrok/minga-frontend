@@ -54,7 +54,7 @@ function ComicCards() {
         } else if (location.search.includes("title")) {
             dispatch(getComicsByTitle(currentParams.title))
         } else {
-            if (comicsStore.comics?.length === 0) {
+            if (comicsStore?.comics?.response?.length === 0) {
                 if (location.pathname.includes("/comics")) {
                     dispatch(getComics())
                 } else if (location.pathname.includes("/company")) {
@@ -62,26 +62,26 @@ function ComicCards() {
                 } else if(location.pathname.includes("/mycomics")){
                     dispatch(get_comics_from_company_author({}))
                 }
-            } else if (comicsStore.comics?.response?.length === 0) {
+            } else if (comicsStore.comics?.response?.length !== 0) {
                 if (
                     location.pathname.includes("/comics") &&
-                    comicsStore.storedComics !== "allComics"
+                    comicsStore?.storedComics !== "allComics"
                 ) {
                     dispatch(getComics())
                 } else if (
                     location.pathname.includes("/company") &&
-                    comicsStore.storedComics !== "companyComics"
+                    comicsStore?.storedComics !== "companyComics"
                 ) {
                     dispatch(get_comics_company({ company_id: params.id }))
-                } else if (
-                    location.pathname.includes("/mycomics") &&
-                    comicsStore.storedComics !== "mycomics"
-                ) {
+                } else if (location.pathname.includes("/mycomics")&&
+                comicsStore?.storedComics !== "myComics") {
                     dispatch(get_comics_from_company_author({}))
                 }
             }
         }
     }, [searchParams])
+
+    console.log(comicsStore);
 
     const setCategoryColor = (id) => {
         if (categoryStore.categories.response?.length === 0) {

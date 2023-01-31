@@ -96,3 +96,17 @@
     font-style: italic;
     font-size: 1rem;
 }
+.addChap{
+    text-decoration: none;
+    font-weight: 600;
+    color: #00BA88;
+    align-self: flex-start;
+    margin-top: 1rem;
+    background-color: #D1FBF0;
+    padding: .3rem .6rem;
+    border-radius: 10px;
+}
+.addChap:hover{
+    background-color: #00BA88;
+    color: #fff;
+}

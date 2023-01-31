@@ -13,17 +13,17 @@ const routes = [
         name: "Home",
     },
     {
-        path: "/newchapter",
-        name: "New Chapter",
-    },
-    {
-        path: "/comics",
-        name: "Comics",
+        path: "/newcomics",
+        name: "New Comic",
     },
     {
         path: "/mycomics",
         name: "My Comics",
     },
+    {
+        path: "/profile",
+        name: "Profile"
+    }
 ]
 
 function Nav() {
@@ -71,17 +71,28 @@ function Nav() {
                 <div className="nav-item">
                     <img className="nav-logo" src="/logo.png" alt="logo" />
                 </div>
-                <div className="nav-item nav-items">
-                    {routes.map((route, index) => (
-                        <NavLink
-                            className="nav-link"
-                            to={route.path}
-                            key={index}
+                {isLogged ? (
+                    <div className="nav-item nav-items">
+                        {routes.map((route, index) => (
+                            <NavLink
+                                className="nav-link"
+                                to={route.path}
+                                key={index}
+                            >
+                                {route.name}
+                            </NavLink>
+                        ))}
+                    </div>
+                ) : (<div className="nav-item nav-items"> {
+                        <NavLink 
+                        className="nav-link"
+                        to={routes[0].path}
+                        key={routes[0].index}
                         >
-                            {route.name}
-                        </NavLink>
-                    ))}
-                </div>
+                            {routes[0].name}
+                        </NavLink>}
+                    </div>
+                )}
                 {isLogged ? (
                     <div className="nav-item logout-button">
                         <button className="login-btn" onClick={handleLogout}>

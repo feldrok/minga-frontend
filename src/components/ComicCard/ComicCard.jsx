@@ -68,10 +68,13 @@ function ComicCard({ title, image, link, comicCategory, color }) {
                     {renderCategoryType()}
                     {location.pathname.includes("/company") ? (
                         <EditDelete
-                        link={link} />
+                            link={link} />
                     ) : null}
                     {location.pathname.includes("/mycomics") ? (
-                        <EditDelete link={link} />
+                        <>
+                            <EditDelete link={link} />
+                            <Link className={styles.addChap} to={`/newchapter/${link}`}>Add Chapter</Link>
+                        </>
                     ) : null}
                 </div>
                 <div
