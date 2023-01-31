@@ -67,11 +67,11 @@ const getLastReads = createAsyncThunk("getLastReads", async () => {
     }
 })
 
-const updateLastRead = createAsyncThunk("updateLastRead", async (lastRead) => {
+const updateLastRead = createAsyncThunk("updateLastRead", async (lastReads) => {
     try {
         let response = await axios.put(
-            `${API_URL}/lastreads/${lastRead.chapter_id}`,
-            lastRead,
+            `${API_URL}/lastreads/${lastReads.chapter_id}`,
+            lastReads,
             handleToken()
         )
         return {

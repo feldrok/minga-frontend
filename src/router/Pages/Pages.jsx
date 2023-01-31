@@ -7,7 +7,6 @@ import Nav from "../../layouts/Nav/Nav"
 import chapterActions from "../../store/chapters/actions"
 import styles from "./Pages.module.css"
 import lastReadActions from "../../store/lastreads/actions"
-import { decodeToken } from "react-jwt"
 
 const { getLastRead, getLastReads, createLastRead, updateLastRead } =
     lastReadActions
@@ -41,21 +40,20 @@ function Pages() {
             if (lastReadStore.lastRead?.length !== 0) {
                 setCurrent(lastReadStore.lastRead?.page)
             }
-
-            if (lastReadStore.lastRead.response?.length === 0) {
-                dispatch(
-                    createLastRead({
-                        user_id: decodeToken(token).id,
-                        chapter_id: _id,
-                        comic_id: chapterStore.chapter.response?.comic_id,
-                        page: 0,
-                    })
-                )
-            }
         } catch (error) {
             console.log(error)
         }
     }, [lastReadStore, _id, location])
+
+    useEffect(() => {
+        dispatch(
+            createLastRead({
+                chapter_id: _id,
+                comic_id: chapterStore?.chapter?.response?.comic_id,
+                page: 0,
+            })
+        )
+    }, [chapterStore])
 
     useEffect(() => {
         dispatch(getLastRead(_id))
@@ -85,21 +83,17 @@ function Pages() {
             dispatch(
                 updateLastRead({
                     chapter_id: _id,
-                    comic_id: chapterStore.chapter.response?.comic_id,
-                    user_id: decodeToken(localStorage.getItem("token")).id,
                     page: current + 1,
                 })
             )
         } else {
-            navigate(`/pages/${nextChapter._id}`, { replace: true })
             dispatch(
                 updateLastRead({
                     chapter_id: nextChapter._id,
-                    comic_id: chapterStore.chapter.response?.comic_id,
-                    user_id: decodeToken(localStorage.getItem("token")).id,
-                    page: current + 1,
+                    page: 0,
                 })
             )
+            navigate(`/pages/${nextChapter._id}`, { replace: true })
         }
     }
     const prev = () => {
@@ -111,8 +105,6 @@ function Pages() {
             dispatch(
                 updateLastRead({
                     chapter_id: _id,
-                    comic_id: chapterStore.chapter.response?.comic_id,
-                    user_id: decodeToken(localStorage.getItem("token")).id,
                     page: current - 1,
                 })
             )
@@ -126,8 +118,6 @@ function Pages() {
             dispatch(
                 updateLastRead({
                     chapter_id: _id,
-                    comic_id: chapterStore.chapter.response?.comic_id,
-                    user_id: decodeToken(localStorage.getItem("token")).id,
                     page: prevChapter.pages.length - 1,
                 })
             )

@@ -1,12 +1,8 @@
 import lastReadActions from "./actions"
 import { createReducer } from "@reduxjs/toolkit"
 
-const {
-    createLastRead,
-    getLastRead,
-    getLastReads,
-    updateLastRead,
-} = lastReadActions
+const { createLastRead, getLastRead, getLastReads, updateLastRead } =
+    lastReadActions
 
 const initialState = {
     lastRead: [],
