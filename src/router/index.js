@@ -14,6 +14,8 @@ import NewChapter from "./NewChapter/NewChapter"
 import NewComic from "./NewComic/NewComic"
 import NewCompany from "../components/NewCompany/NewCompany"
 import Pages from "./Pages/Pages"
+import PaymentDone from "../components/PaymentDone/PaymentDone"
+import PaymentError from "../components/PaymentError/PaymentError"
 import React from "react"
 import SigninForm from "../components/SigninForm/SigninForm"
 import Signup from "../router/Signup/Signup"
@@ -131,8 +133,16 @@ const indexRouter = createBrowserRouter([
     },
     {
         path: "/donate",
-        name: <DonationCard />,
+        element: <DonationCard />,
     },
+    {
+        path: "/donation",
+        element: <PaymentDone />,
+    },
+    {
+        path: "/donationerror",
+        element: <PaymentError />,
+    }
 ])
 
 export default indexRouter

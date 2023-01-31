@@ -8,7 +8,6 @@ import { useNavigate } from "react-router";
 import userActions from "../../store/user/actions";
 
 const { donation } = donateAction;
-const { signInToken } = userActions;
 
 function DonationCard() {
   const mercadopagoStore = useSelector((state) => state?.mercadopago);
