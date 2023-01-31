@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 
 import authorActions from "../../store/authors/actions";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const { addAuthor } = authorActions;
 
@@ -13,6 +13,8 @@ function NewAuthor() {
   const authorCountry = useRef(null);
   const authorDate = useRef(null);
   const authorPhoto = useRef(null);
+  const userStore = useSelector((store) => store.user)
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const authorData = {
@@ -22,8 +24,8 @@ function NewAuthor() {
       country: authorCountry.current.value,
       date: authorDate.current.value,
       photo: authorPhoto.current.value,
-      user_id: "63b1cb4db1f1ec1540d8078f",
-      active: true,
+      user_id: userStore.user?.response?.user.id,
+      active: false,
     };
     await dispatch(addAuthor(authorData));
   };

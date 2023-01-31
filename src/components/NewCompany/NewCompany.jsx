@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 
 import companyActions from "../../store/companies/actions";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const { addCompany } = companyActions
 
@@ -11,6 +11,8 @@ function SignupCompany() {
   const companyLogo = useRef(null)
   const companyWebsite = useRef(null)
   const companyDescription = useRef(null)
+  const userStore = useSelector((store) => store.user)
+
   const handleSubmit = async (e) => {
     e.preventDefault()
     const companyData = {
@@ -18,8 +20,8 @@ function SignupCompany() {
       logo: companyLogo.current.value,
       website: companyWebsite.current.value,
       description: companyDescription.current.value,
-      user_id: "63b1cb4db1f1ec1540d8078f",
-      active: true,
+      user_id: userStore.user?.response?.user.id,
+      active: false,
     }
     await dispatch(addCompany(companyData))
   }

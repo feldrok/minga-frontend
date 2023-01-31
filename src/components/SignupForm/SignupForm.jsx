@@ -51,7 +51,7 @@ function SignupUser() {
             />
           </div>
           <div className="form-row">
-            <Link className="submitButton" to={"/accountsetup"}>Sign up</Link>
+            <Link className="submitButton" to={"/new-role"}>Sign up</Link>
           </div>
         </form>
         <button className="signup-google"><img className="signup-google-img" alt="google icon" src="./Google.png" /> Sign up with Google</button>

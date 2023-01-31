@@ -17,6 +17,10 @@ const routes = [
         name: "New Comic",
     },
     {
+        path: "/edit-chapters",
+        name: "Edit Chapters",
+    },
+    {
         path: "/mycomics",
         name: "My Comics",
     },
@@ -71,7 +75,8 @@ function Nav() {
                 <div className="nav-item">
                     <img className="nav-logo" src="/logo.png" alt="logo" />
                 </div>
-                {isLogged ? (
+                {userStore.user.response?.user?.is_author ||
+                userStore.user.response?.user?.is_company ? (
                     <div className="nav-item nav-items">
                         {routes.map((route, index) => (
                             <NavLink
