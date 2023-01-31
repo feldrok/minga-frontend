@@ -1,8 +1,7 @@
-import { Link, useNavigate } from "react-router-dom";
-import React, { useRef, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useRef } from "react";
 
-import Button from "../Button/Button";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import userActions from "../../store/user/actions";
 
 const { addUser } = userActions;

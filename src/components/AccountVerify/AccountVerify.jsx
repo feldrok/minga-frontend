@@ -15,7 +15,7 @@ const VerifyAccount = () => {
   return (
     <div className="verify-container">
       <div className="verify-div">
-        <div>
+        <div className="verify-div2">
           <h1 className="verify-message">Your account has been verified!</h1>
           <Anchor className="verify-redirect" to="/signin">
             Login

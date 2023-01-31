@@ -1,5 +1,6 @@
 import React, { useEffect } from "react"
 
+import Carousel from "../../components/Carousel/Carousel"
 import ComicCards from "../../components/ComicCards/ComicCards"
 import ComicsHeader from "../../components/ComicsHeader/ComicsHeader"
 import ListComics from "../../components/ListComics/ListComics"
