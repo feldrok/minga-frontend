@@ -59,7 +59,6 @@ function Pages() {
         dispatch(getLastRead(_id))
     }, [current])
 
-    console.log(lastReadStore)
     const getPagesImages = () => {
         if (chapterStore.chapter?.length === 0) {
             return <p>Loading...</p>
@@ -88,13 +87,13 @@ function Pages() {
                 })
             )
         } else {
-            navigate(`/pages/${nextChapter._id}`, { replace: true })
             dispatch(
                 updateLastRead({
                     chapter_id: nextChapter._id,
-                    page: current + 1,
+                    page: 0,
                 })
             )
+            navigate(`/pages/${nextChapter._id}`, { replace: true })
         }
     }
     const prev = () => {
