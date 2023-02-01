@@ -45,7 +45,7 @@ function ListComics({ children }) {
     const handleLoadMore = () => {
         const limit = comicsStore.comics?.response?.length
         if (location.pathname.includes("/comics")) {
-            dispatch(getComics(limit + 4))
+            dispatch(getComics({ limit: limit + 4 }))
         } else if (location.pathname.includes("/company")) {
             dispatch(
                 get_comics_company({ company_id: params.id, limit: limit + 3 })
@@ -67,7 +67,7 @@ function ListComics({ children }) {
         const currentParams = Object.fromEntries([...searchParams])
         const limit = comicsStore.comics?.response?.length
         if (location.pathname.includes("/comics")) {
-            dispatch(getComics(limit + 4))
+            dispatch(getComics({ limit: limit + 4 }))
         } else if (location.pathname.includes("/company")) {
             let obj = {
                 company_id: params.id,

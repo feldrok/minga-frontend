@@ -5,8 +5,7 @@ import { useLocation, useNavigate, useSearchParams } from "react-router-dom"
 import comicActions from "../../store/comics/actions"
 import styles from "./SearchInput.module.css"
 
-const { getComicsByTitle, getComicsByTitleAndCategory } = comicActions
-
+const { getComics } = comicActions
 
 function SearchInput() {
     const categoryStore = useSelector((state) => state.categories)
@@ -17,8 +16,8 @@ function SearchInput() {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        if (categoryStore.activeCategory === 'all') {
-            setInputValue('')
+        if (categoryStore.activeCategory === "all") {
+            setInputValue("")
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [location])
@@ -26,19 +25,39 @@ function SearchInput() {
     const updateURL = (e) => {
         e.preventDefault()
         const currentParams = Object.fromEntries([...searchParams])
-        if (location.search.includes('category_id')) {
-            navigate(`?title=${inputValue}&category_id=${currentParams.category_id}`)
-            setSearchParams({ title: inputValue, category_id: currentParams.category_id })
-            dispatch(getComicsByTitleAndCategory({ title: inputValue, category_id: currentParams.category_id}))
+        if (location.search.includes("category_id")) {
+            navigate(
+                `?title=${inputValue}&category_id=${currentParams.category_id}`
+            )
+            setSearchParams({
+                title: inputValue,
+                category_id: currentParams.category_id,
+            })
+            dispatch(
+                getComics({
+                    title: inputValue,
+                    category_id: currentParams.category_id,
+                })
+            )
         } else {
-            if (categoryStore.activeCategory === 'all') {
+            if (categoryStore.activeCategory === "all") {
                 navigate(`?title=${inputValue}`)
                 setSearchParams({ title: inputValue })
-                dispatch(getComicsByTitle(inputValue))
+                dispatch(getComics({ title: inputValue }))
             } else {
-                navigate(`?title=${inputValue}&category_id=${categoryStore.activeCategory}`)
-                setSearchParams({ title: inputValue, category_id: categoryStore.activeCategory })
-                dispatch(getComicsByTitleAndCategory({ title: inputValue, category_id: categoryStore.activeCategory }))
+                navigate(
+                    `?title=${inputValue}&category_id=${categoryStore.activeCategory}`
+                )
+                setSearchParams({
+                    title: inputValue,
+                    category_id: categoryStore.activeCategory,
+                })
+                dispatch(
+                    getComics({
+                        title: inputValue,
+                        category_id: categoryStore.activeCategory,
+                    })
+                )
             }
         }
     }

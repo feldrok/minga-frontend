@@ -54,7 +54,7 @@ function CategoryFilters() {
         setSearchParams("")
         dispatch(setActiveCategory("all"))
         if (location.pathname.includes("/comics")) {
-            dispatch(getComics())
+            dispatch(getComics({ limit: 10 }))
         } else if (location.pathname.includes("/company")) {
             dispatch(get_comics_company({ company_id: params.id }))
         } else if (location.pathname.includes("/mycomics")) {

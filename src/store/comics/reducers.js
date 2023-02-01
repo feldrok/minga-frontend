@@ -2,34 +2,28 @@ import comicActions from "./actions"
 import { createReducer } from "@reduxjs/toolkit"
 
 const {
-  createNewComic,
-  getComic,
-  getComics,
-  getComicsByTitle,
-  getComicsByCategory,
-  getComicsByTitleAndCategory,
-  getFavouriteComics,
-  get_comics_from_cia,
-  get_comics_company,
-  get_comics_from_author,
-  get_comics_from_company_author,
-  edit_comic,
-  delete_comic,
-  getComicsById
+    createNewComic,
+    getComic,
+    getComics,
+    getFavouriteComics,
+    get_comics_from_cia,
+    get_comics_company,
+    get_comics_from_author,
+    get_comics_from_company_author,
+    edit_comic,
+    delete_comic,
 } = comicActions
 
 const initialState = {
-  comic: [],
-  comics: [],
-  comicById: [],
-  storedComics: "",
-  message: "",
-  limit: 10,
-  order: "desc",
-  search: "",
+    comic: [],
+    comics: [],
+    comicById: [],
+    storedComics: "",
+    message: "",
+    limit: 10,
+    order: "desc",
+    search: "",
 }
-
-
 
 const comicReducer = createReducer(initialState, (builder) => {
     builder
@@ -64,33 +58,6 @@ const comicReducer = createReducer(initialState, (builder) => {
             }
             return newState
         })
-        .addCase(getComicsByTitle.fulfilled, (state, action) => {
-            let newState = {
-                comics: action.payload.response.comics,
-                comic: state.comic,
-                search: action.payload.search,
-                message: action.payload.message,
-            }
-            return newState
-        })
-        .addCase(getComicsByCategory.fulfilled, (state, action) => {
-            let newState = {
-                comics: action.payload.response.comics,
-                comic: state.comic,
-                search: action.payload.search,
-                message: action.payload.message,
-            }
-            return newState
-        })
-        .addCase(getComicsByTitleAndCategory.fulfilled, (state, action) => {
-            let newState = {
-                comics: action.payload.response.comics,
-                comic: state.comic,
-                search: action.payload.search,
-                message: action.payload.message,
-            }
-            return newState
-        })
         .addCase(get_comics_from_cia.fulfilled, (state, action) => {
             let newState = {
                 comic: state.comic,
@@ -115,7 +82,7 @@ const comicReducer = createReducer(initialState, (builder) => {
             let newState = {
                 comic: state.comic,
                 comics: action.payload.response.comics,
-                message: action.payload.message
+                message: action.payload.message,
             }
             return newState
         })

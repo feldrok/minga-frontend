@@ -42,10 +42,14 @@ export default function Comic() {
         )
     }, [])
 
+    const currentChapters = chapterStore.chapters?.response?.find(
+        (chapter) => chapter.comic_id === id
+    )
+
     const showChapter = () => {
         setChapter(true)
         const limit = chapterStore.chapters?.response?.length
-        if (chapterStore.chapters?.length === 0) {
+        if (chapterStore.chapters?.length === 0 || id !== currentChapters) {
             dispatch(getChapters({ id: id, limit: limit }))
         }
     }
