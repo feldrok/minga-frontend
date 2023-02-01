@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react"
 import styles from "./FavouriteReaction.module.css"
 import { useDispatch, useSelector } from "react-redux"
-import { decodeToken } from "react-jwt"
 import reactionActions from "../../store/reactions/actions"
 import { useParams } from "react-router"
 const { addReaction } = reactionActions
@@ -26,7 +25,6 @@ function FavouriteReaction() {
         await dispatch(
             addReaction({
                 comic_id: params.id,
-                user_id: decodeToken(localStorage.getItem("token"))?.id,
                 name: e.target.value,
             })
         )
