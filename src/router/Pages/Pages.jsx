@@ -148,7 +148,7 @@ function Pages() {
                     </div>
                 </header>
                 <div className={styles.comicPage}>
-                    {getPagesImages()}
+                    {getPagesImages()} 
                     <div className={styles.leftButton} onClick={prev}>
                         <p className={styles.leftArrow}>&lt;</p>
                     </div>

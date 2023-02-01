@@ -46,7 +46,7 @@ const getComic = createAsyncThunk("getComic", async (comic) => {
         return {
             response: { comic: response.data },
             message: "comic obtained",
-        }
+        } 
     } catch (error) {
         return {
             response: { comic: error.response.data },
@@ -63,8 +63,8 @@ const getComics = createAsyncThunk("getComics", async (limit) => {
     try {
         let response = await axios.get(
             `${API_URL}/comics?limit=${limit}`,
-            handleToken()
-        )
+            handleToken() 
+        ) 
         return {
             response: { comics: response.data },
             limit: limit,
@@ -77,6 +77,10 @@ const getComics = createAsyncThunk("getComics", async (limit) => {
         }
     }
 })
+
+
+
+
 
 const getComicsByTitle = createAsyncThunk("getComicsByTitle", async (title) => {
     try {

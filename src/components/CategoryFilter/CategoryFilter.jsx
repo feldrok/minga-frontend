@@ -106,7 +106,7 @@ function CategoryFilter({ title, color, value }) {
     return (
         <button
             value={value}
-            onClick={updateURL}
+            onClick={updateURL} 
             className={`${styles.container} ${color} ${active} `}
         >
             {title}

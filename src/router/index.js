@@ -5,6 +5,7 @@ import Author from "../router/Author/Author"
 import Comic from "./Comic/Comic"
 import Comics from "../router/Comics/Comics"
 import Company from "../router/Company/Company"
+import EditChapter from "./EditChapter/EditChapter"
 import Home from "../router/Home/Home"
 import Layout from "../layouts/Layout/Layout"
 import ListComments from "../components/ListComments/ListComments"
@@ -142,6 +143,10 @@ const indexRouter = createBrowserRouter([
         path: "/verify/:user_id/:verify_code",
         element: <AccountVerify />,
     },
+    {
+        path: "/edit-chapter",
+        element: <EditChapter />
+    }
 ])
 
 export default indexRouter

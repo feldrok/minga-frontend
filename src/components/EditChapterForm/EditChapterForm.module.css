@@ -1,0 +1,114 @@
+
+
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s;
+}
+
+.formNewComic {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+    width: 450px;
+}
+
+.divContainerForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.divContainerForm > p {
+    font-size: 2.5rem;
+    font-weight: 500;
+    margin-bottom: 2rem;
+}
+
+.button_edit {
+    padding: 1em 6em;
+    margin-top: 2em;
+    border-radius: 3rem;
+    border: none;
+    font-size: 1rem;;
+    background-color: #34d399;
+    color: white;
+    letter-spacing: 0.1rem;
+    transition: all 0.2s ease-in-out;
+}
+
+.button_edit:hover {
+    background-color: #0bff2c;
+    color: white;
+}
+.button_delete:hover {
+    background-color: #fd2018;
+    color: white;
+}
+
+.button_delete {
+    padding: 1em 6em;
+    margin-top: 2em;
+    border-radius: 3rem;
+    border: none;
+    font-size: 1rem;;
+    background-color: #fbdddc;
+    color: #ee8380; 
+    letter-spacing: 0.1rem;
+    transition: all 0.2s ease-in-out;
+}
+
+.chapter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} 
+
+.chapter.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} 
+
+.inpFormSelect {
+    background-color: transparent;
+    border: none;
+    font-size: 1rem;
+    border-bottom: 1px solid gray;
+    padding: 0.5em;
+    color: gray;
+    outline: none;
+    width: 300px;
+}
+
+option {
+    background-color: rgb(215, 207, 207);
+} 
+
+@media (min-width: 768px) {
+    .container{
+    flex-direction: row-reverse;
+    height: 70vh;
+    width: 90vw;
+    transition: all 0.2s;
+    }
+    .divContainerForm{
+        width: 50%;
+        height: 100%;
+    }
+    .chapter{
+        border-right: solid 0.5px black;
+        width: 50%;
+        height: 100%;
+    }
+    .divContainerForm{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 5rem;
+    }
+}

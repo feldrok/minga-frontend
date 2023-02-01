@@ -19,8 +19,8 @@ const {
 
 function ComicCards() {
     const comicsStore = useSelector((state) => state.comics)
-    const reactionStore = useSelector((state) => state.reactions)
     const categoryStore = useSelector((state) => state.categories)
+    const reactionStore = useSelector((state) => state.reactions)
     const dispatch = useDispatch()
     const location = useLocation()
     const [searchParams, setSearchParams] = useSearchParams()

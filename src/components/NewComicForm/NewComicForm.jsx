@@ -32,9 +32,8 @@ function NewComicForm() {
       description: inputDescription.current.value,
       category: "63b31c350bddc55d435910d7",
     }; 
-    
     dispatch(createNewComic(comic));
-}
+} 
 
   return (
     <div className="divContainerForm">
@@ -50,8 +49,8 @@ function NewComicForm() {
           name="categories"
           className={value === "" ? "inpForm-select" : "inpForm-select selected"}
           id="categories"
-          onChange={(e) => setValue(e.target)}
-        >.value
+          onChange={(e) => setValue(e.target)} 
+        >
           <option className="default-select" value="">Insert category</option>
           <option value="Shonen">Comic Shonen</option>
           <option value="Sheinen">Comic Seinen</option>
@@ -80,4 +79,4 @@ function NewComicForm() {
   );
 }
 
-export default NewComicForm;
+export default NewComicForm; 

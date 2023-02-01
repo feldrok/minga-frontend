@@ -2,30 +2,34 @@ import comicActions from "./actions"
 import { createReducer } from "@reduxjs/toolkit"
 
 const {
-    createNewComic,
-    getComic,
-    getComics,
-    getComicsByTitle,
-    getComicsByCategory,
-    getComicsByTitleAndCategory,
-    getFavouriteComics,
-    get_comics_from_cia,
-    get_comics_company,
-    get_comics_from_author,
-    get_comics_from_company_author,
-    edit_comic,
-    delete_comic
+  createNewComic,
+  getComic,
+  getComics,
+  getComicsByTitle,
+  getComicsByCategory,
+  getComicsByTitleAndCategory,
+  getFavouriteComics,
+  get_comics_from_cia,
+  get_comics_company,
+  get_comics_from_author,
+  get_comics_from_company_author,
+  edit_comic,
+  delete_comic,
+  getComicsById
 } = comicActions
 
 const initialState = {
-    comic: [],
-    comics: [],
-    storedComics: "",
-    message: "",
-    limit: 10,
-    order: "desc",
-    search: "",
+  comic: [],
+  comics: [],
+  comicById: [],
+  storedComics: "",
+  message: "",
+  limit: 10,
+  order: "desc",
+  search: "",
 }
+
+
 
 const comicReducer = createReducer(initialState, (builder) => {
     builder
