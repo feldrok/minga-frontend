@@ -1,5 +1,6 @@
 import AccountSetup from "./AccountSetup/AccountSetup"
 import AccountType from "../components/AccountType/AccountType"
+import AccountVerify from "../components/AccountVerify/AccountVerify"
 import Author from "../router/Author/Author"
 import Comic from "./Comic/Comic"
 import Comics from "../router/Comics/Comics"
@@ -51,7 +52,7 @@ const indexRouter = createBrowserRouter([
     },
     {
         path: "/favourites/:user_id",
-        element: <Favourites />
+        element: <Favourites />,
     },
     {
         path: "/newcomics",
@@ -66,11 +67,11 @@ const indexRouter = createBrowserRouter([
         element: <Pages />,
         children: [
             {
-                path: "/pages/:_id/newcomment",
+                path: "/pages/:_id/comments",
                 element: <ListComments />,
                 children: [
                     {
-                        path: "/pages/:_id/newcomment/:comment_id",
+                        path: "/pages/:_id/comments/:commentable_id",
                         element: <ListComments />,
                     },
                 ],
@@ -93,7 +94,7 @@ const indexRouter = createBrowserRouter([
     },
     {
         path: "/comic/:id",
-        element: <Comic />, 
+        element: <Comic />,
     },
     {
         path: "/accountsetup",
@@ -119,7 +120,7 @@ const indexRouter = createBrowserRouter([
     },
     {
         path: "/company/:id",
-        element: <Company/>
+        element: <Company />,
     },
     {
         path: "/comics",
@@ -127,16 +128,20 @@ const indexRouter = createBrowserRouter([
     },
     {
         path: "/authors/:id",
-        element: <Author/>
+        element: <Author />,
     },
     {
         path: "/edit-comic/:id",
-        element: <EditComic />
+        element: <EditComic />,
     },
     {
         path: "/delete-comic/:id",
-        element: <DeleteComic />
-    }
+        element: <DeleteComic />,
+    },
+    {
+        path: "/verify/:user_id/:verify_code",
+        element: <AccountVerify />,
+    },
 ])
 
 export default indexRouter

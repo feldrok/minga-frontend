@@ -3,15 +3,18 @@ import "./NewComment.css"
 import React, { useRef, useState } from "react"
 
 import commentActions from "../../store/comments/actions"
+import { decodeToken } from "react-jwt"
 import { useDispatch } from "react-redux"
+import { useParams } from "react-router"
 
-const { addComment } = commentActions
+const {addComment, getComments} = commentActions
 
 function NewComment() {
   const [textLength, setTextLength] = useState(0)
   const comment = useRef(null)
   const dispatch = useDispatch()
-
+  const params = useParams()
+  console.log(params);
   const handleComment = (e) => {
     setTextLength(e.target.value.length)
   }
@@ -20,14 +23,21 @@ function NewComment() {
     e.preventDefault()
     let data = {
       text: comment.current.value,
-      user_id: "63ac470c8d3a5803ae2889ff",
-      chapter_id: "5f9f1b9b0b9b0c0017b0b0a0",
-      commentable_id: "5f9f1b9b0b9b0c0017b0b0a0",
+      user_id: decodeToken(localStorage.getItem("token"))?.id,
+      chapter_id: params._id,
     }
+    let data2 = {
+      text: comment.current.value,
+      user_id: decodeToken(localStorage.getItem("token"))?.id,
+      commentable_id: params.commentable_id
+    }
+    if (params.commentable_id !== undefined) {
+      dispatch(addComment(data2))
 
-    await dispatch(addComment(data))
-    // console.log(sendDispatch)
+    } else {
+      dispatch(addComment(data))
 
+    }
     comment.current.value = ""
     handleComment({ target: { value: "" } })
   }

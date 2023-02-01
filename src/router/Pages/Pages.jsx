@@ -11,7 +11,7 @@ import { decodeToken } from "react-jwt"
 
 const { getLastRead, getLastReads, createLastRead, updateLastRead } =
     lastReadActions
-const { getChapterDetails } = chapterActions
+const { getChapterDetails, getChapters } = chapterActions
 
 function Pages() {
     const [current, setCurrent] = useState(0)
@@ -62,7 +62,7 @@ function Pages() {
     }, [current])
 
     const getPagesImages = () => {
-        if (chapterStore.chapter?.length === 0) {
+        if (!chapterStore.chapter?.response) {
             return <p>Loading...</p>
         } else {
             return (
@@ -76,6 +76,7 @@ function Pages() {
         }
     }
 
+    console.log(lastReadStore)
     const next = () => {
         const nextChapter = chapterStore.chapters?.response?.find(
             (chapter) =>
@@ -85,8 +86,6 @@ function Pages() {
             dispatch(
                 updateLastRead({
                     chapter_id: _id,
-                    comic_id: chapterStore.chapter.response?.comic_id,
-                    user_id: decodeToken(localStorage.getItem("token")).id,
                     page: current + 1,
                 })
             )
@@ -95,8 +94,6 @@ function Pages() {
             dispatch(
                 updateLastRead({
                     chapter_id: nextChapter._id,
-                    comic_id: chapterStore.chapter.response?.comic_id,
-                    user_id: decodeToken(localStorage.getItem("token")).id,
                     page: current + 1,
                 })
             )
@@ -104,15 +101,12 @@ function Pages() {
     }
     const prev = () => {
         const prevChapter = chapterStore.chapters?.response?.find(
-            (chapter) =>
-                chapterStore.chapter?.response?.order - 1 === chapter.order
+            (c) => chapterStore.chapter?.response?.order - 1 === c.order
         )
         if (current > 0) {
             dispatch(
                 updateLastRead({
                     chapter_id: _id,
-                    comic_id: chapterStore.chapter.response?.comic_id,
-                    user_id: decodeToken(localStorage.getItem("token")).id,
                     page: current - 1,
                 })
             )
@@ -126,15 +120,13 @@ function Pages() {
             dispatch(
                 updateLastRead({
                     chapter_id: _id,
-                    comic_id: chapterStore.chapter.response?.comic_id,
-                    user_id: decodeToken(localStorage.getItem("token")).id,
                     page: prevChapter.pages.length - 1,
                 })
             )
         }
     }
     const getChapterTitle = () => {
-        if (chapterStore.chapter?.length === 0) {
+        if (!chapterStore.chapter?.response) {
             return <p>Loading...</p>
         } else {
             return (
@@ -168,7 +160,7 @@ function Pages() {
                     <Link
                         className={styles.commentButton}
                         text={"New comment"}
-                        to={`/pages/${chapterStore.chapter.response?._id}/newcomment`}
+                        to={`/pages/${chapterStore.chapter.response?._id}/comments`}
                     >
                         <div className={styles.newCommentBox}>
                             <img
@@ -178,7 +170,7 @@ function Pages() {
                             />
                         </div>
                     </Link>
-                    <p className={styles.commentNumber}>42</p>
+                    <p className={styles.commentNumber}>5</p>
                 </div>
             </div>
             <Outlet />

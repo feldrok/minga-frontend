@@ -2,6 +2,7 @@ import "./Home.css"
 
 import { Link, Outlet } from "react-router-dom"
 
+import Carousel from "../../components/Carousel/Carousel"
 import Hero from "../../components/Hero/Hero"
 import React from "react"
 
@@ -10,29 +11,16 @@ function Home() {
     <>
       <Hero>
         <>
-          <Link className="announcement-btn" to={"#"}>
-            Anunciamos nuestra próxima ronda de financiación. Leer más →
-          </Link>
-          <h1 className="hero-title">Tu tienda de comics favorita</h1>
+          <h1 className="hero-title">Welcome to Minga! Your favorite comic and manga website!</h1>
           <p className="hero-text">
-            Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui
-            lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat
-            fugiat aliqua.
+Are you ready to dive deep into the annals of comic and manga history?
           </p>
-          <Link className="get-started-btn" to={"#comics"}>
-            Empezar →
+          <Link className="get-started-btn" to={"/"}>
+            Begin Your Journey →
           </Link>
         </>
       </Hero>
-      <div className="main-content">
-        <Link
-          className={"button-new-comment"}
-          text={"New comment"}
-          to={"/newcomment"}
-        >
-          New Comment
-        </Link>
-      </div>
+      <Carousel/>
       <Outlet />
     </>
   )

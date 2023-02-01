@@ -145,6 +145,23 @@
     width: 100%;
 }
 
+.createButton {
+    background-color: hsl(245, 58%, 51%);
+    border: none;
+    padding: 1em 1.5em;
+    border-radius: 2em;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.createButton:hover {
+    background-color: hsl(245, 58%, 41%);
+    transition: all 0.3s ease-in-out;
+    transition-duration: 0.3s;
+}
+
 .submitButton {
     display: flex;
     width: 100%;

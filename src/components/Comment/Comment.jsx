@@ -1,22 +1,46 @@
 import "./Comment.css"
 
+import { useDispatch, useSelector } from "react-redux"
+
+import Button from "../Button/Button"
 import { Link } from "react-router-dom"
+import NewComment from "../NewComment/NewComment"
 import React from "react"
-import { useSelector } from "react-redux"
+import commentActions from "../../store/comments/actions"
+import { useParams } from "react-router-dom"
+import { useState } from "react"
 
-function Comment() {
+const { getComments, editComment, deleteComment } = commentActions
+
+function Comment( {text, user_id, timestamp, id} ) {
+  const user = useSelector((state) => state.users.users.find((u) => u._id === user_id) )
+  const [showNewReply, setNewReply] = useState(false)
+  const [editMode, setEdit] = useState(false)
+  const [editText, setEditText] = useState(text)
   const commentsStore = useSelector((state) => state.comments)
-
+  const params = useParams()
+  const dispatch = useDispatch()
+  const date = new Date(timestamp)
+  const handleClick = () => {
+    dispatch(getComments({commentable_id: id}))
+  }
   const renderComment = () => {
-    if (commentsStore.comments.success === true) {
       return (
         <div className="comment-container">
           <div className="comment-user-data">
-            <img src="/userpic.png" alt="" />
-            <h3>Ignacio Borraz</h3>
+            <img src={user?.photo} alt="user avatar" />
+            <h3>{user?.mail}</h3>
           </div>
           <div className="comment-text">
-            <p>{commentsStore.comments.response?.text}</p>
+            {editMode ? (
+                <input 
+                  placeholder="Edit your comment..."
+                  onChange={(e) => setEditText(e.target.value)}
+                  value={editText}
+                />
+            ):( 
+              <p>{text}</p>
+            )}
           </div>
           <div className="comment-footer">
             <div className="comment-footer-left">
@@ -26,20 +50,50 @@ function Comment() {
               </div>
               <div className="comment-buttons">
                 <div className="comment-reply">
-                  <Link  className="comment-reply-button" to={`/newcomment/${commentsStore.comments.response.commentable_id}`}>Reply</Link>
-                  <img src="./replyIcon.png" alt="" />
-                </div>
+                    <Link
+                    to={`/pages/${params._id}/comments/${id}`}
+                    text={"Reply"}
+                    type={"reply-button"}
+                    onClick={handleClick}
+                    >
+                      Reply
+                    <img src="/replyIcon.png" alt="reply icon" />
+                    </Link>
+                    </div>
+                    <div className="edit-and-delete">
+                    {
+                      editMode ? (
+                        <Button
+                        text={"Save"}
+                        type={"reply-button2"}
+                        action={() => {
+                          setEdit(false)
+                          dispatch(editComment({comment_id: id, text: editText}))
+                        }}
+                        ></Button>
+                      ) : (
+                        <Button
+                        text={"Edit"}
+                        type={"reply-button2"}
+                        action={() => setEdit(true)}
+                        ></Button>
+                      )
+                    }
+                      <Button
+                        text={"Delete"}
+                        type={"reply-button2"}
+                        action={() => {dispatch(deleteComment({comment_id: id}))
+                        }}
+                        ></Button>
+                        </div>
               </div>
             </div>
             <div className="comment-footer-right">
-              <p>1 sec ago</p>
+              <p>{date.toUTCString()}</p>
             </div>
           </div>
         </div>
       )
-    } else {
-      return <p>There are no comments</p>
-    }
   }
 
   return (
