@@ -6,6 +6,7 @@ import Comic from "./Comic/Comic"
 import Comics from "../router/Comics/Comics"
 import Company from "../router/Company/Company"
 import EditChapter from "./EditChapter/EditChapter"
+import DonationCard from "../components/DonationCard/DonationCard"
 import Home from "../router/Home/Home"
 import Layout from "../layouts/Layout/Layout"
 import ListComments from "../components/ListComments/ListComments"
@@ -15,6 +16,8 @@ import NewChapter from "./NewChapter/NewChapter"
 import NewComic from "./NewComic/NewComic"
 import NewCompany from "../components/NewCompany/NewCompany"
 import Pages from "./Pages/Pages"
+import PaymentDone from "../components/PaymentDone/PaymentDone"
+import PaymentError from "../components/PaymentError/PaymentError"
 import React from "react"
 import SigninForm from "../components/SigninForm/SigninForm"
 import Signup from "../router/Signup/Signup"
@@ -44,9 +47,16 @@ const indexRouter = createBrowserRouter([
                         ],
                     },
                 ],
+                children: [
+                    {
+                        path: "/donations",
+                        element: <DonationCard />,
+                    },
+                ],
             },
         ],
     },
+
     {
         path: "/mycomics",
         element: <MyComics />,
@@ -145,8 +155,20 @@ const indexRouter = createBrowserRouter([
     },
     {
         path: "/edit-chapter",
-        element: <EditChapter />
-    }
+        element: <EditChapter />,
+    },
+    {
+        path: "/donate",
+        element: <DonationCard />,
+    },
+    {
+        path: "/donation",
+        element: <PaymentDone />,
+    },
+    {
+        path: "/donationerror",
+        element: <PaymentError />,
+    },
 ])
 
 export default indexRouter

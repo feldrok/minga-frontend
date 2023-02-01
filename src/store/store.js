@@ -7,6 +7,7 @@ import companyReducer from "./companies/reducers"
 import { configureStore } from "@reduxjs/toolkit"
 import reactionReducer from "./reactions/reducers"
 import getIdReducer from "./getId/reducer"
+import donationReducer from "./mercadopago/reducer"
 import userReducer from "./user/reducers"
 import lastReadReducer from "./lastreads/reducers"
 import usersReducer from "./users/reducers"
@@ -24,6 +25,7 @@ const store = configureStore({
         lastRead: lastReadReducer,
         users: usersReducer,
         id: getIdReducer,
+        mercadopago: donationReducer
     },
 })
 

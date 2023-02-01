@@ -1,0 +1,123 @@
+.containerCard {
+    background-image: url("https://media.tenor.com/V-dxjA8L2ZwAAAAM/thank-you-marin-anime.gif");
+    background-size: cover;
+    background-position: center;
+    border: solid 1px black;
+    width: 100%;
+    height: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+} 
+
+.anime {
+    width: 80%;
+    height: 50%;
+}
+
+.text {
+    color: black;
+    background-color: #26b36a;
+    width: 100%;
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    border-radius: 0.2rem;
+    margin-bottom: 3rem;
+}
+
+.description {
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1rem;
+}
+
+.x {
+    width: 40%;
+    height: 5%;
+    background-color: white;
+    border: solid 0.1px black;
+    border-radius: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.x:hover {
+    background-color: #26b36a;
+    color: white;
+}
+
+.modalContenedor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2rem;
+    flex-direction: column;
+    width: 90vw;
+    height: 80vh;
+    background-color: white;
+    box-shadow: 1px 7px 25px rgba(0, 0, 0, 0.6);
+}
+
+.modal {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0; 
+    background-color:rgba(0, 0, 0, 0.5) ;
+    transition: all ease 500ms;
+}
+
+
+
+.donate2:hover {
+    background-color: #4338ca;
+    color: #fff;
+}
+
+.price:hover {
+    background-color: #4338ca;
+    color: #fff;
+}
+
+
+@media (min-width: 760px) {
+    .containerCard {
+        width: 80%;
+        height: 50%;
+        border: none;
+        transition: all;
+        border-radius: 0.2rem;
+    } 
+}
+
+@media (min-width: 1020px) {
+    .modalContenedor {
+        width: 30vw;
+        height: 80vh;
+    }
+    .containerCard {
+        width: 100%;
+        height: 50%;
+        border: none;
+        border-radius: none;
+    } 
+    .text {
+        width: 100%;
+        height: 15%;
+        margin-bottom: 4rem;
+        font-size: 1.2rem;
+        border-radius: 0.1rem;
+    }
+} 
+

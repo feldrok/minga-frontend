@@ -35,6 +35,7 @@ function Layout() {
       <ToastContainer transition={Slide} />
       <Nav />
       <Outlet />
+
       <Footer />
     </div>
   )
