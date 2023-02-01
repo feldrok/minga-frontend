@@ -75,10 +75,11 @@
 }
 
 .textContainer {
-    padding: 1.6em 2em;
+    padding: 1.5em 2em;
     display: flex;
     flex-direction: column;
     width: 100%;
+
     border-left: 0.6rem solid #e0e0e0;
 }
 
@@ -150,4 +151,24 @@
 .comicCategory {
     font-style: italic;
     font-size: 1rem;
+}
+.addChap {
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.8rem;
+    color: #00ba88;
+    background-color: #d1fbf0;
+    border-radius: 10px;
+    padding: 0.5rem 1rem;
+    height: 2rem;
+    white-space: nowrap;
+}
+.addChap:hover {
+    background-color: #00ba88;
+    color: #fff;
+}
+
+.btnContainer {
+    display: flex;
+    flex-direction: column;
 }

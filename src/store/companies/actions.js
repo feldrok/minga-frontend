@@ -17,7 +17,7 @@ const handleToken = () => {
 
 const addCompany = createAsyncThunk("addCompany", async (company) => {
     try {
-        const response = await axios.post(`${API_URL}/companies`, company, handleToken())
+        const response = await axios.post(`${API_URL}/company`, company, handleToken())
         return {
             response: { company: response.data },
             message: "Company successfully created",

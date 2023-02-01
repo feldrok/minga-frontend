@@ -91,11 +91,7 @@ function Pages() {
             dispatch(
                 updateLastRead({
                     chapter_id: nextChapter._id,
-<<<<<<< HEAD
-                    page: current + 1,
-=======
                     page: 0,
->>>>>>> 8ad1d03eb7559f73813bcc6aa5cb104889a370fd
                 })
             )
             navigate(`/pages/${nextChapter._id}`, { replace: true })
@@ -150,7 +146,7 @@ function Pages() {
                     </div>
                 </header>
                 <div className={styles.comicPage}>
-                    {getPagesImages()} 
+                    {getPagesImages()}
                     <div className={styles.leftButton} onClick={prev}>
                         <p className={styles.leftArrow}>&lt;</p>
                     </div>

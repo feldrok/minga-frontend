@@ -14,12 +14,16 @@ const routes = [
         name: "Home",
     },
     {
-        path: "/newchapter",
-        name: "New Chapter",
-    },
-    {
         path: "/comics",
         name: "Comics",
+    },
+    {
+        path: "/newcomics",
+        name: "New Comic",
+    },
+    {
+        path: "/edit-chapters",
+        name: "Edit Chapters",
     },
     {
         path: "/mycomics",
@@ -28,6 +32,10 @@ const routes = [
     {
         path: `/favourites/${decodeToken(localStorage.getItem("token"))?.id}`,
         name: "Favourites",
+    },
+    {
+        path: "/profile",
+        name: "Profile",
     },
 ]
 
@@ -83,27 +91,31 @@ function Nav() {
                 <div className="nav-item">
                     <img className="nav-logo" src="/logo.png" alt="logo" />
                 </div>
-                {isLogged ? (                <div className="nav-item nav-items">
-                    {routes.map((route, index) => (
-                        <NavLink
-                            className="nav-link"
-                            to={route.path}
-                            key={index}
-                        >
-                            {route.name}
-                        </NavLink>
-                    ))}
-                </div>) : (<div className="nav-item nav-items">
-                    {loggedOutRoutes.map((route, index) => (
-                        <NavLink
-                            className="nav-link"
-                            to={route.path}
-                            key={index}
-                        >
-                            {route.name}
-                        </NavLink>
-                    ))}
-                </div>) }
+                {isLogged ? (
+                    <div className="nav-item nav-items">
+                        {routes.map((route, index) => (
+                            <NavLink
+                                className="nav-link"
+                                to={route.path}
+                                key={index}
+                            >
+                                {route.name}
+                            </NavLink>
+                        ))}
+                    </div>
+                ) : (
+                    <div className="nav-item nav-items">
+                        {loggedOutRoutes.map((route, index) => (
+                            <NavLink
+                                className="nav-link"
+                                to={route.path}
+                                key={index}
+                            >
+                                {route.name}
+                            </NavLink>
+                        ))}
+                    </div>
+                )}
 
                 {isLogged ? (
                     <div className="nav-item logout-button">

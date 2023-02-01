@@ -107,7 +107,15 @@ function ComicCard({ title, image, link, comicCategory, color }) {
                             <EditDelete />
                         ) : null}
                         {location.pathname.includes("/mycomics") ? (
-                            <EditDelete link={link} />
+                            <div className={styles.btnContainer}>
+                                <EditDelete link={link} />
+                                <Link
+                                    className={styles.addChap}
+                                    to={`/newchapter/${link}`}
+                                >
+                                    Add Chapter
+                                </Link>
+                            </div>
                         ) : null}
                         {location.pathname.includes("/favourites") ? (
                             <div className={styles.buttonsWrapper}>
