@@ -78,7 +78,7 @@ function ComicCards() {
                         })
                     )
                 }
-            } else if (comicsStore.comics?.response?.length !== 0) {
+            } else if (comicsStore.comics?.response?.length === 0) {
                 if (
                     location.pathname.includes("/comics") &&
                     comicsStore.storedComics !== "allComics"
