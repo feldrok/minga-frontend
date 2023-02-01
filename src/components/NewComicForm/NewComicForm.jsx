@@ -34,7 +34,7 @@ function NewComicForm() {
     }; 
     
     dispatch(createNewComic(comic));
-}
+} 
 
   return (
     <div className="divContainerForm">

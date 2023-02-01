@@ -34,6 +34,8 @@ function Nav() {
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
+
+    
     useEffect(() => {
         let token = localStorage.getItem("token")
         if (token || token === undefined) {
@@ -44,7 +46,9 @@ function Nav() {
         if (userStore.user?.length === 0) {
             dispatch(signInToken())
         }
-    }, [])
+    }, []) 
+
+
 
     const toggleNav = () => {
         setNavigation(!navigation)

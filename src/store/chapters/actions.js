@@ -16,6 +16,7 @@ const handleToken = () => {
 }
 
 const newChapter = createAsyncThunk("newChapter", async (chapter) => {
+    console.log(chapter)
     try {
         const response = await axios.post(
             `${API_URL}/chapters`,

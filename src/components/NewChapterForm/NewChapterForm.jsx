@@ -25,8 +25,10 @@ const NewChapter = () => {
         if(inpOrder.current.value){
             values.order = inpOrder.current.value
         }
-        await dispatch(newChapter(values))
+        await dispatch(newChapter(values)) 
     }
+
+    
 
     return (
         <div className="divContainerForm">
