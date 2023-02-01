@@ -11,7 +11,6 @@ import comicActions from "../../store/comics/actions"
 import styles from "./Comic.module.css"
 import FavouriteReaction from "../../components/FavouriteReaction/FavouriteReaction"
 import reactionActions from "../../store/reactions/actions"
-import { decodeToken } from "react-jwt"
 
 const { getChapters } = chapterActions
 const { getComic } = comicActions
@@ -38,7 +37,6 @@ export default function Comic() {
         dispatch(
             getReactions({
                 comic_id: id,
-                user_id: decodeToken(localStorage.getItem("token"))?.id,
             })
         )
     }, [])
