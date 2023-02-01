@@ -8,6 +8,7 @@ const {
     getComicsByTitle,
     getComicsByCategory,
     getComicsByTitleAndCategory,
+    getFavouriteComics,
     get_comics_from_cia,
     get_comics_company,
     get_comics_from_author,
@@ -22,6 +23,7 @@ const initialState = {
     storedComics: "",
     message: "",
     limit: 10,
+    order: "desc",
     search: "",
 }
 
@@ -135,6 +137,17 @@ const comicReducer = createReducer(initialState, (builder) => {
             let newState = {
                 comic: state.comic,
                 comics: action.payload.response.comics,
+                message: action.payload.message,
+            }
+            return newState
+        })
+        .addCase(getFavouriteComics.fulfilled, (state, action) => {
+            let newState = {
+                comic: state.comic,
+                comics: action.payload.response.comics,
+                storedComics: "favouritesComics",
+                limit: action.payload.limit,
+                order: action.payload.order,
                 message: action.payload.message,
             }
             return newState

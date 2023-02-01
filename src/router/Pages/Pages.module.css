@@ -1,5 +1,5 @@
 .header {
-    background-color: #EBEBEB;
+    background-color: #ebebeb;
 }
 
 .container {
@@ -10,9 +10,9 @@
 }
 
 .titleContainer {
-    background-color: #4338CA;
+    background-color: #4338ca;
     margin-top: 68px;
-    color: #EBEBEB;
+    color: #ebebeb;
     display: flex;
     justify-content: center;
     padding: 1em;
@@ -26,9 +26,8 @@
 }
 
 .imageContainer img {
-    display: block;
-    object-fit: contain;
-    max-height: 600px;
+    height: 100%;
+    max-width: 100%;
 }
 
 .imageContainer {
@@ -44,13 +43,20 @@
     z-index: 100;
 }
 
+.comicPage {
+    position: relative;
+}
+
 .leftButton {
     position: absolute;
-    top: 68px;
     left: 0;
-    height: 95%;
     width: 50%;
+    height: 100%;
     background-color: transparent;
+    user-select: none;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
 }
 
 .leftButton:hover {
@@ -59,11 +65,14 @@
 
 .rightButton {
     position: absolute;
-    top: 68px;
     right: 0;
-    height: 95%;
+    height: 100%;
     width: 50%;
     background-color: transparent;
+    user-select: none;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 }
 
 .rightButton:hover {
@@ -71,8 +80,8 @@
 }
 
 .leftArrow {
-    position: absolute;
-    top: 250px;
+    display: none;
+    padding-left: 1rem;
     font-size: 10rem;
     color: rgba(0, 0, 0, 0.179);
 }
@@ -82,9 +91,8 @@
 }
 
 .rightArrow {
-    position: absolute;
-    top: 250px;
-    right: 10px;
+    display: none;
+    padding-right: 1rem;
     text-align: right;
     font-size: 10rem;
     color: rgba(0, 0, 0, 0.179);
@@ -114,7 +122,17 @@
 
 .commentNumber {
     font-size: 2rem;
-    margin-left: .5em;
+    margin-left: 0.5em;
     color: black;
     text-decoration: none !important;
+}
+
+@media (width >= 768px) {
+    .leftArrow {
+        display: block;
+    }
+
+    .rightArrow {
+        display: block;
+    }
 }

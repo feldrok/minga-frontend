@@ -20,7 +20,7 @@ function Comics() {
     return (
         <div className={styles.container}>
             <Nav />
-            <ComicsHeader>
+            <ComicsHeader header={"Comics"}>
                 <SearchInput />
             </ComicsHeader>
             <ListContainer>

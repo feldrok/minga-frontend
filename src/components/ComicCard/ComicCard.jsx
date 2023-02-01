@@ -1,17 +1,31 @@
-import { Link, useLocation } from "react-router-dom"
+import { Link, useLocation, useParams } from "react-router-dom"
 import React, { useState } from "react"
 
 import EditDelete from "../EditDelete/EditDelete"
 import styles from "./ComicCard.module.css"
-import { useSelector } from "react-redux"
 import EditComic from "../EditComic/EditComic"
+import { useDispatch, useSelector } from "react-redux"
+import reactionActions from "../../store/reactions/actions"
+
+const { addReaction } = reactionActions
 
 function ComicCard({ title, image, link, comicCategory, color }) {
     const categoryStore = useSelector((state) => state.categories)
     const comicStore = useSelector((state) => state.comics)
+    const lastReadStore = useSelector((state) => state.lastRead)
     const [isActive, setIsActive] = useState("")
     const [currentImage, setCurrentImage] = useState("")
     const location = useLocation()
+    const dispatch = useDispatch()
+
+    const handleClick = async (e) => {
+        await dispatch(
+            addReaction({
+                comic_id: link,
+                name: e.target.value,
+            })
+        )
+    }
 
     const renderCategoryType = () => {
         if (comicStore.comics.response?.length === 0) {
@@ -60,21 +74,57 @@ function ComicCard({ title, image, link, comicCategory, color }) {
         clearTimeout(timer)
     }
 
+    const renderLastReadButton = () => {
+        if (lastReadStore.lastReads.response?.length === 0) {
+            return null
+        } else {
+            let lastRead = lastReadStore.lastReads.response?.findLast(
+                (lastRead) => lastRead.comic_id === link
+            )
+            if (lastRead) {
+                return (
+                    <Link
+                        to={`/pages/${lastRead.chapter_id}`}
+                        className={styles.readButton}
+                    >
+                        Read
+                    </Link>
+                )
+            } else {
+                return null
+            }
+        }
+    }
+
     return (
         <>
-            <Link className={styles.container} to={`/comic/${link}`}>
+            <div className={styles.container}>
                 <div className={`${styles.textContainer} ${color} `}>
                     <h3>{title}</h3>
                     {renderCategoryType()}
-                    {location.pathname.includes("/company") ? (
-                        <EditDelete
-                        link={link} />
-                    ) : null}
-                    {location.pathname.includes("/mycomics") ? (
-                        <EditDelete link={link} />
-                    ) : null}
+                    <div className={styles.buttonsContainer}>
+                        {location.pathname.includes("/company") ? (
+                            <EditDelete />
+                        ) : null}
+                        {location.pathname.includes("/mycomics") ? (
+                            <EditDelete link={link} />
+                        ) : null}
+                        {location.pathname.includes("/favourites") ? (
+                            <div className={styles.buttonsWrapper}>
+                                {renderLastReadButton()}
+                                <button
+                                    onClick={handleClick}
+                                    value={"favourite"}
+                                    className={`${styles.favourite} ${styles.active}`}
+                                >
+                                    Remove
+                                </button>
+                            </div>
+                        ) : null}
+                    </div>
                 </div>
-                <div
+                <Link
+                    to={`/comic/${link}`}
                     className={styles.imageContainer}
                     onMouseEnter={handleMouseEnter}
                     onMouseLeave={handleMouseLeave}
@@ -87,8 +137,8 @@ function ComicCard({ title, image, link, comicCategory, color }) {
                     <div className={`${styles.hoverImage} ${isActive}`}>
                         <img src={currentImage} alt="" />
                     </div>
-                </div>
-            </Link>
+                </Link>
+            </div>
         </>
     )
 }

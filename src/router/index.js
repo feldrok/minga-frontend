@@ -20,6 +20,7 @@ import SignupForm from "../components/SignupForm/SignupForm"
 import EditComic from "../components/EditComic/EditComic"
 import { createBrowserRouter } from "react-router-dom"
 import DeleteComic from "../components/DeleteComic/DeleteComic"
+import Favourites from "./Favourites/Favourites"
 
 const indexRouter = createBrowserRouter([
     {
@@ -47,6 +48,10 @@ const indexRouter = createBrowserRouter([
     {
         path: "/mycomics",
         element: <MyComics />,
+    },
+    {
+        path: "/favourites/:user_id",
+        element: <Favourites />
     },
     {
         path: "/newcomics",

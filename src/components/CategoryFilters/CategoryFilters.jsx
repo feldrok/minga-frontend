@@ -11,9 +11,15 @@ import CategoryFilter from "../CategoryFilter/CategoryFilter"
 import categoryActions from "../../store/categories/actions"
 import comicActions from "../../store/comics/actions"
 import styles from "./CategoryFilters.module.css"
+import SortButton from "../SortButton/SortButton"
 
 const { getCategories, setActiveCategory } = categoryActions
-const { getComics, get_comics_company, get_comics_from_company_author } = comicActions
+const {
+    getComics,
+    get_comics_company,
+    get_comics_from_company_author,
+    getFavouriteComics,
+} = comicActions
 
 function CategoryFilters() {
     const [active, setActive] = useState("")
@@ -31,9 +37,10 @@ function CategoryFilters() {
 
     useEffect(() => {
         if (
-            (location.pathname.includes("/comics") || 
-            location.pathname.includes("/company") || 
-            location.pathname.includes("/mycomics")) &&
+            (location.pathname.includes("/comics") ||
+                location.pathname.includes("/company") ||
+                location.pathname.includes("/mycomics") ||
+                location.pathname.includes("/favourites")) &&
             categoryStore.activeCategory === "all"
         ) {
             setActive(styles.active)
@@ -50,8 +57,10 @@ function CategoryFilters() {
             dispatch(getComics())
         } else if (location.pathname.includes("/company")) {
             dispatch(get_comics_company({ company_id: params.id }))
-        } else if(location.pathname.includes("/mycomics")){
+        } else if (location.pathname.includes("/mycomics")) {
             dispatch(get_comics_from_company_author({}))
+        } else if (location.pathname.includes("/favourites")) {
+            dispatch(getFavouriteComics({ user_id: params.user_id }))
         }
     }
 
@@ -78,6 +87,11 @@ function CategoryFilters() {
                     value={category._id}
                 />
             ))}
+            {location.pathname.includes("/favourites") ? (
+                <div className={styles.topContainer}>
+                    <SortButton />
+                </div>
+            ) : null}
         </div>
     )
 }
