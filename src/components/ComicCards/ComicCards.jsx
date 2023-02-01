@@ -80,7 +80,7 @@ function ComicCards() {
                     location.pathname.includes("/comics") &&
                     comicsStore?.storedComics !== "allComics"
                 ) {
-                    dispatch(getComics())
+                    dispatch(getComics({}))
                 } else if (
                     location.pathname.includes("/company") &&
                     comicsStore?.storedComics !== "companyComics"
