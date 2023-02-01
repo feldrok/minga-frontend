@@ -9,11 +9,11 @@ import styles from "./Pages.module.css"
 
 const { getChapterDetails, getChapters } = chapterActions
 
-const isMobile = () => window.innerWidth < 767
-
 function Pages() {
     const [current, setCurrent] = useState(0)
-    const chapterStore = useSelector((state) => state.chapters)
+    const chapter = useSelector((state) => state.chapters?.chapter?.response)
+    const chapters = useSelector((state) => state.chapters?.chapters?.response)
+    const comicId = chapter?.comic_id;
     const dispatch = useDispatch()
     const location = useLocation()
     const navigate = useNavigate()
@@ -36,16 +36,15 @@ function Pages() {
         const id = url[url.length - 1]
         dispatch(getChapterDetails(_id))
     }, [location])
-
-    console.log(chapterStore)
+    
     const getPagesImages = () => {
-        if (chapterStore.chapter?.length === 0) {
+        if (!chapter) {
             return <p>Loading...</p>
         } else {
             return (
                 <div className={styles.imageContainer}>
                     <img
-                        src={chapterStore.chapter?.response?.pages[current]}
+                        src={chapter.pages[current]}
                         alt="Comic Page"
                     />
                 </div>
@@ -53,11 +52,10 @@ function Pages() {
         }
     }
     const next = () => {
-        const nextChapter = chapterStore.chapters.response.find(
-            (chapter) =>
-                chapterStore.chapter.response.order + 1 === chapter.order
+        const nextChapter = chapters?.find(
+            (c) => chapter.order + 1 === c.order
         )
-        if (current !== chapterStore.chapter.response.pages?.length - 1) {
+        if (current !== chapter?.pages?.length - 1) {
             setCurrent(current + 1)
             localStorage.setItem("currentPage", current + 1)
         } else {
@@ -68,15 +66,14 @@ function Pages() {
         }
     }
     const prev = () => {
-        const prevChapter = chapterStore.chapters?.response?.find(
-            (chapter) =>
-                chapterStore.chapter?.response?.order - 1 === chapter.order
+        const prevChapter = chapters?.find(
+            (c) => chapter.order - 1 === c.order
         )
         if (current > 0) {
             setCurrent(current - 1)
             localStorage.setItem("currentPage", current - 1)
-        } else if (chapterStore.chapter?.response?.order === 1) {
-            navigate(`/comic/${chapterStore.chapter?.response?.comic_id}`, {
+        } else if (chapter.order === 1) {
+            navigate(`/comic/${chapter.comic_id}`, {
                 replace: true,
             })
         } else if (current === 0) {
@@ -87,13 +84,13 @@ function Pages() {
         }
     }
     const getChapterTitle = () => {
-        if (chapterStore.chapter?.length === 0) {
+        if (!chapter) {
             return <p>Loading...</p>
         } else {
             return (
                 <div>
-                    <h3>{`Chapter - ${chapterStore.chapter?.response?.order}`}</h3>
-                    <h2>{chapterStore.chapter?.response?.title}</h2>
+                    <h3>{`Chapter - ${chapter.order}`}</h3>
+                    <h2>{chapter.title}</h2>
                 </div>
             )
         }
@@ -120,7 +117,7 @@ function Pages() {
                     <Link
                         className={styles.commentButton}
                         text={"New comment"}
-                        to={`/pages/${chapterStore.chapter.response?._id}/newcomment`}
+                        to={`/pages/${chapter?._id}/comments`}
                     >
                         <div className={styles.newCommentBox}>
                             <img
@@ -130,7 +127,7 @@ function Pages() {
                             />
                         </div>
                     </Link>
-                    <p className={styles.commentNumber}>42</p>
+                    <p className={styles.commentNumber}>5</p>
                 </div>
             </div>
             <Outlet />

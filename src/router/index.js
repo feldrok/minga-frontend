@@ -1,5 +1,6 @@
 import AccountSetup from "./AccountSetup/AccountSetup"
 import AccountType from "../components/AccountType/AccountType"
+import AccountVerify from "../components/AccountVerify/AccountVerify"
 import Author from "../router/Author/Author"
 import Comic from "./Comic/Comic"
 import Comics from "../router/Comics/Comics"
@@ -59,11 +60,11 @@ const indexRouter = createBrowserRouter([
         element: <Pages />,
         children: [
             {
-                path: "/pages/:_id/newcomment",
+                path: "/pages/:_id/comments",
                 element: <ListComments />,
                 children: [
                     {
-                        path: "/pages/:_id/newcomment/:comment_id",
+                        path: "/pages/:_id/comments/:commentable_id",
                         element: <ListComments />,
                     },
                 ],
@@ -121,6 +122,10 @@ const indexRouter = createBrowserRouter([
     {
         path: "/authors/:id",
         element: <Author/>
+    },
+    {
+        path: '/verify/:user_id/:verify_code',
+        element: <AccountVerify />
     }
 ])
 

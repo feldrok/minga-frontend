@@ -1,0 +1,57 @@
+.carrusel{
+    margin: 0;
+    margin-top: 1rem;
+    padding: 0;
+    box-sizing: border-box;
+    height: 35rem;
+	display: flex;
+	flex-direction: column;
+}
+
+.slideImage img {
+    display: flex;
+    flex-direction: column;
+	justify-content: center;
+	align-items: center;
+object-fit: contain;
+width: 20rem;
+}
+
+.text {
+    color: black;
+    font-size: 2em;
+    padding: 8px 12px;
+    bottom: 8px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .prev,
+  .next {
+    cursor: pointer;
+    position: absolute;
+    top: 150%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    color: black;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    background-color: rgb(172, 168, 168);
+  }
+
+  .prev {
+    left: 10%;
+  }
+
+  .next {
+    right: 10%;
+    border-radius: 3px 0 0 3px;
+  }
+  .padre{
+    display: flex;
+    justify-content: center;
+  }

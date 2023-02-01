@@ -15,6 +15,37 @@ const handleToken = () => {
     return config
 }
 
+const addUser = createAsyncThunk("addUser", async (user) => {
+    try {
+        const response = await axios.post(`${API_URL}/auth/signup`, user)
+        return {
+            response: { user: response.data },
+            message: "User successfully created",
+        }
+    } catch (error) {
+        return {
+            response: { user: error.response.data },
+            message: "Failed to create new user.",
+        }
+    }
+})
+
+const verifyUser = createAsyncThunk("verifyUser", async ({user_id, verify_code}) => {
+    try {
+        console.log(user_id, verify_code)
+        const response = await axios.get(`${API_URL}/auth/verify_code`, {params: {user_id, verify_code}})
+        return {
+            response: {
+                message: "User Verified!"
+            }
+        }
+    } catch (error) {
+        return {
+        message: "Failed to verify user!"
+    }
+    }
+})
+
 const signIn = createAsyncThunk("signIn", async (user) => {
     try {
         let response = await axios.post(`${API_URL}/auth/signin`, user, handleToken())
@@ -48,8 +79,10 @@ const signInToken = createAsyncThunk("signInToken", async (user) => {
 })
 
 const userActions = {
+    addUser,
     signIn,
-    signInToken
+    signInToken,
+    verifyUser
 }
 
 export default userActions

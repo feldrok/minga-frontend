@@ -20,6 +20,12 @@
   margin: 0 0 0 1em;
 }
 
+.comment-user-data img {
+  width: 60px;
+  height: 60px;
+  border-radius: 5rem;
+}
+
 .comment-text {
   padding: 0 1em 1em 1em;
   font-size: 1.2rem;
@@ -49,6 +55,7 @@
 .comment-footer-right p {
   font-size: .8rem;
   color: rgb(150, 150, 150);
+  text-align: end;
 }
 
 .comment-reply {
@@ -58,17 +65,22 @@
   border: 1px solid #ccc;
   border-radius: 0.5em;
   cursor: pointer;
+  gap: 2rem;
+}
+
+.comment-reply img {
+  width: 1rem;
+  margin-left: 2px;
 }
 
 .comment-reply-button {
   display: flex;
   align-items: center;
+  text-align: center;
   font-size: 1.2rem;
   background-color: transparent;
-  border: none;
   cursor: pointer;
   color: #0079FF;
-  padding-right: .5em;
   text-decoration: none;
 }
 
@@ -85,4 +97,47 @@
 .comment-counter-text {
   font-size: 1.2rem;
   font-weight: 600;
+}
+
+.edit-and-delete {
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+}
+
+.reply-button {
+  width: 5em;
+  height: 2em;
+  background-color: transparent;
+  border-radius: 1em;
+  border: 1px solid #ccc;
+}
+
+.reply-button2 {
+  background-color: transparent;
+  border: 1px solid #ccc;
+  padding: .4rem;
+  width: 4rem;
+  height: 2.8rem;
+  border-radius: .5em;
+  color: white;
+  font-size: 1rem;
+  color: grey;
+  cursor: pointer;
+}
+
+.reply-button2:hover {
+  background-color: #f2f2f2;
+}
+
+.reply-button2:hover:last-child {
+  background-color: rgba(234, 9, 9, 0.816);
+  color: black;
+}
+
+.comment-buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1.5em;
 }

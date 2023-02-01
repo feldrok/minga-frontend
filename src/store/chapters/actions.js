@@ -43,15 +43,17 @@ const getChapters = createAsyncThunk("getChapters", async ({ id, limit }) => {
             `${API_URL}/chapters?comic_id=${id}&limit=${limit}`,
             handleToken()
         )
+        console.log("getChapters response:", response)
         return {
-            response: { chapter: response.data },
+            response: { chapters: response.data },
             limit: limit,
-            message: "Chapter obtained",
+            message: "Chapters obtained",
         }
     } catch (error) {
+        console.log(error)
         return {
-            response: { chapter: error.response.data },
-            message: "Error obtained chapter",
+            response: { chapters: error.response.data },
+            message: "Error obtained chapters",
         }
     }
 })

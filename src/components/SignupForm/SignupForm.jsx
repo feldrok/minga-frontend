@@ -1,7 +1,30 @@
-import { Link } from "react-router-dom"
-import React from "react"
+import React, { useRef } from "react";
+
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import userActions from "../../store/user/actions";
+
+const { addUser } = userActions;
 
 function SignupUser() {
+  const dispatch = useDispatch();
+  const mail = useRef("");
+  const photo = useRef("");
+  const password = useRef("");
+  const navigate = useNavigate();
+
+  const captureData = async (e) => {
+    e.preventDefault();
+    let data = {
+      mail: mail.current.value,
+      photo: photo.current.value,
+      password: password.current.value,
+    };
+    let res = await dispatch(addUser(data));
+    if (res.payload.success) {
+      navigate("/", { replace: true });
+  }}
+  
   return (
     <>
       <div className="title-container">
@@ -15,49 +38,56 @@ function SignupUser() {
       <div className="form-container">
         <form className="sign-form">
           <div className="form-signup-row">
-            <label className="label-sign" htmlFor="username">Username</label>
-            <input
-              autoComplete="false"
-              type="text"
-              className="form-control"
-              id="username"
-            />
-          </div>
-          <div className="form-signup-row">
-            <label className="label-sign" htmlFor="email">Email</label>
+            <label className="label-sign" htmlFor="email">
+              Email
+            </label>
             <input
               autoComplete="false"
               type="email"
               className="form-control"
               id="email"
+              ref={mail}
             />
           </div>
           <div className="form-signup-row">
-            <label className="label-sign" htmlFor="password">Password</label>
+            <label className="label-sign" htmlFor="password">
+              Password
+            </label>
             <input
               autoComplete="false"
               type="password"
               className="form-control"
               id="password"
+              ref={password}
             />
           </div>
           <div className="form-signup-row">
-            <label className="label-sign" htmlFor="confirmPassword">Confirm password</label>
+            <label className="label-sign" htmlFor="photo">
+              Photo
+            </label>
             <input
               autoComplete="false"
-              type="password"
+              type="text"
               className="form-control"
-              id="confirmPassword"
+              id="photo"
+              ref={photo}
             />
           </div>
           <div className="form-row">
-            <Link className="submitButton" to={"/accountsetup"}>Sign up</Link>
+            <input onClick={(e)=>captureData(e)} type="submit" className="createButton" value="Create!" />
           </div>
         </form>
-        <button className="signup-google"><img className="signup-google-img" alt="google icon" src="./Google.png" /> Sign up with Google</button>
+        <button className="signup-google">
+          <img
+            className="signup-google-img"
+            alt="google icon"
+            src="./Google.png"
+          />{" "}
+          Sign up with Google
+        </button>
       </div>
     </>
-  )
+  );
 }
 
 export default SignupUser

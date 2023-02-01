@@ -6,6 +6,7 @@ import commentReducer from "./comments/reducers"
 import companyReducer from "./companies/reducers"
 import { configureStore } from "@reduxjs/toolkit"
 import userReducer from "./user/reducers"
+import usersReducer from "./users/reducers"
 
 const store = configureStore({
     reducer: {
@@ -16,6 +17,7 @@ const store = configureStore({
         chapters: chapterReducer,
         categories: categoryReducer,
         user: userReducer,
+        users: usersReducer,
     },
 })
 
